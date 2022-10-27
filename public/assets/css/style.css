@@ -1,10 +1,12 @@
 body {
     color: #000;
+    background-color: #000;
 }
 
-h1 {
-    font: 700 32px Cinzel Decorative;
+h1.chapterTitle {
+    font: 700 2vw Cinzel Decorative;
     color: #e2e2e2;
+    font-size: min(20px);
 }
 
 p {
@@ -15,7 +17,6 @@ p {
 main.chapter {
     max-width: 550px;
     height: 100vh;
-    display: flex;
     align-items: center;
 }
 
@@ -23,7 +24,6 @@ main.chapter {
     z-index: 10;
     padding: 25px;
     border-radius: 10px;
-    margin-left: 100px;
     background: rgba(0, 0, 0, 0.7);
     padding-bottom: 50px;
     animation: fadein 3s;
@@ -37,6 +37,11 @@ a.buttonAction {
     background-color: #e2e2e2;
     border-radius: 10px;
     font-style: italic;
+    display: inline-block;
+    min-width: 200px;
+    text-align: center;
+    margin-right: 15px;
+    margin-bottom: 15px;
 }
 
 div.backgroundImage {
@@ -47,6 +52,10 @@ div.backgroundImage {
     background-size: cover;
     position: absolute;
     animation: fadein 0.8s;
+}
+
+.MobileChapterImage {
+    width: 100%;
 }
 
 .chapterText {
@@ -64,4 +73,27 @@ div.backgroundImage {
         opacity: 1;
     }
 
+}
+
+/* Condition d'animation du bouton */
+
+.raise:hover,
+.raise:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+}
+
+particle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.preloader {
+    position: absolute;
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/127738/mario-face.png);
 }
