@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+body {
+    background-image: url(../../assets/images/Groupe-72.png);
+    margin: 25px;
+}
+
+p {
+    font-family: 'Crimson Text', italic;
+    font-size: max(20px, 2.28vw);
+    text-align: center;
+    color: #e4e4e4;
+    margin-top: 17.14px;
+}
+
+.incipit-text {
+    text-align: left;
+}
+
+#double-arrow {
+    display: block;
+    margin: 0 auto;
+}
+
+body {
+    height: 100vh;
+}
+
+#incipit-block {
+    height: 100%;
+    padding-top: 10%;
+}

@@ -1,5 +1,17 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+
+	Aeterna Fabula
+
+{% endblock %}
+
+{% block stylesheet %}
+
+	<link rel="stylesheet" href="/assets/css/home.css">
+
+{% endblock %}
+
 {% block content %}
 	<section class="row">
 
@@ -7,7 +19,7 @@
 			<h1 class="mt-md-5">
 				<span>a</span>eterna
 				<span>F</span>abula</h1>
-			<img src="../../assets/images/noun-frame-346217.svg">
+			<img src="/assets/images/noun-frame-346217.svg">
 			<p>Une histoire dont vous êtes le héros/l'héroine</p>
 			<a href="#">
 				<button class="play-button">JOUER</button>
@@ -19,7 +31,7 @@
 					<a href="#">S'inscrire</a>
 				</li>
 				<li class="col-12 float-md-start col-md-1">
-					<img id="line" src="../../assets/images/Vector_1.svg">
+					<img id="line" src="/assets/images/Vector_1.svg">
 				</li>
 				<li class="col-12 float-md-start col-md-2">
 					<a href="#">Se connecter</a>
