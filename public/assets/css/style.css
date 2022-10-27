@@ -82,3 +82,14 @@ div.backgroundImage {
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.25em);
 }
+
+/* style page admin à travailler */
+
+.admin {
+    background-color: #fff;
+    color: #000 !important;
+}
+
+.admin p {
+    color: #000 !important;
+}
