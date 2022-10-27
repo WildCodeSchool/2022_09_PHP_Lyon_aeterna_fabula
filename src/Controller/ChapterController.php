@@ -7,8 +7,8 @@ use App\Model\ChapterManager;
 class ChapterController extends AbstractController
 {
     /**
-     * Show informations for a specific chapter in front (user)
-     * */
+     * Show informations for a specific chapter
+     */
     public function show(int $id): string
     {
         $chapterManager = new ChapterManager();

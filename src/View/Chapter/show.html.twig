@@ -1,13 +1,22 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-	<h1>Chapter
-		{{ chapter.name }}</h1>
-	<p>{{ chapter.id }}.
-		{{ chapter.title }}</p>
-	<p>{{ chapter.description }}</p>
-	<p>{{ chapter.background_image }}</p>
-	<p>{{ chapter.background_image_alt }}</p>
 
+	<main class="chapter">
+		<div class="chapterPage">
+			<p>Chapitre
+				{{ chapter.id }}</p>
+			<h1>{{ chapter.title }}</h1>
+
+			<p class="chapterText">{{ chapter.description }}</p>
+
+			<a class="buttonAction" href="/chapter/show?id={{ chapter.id -1 }} ">Bouton précédent</a>
+
+			<a class="buttonAction" href="/chapter/show?id={{ chapter.id +1 }} ">Bouton suivant</a>
+
+		</div>
+
+		<div class="backgroundImage" style="background-image: url(/assets/images/{{chapter.background_image}});"></div>
+	</main>
 
 {% endblock %}
