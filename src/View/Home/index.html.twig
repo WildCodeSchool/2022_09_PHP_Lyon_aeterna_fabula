@@ -1,6 +1,30 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+	<section class="row">
+
+		<div class="main-content col-md-12 order-md-2 mt-5 align-self-md-center">
+			<h1 class="mt-md-5">
+				<span>a</span>eterna
+				<span>F</span>abula</h1>
+			<img src="../../assets/images/noun-frame-346217.svg">
+			<p>Une histoire dont vous êtes le héros/l'héroine</p>
+			<a href="#">
+				<button class="play-button">JOUER</button>
+			</a>
+		</div>
+		<div class="user-bar col-md-12 order-md-1 mb-md-5">
+			<ul class="sign-links row d-md-flex flex-md-row-reverse">
+				<li class="col-12 float-md-start col-md-2">
+					<a href="#">S'inscrire</a>
+				</li>
+				<li class="col-12 float-md-start col-md-1">
+					<img id="line" src="../../assets/images/Vector_1.svg">
+				</li>
+				<li class="col-12 float-md-start col-md-2">
+					<a href="#">Se connecter</a>
+				</li>
+			</ul>
+		</div>
+	</section>
 {% endblock %}

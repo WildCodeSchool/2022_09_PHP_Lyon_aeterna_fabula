@@ -1,3 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    color: #f76c6c;
+    background-image: url(../../assets/images/Groupe\ 15.jpg);
+    background-position: 50% 50%;
+    margin: 25px;
+}
+
+.main-content h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: max(39px, 4.88vw);
+    color: #e4e4e4;
+    text-align: center;
+}
+
+.main-content img {
+    display: block;
+    margin: 0 auto;
+}
+
+.main-content p {
+    font-family: 'Crimson Text', serif;
+    font-size: max(30px, 2.28vw);
+    text-align: center;
+    color: #e4e4e4;
+    margin-top: 17.14px;
+}
+
+.play-button {
+    height: max(160px, 10.51vw);
+    width: max(160px, 10.51vw);
+    border-radius: 50%;
+    border: 3px solid #e4e4e4;
+    background: none;
+    color: #e4e4e4;
+    display: block;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+.main-content a {
+    font-family: 'Crimson Text', serif;
+    font-size: max(32px, 2.06vw);
+    text-decoration: none;
+}
+
+.main-content {
+    height: 75vh;
+}
+
+span {
+    font-size: max(52px, 6.5vw);
+}
+
+#line {
+    width: 50px;
+}
+
+.sign-links {
+    display: flex;
+    padding-left: 0rem;
+
+}
+
+.row {
+    margin: 0;
+}
+
+.sign-links li a {
+    text-decoration: none;
+    color: #e4e4e4;
+    font-size: 34px;
+    font-family: 'Crimson Text', serif;
+    padding: 0;
+}
+
+.sign-links li {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+}
+
+.user-bar {
+    align-self: center;
 }
