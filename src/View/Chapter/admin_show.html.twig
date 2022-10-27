@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>{{ chapter.id }} {{ chapter.name }}</h1>
+    <p>Titre : {{ chapter.title }}</p>
+    <p>Description : {{ chapter.description }}</p>
+    <p>Image : {{ chapter.background_image }}</p>
+    <p>Balise alt de l'image : {{ chapter.background_image_alt }}</p>
+    
+    <a href="/chapters/admin_edit?id={{ chapter.id }}">Modifier le chapitre</a>
+    {# <form action="/items/delete" method="POST">
+        <input type="hidden" name="id" value="{{ item.id }}">
+        <button>Delete</button>
+    </form> #}
+    <a href="/chapters">Back</a>
+{% endblock %}

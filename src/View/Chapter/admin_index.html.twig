@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Chapitres</h1>
+    <ul>
+        {% for chapter in chapters %}
+            <li><a href="/chapters/admin_show?id={{ chapter.id }}">{{ chapter.id }}. {{ chapter.name }}</a></li>
+        {% else %}
+            <li>Aucun chapitre pour le moment</li>
+        {% endfor %}
+    </ul>
+    <a href="/chapters/admin_add">Ajouter</a>
+{% endblock %}
