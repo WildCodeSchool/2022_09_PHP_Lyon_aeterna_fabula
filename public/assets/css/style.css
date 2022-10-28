@@ -102,3 +102,10 @@ div.backgroundImage {
 .admin p {
     color: #000 !important;
 }
+
+.logo {
+    z-index: 10;
+    align-self: flex-start;
+    margin-top: 15px;
+    margin-left: 15px;
+}
