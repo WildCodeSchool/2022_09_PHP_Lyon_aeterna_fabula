@@ -1,10 +1,19 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+
+	Chapitre
+	{{ chapter.id }}
+
+{% endblock %}
+
 {% block content %}
 	<main class="chapter d-md-inline-flex">
+		<a class="logo" href="/"><img src="/assets/images/logo.svg"></a>
 		<div class="d-md-none">
 			<img class="MobileChapterImage" src="/assets/images/{{ chapter.background_image }}"></div>
 		<div class="chapterPage ms-md-5">
+
 			<p>Chapitre
 				{{ chapter.id }}</p>
 			<h1 class="chapterTitle">{{ chapter.title }}</h1>
