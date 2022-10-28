@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<main class="chapter d-md-inline-flex">
+		<div class="d-md-none">
+			<img class="MobileChapterImage" src="/assets/images/{{ chapter.background_image }}"></div>
+		<div class="chapterPage ms-md-5">
+			<p>Chapitre
+				{{ chapter.id }}</p>
+			<h1 class="chapterTitle">{{ chapter.title }}</h1>
+
+			<p class="chapterText">{{ chapter.description }}</p>
+
+			<a class="buttonAction raise" href="/chapter/show?id={{ chapter.id -1 }} ">Bouton précédent</a>
+
+			<a class="buttonAction raise" href="/chapter/show?id={{ chapter.id +1 }} ">Bouton suivant</a>
+
+		</div>
+
+		<div class="backgroundImage d-none d-md-block" style="background-image: url(/assets/images/{{chapter.background_image}});"></div>
+	</main>
+{% endblock %}

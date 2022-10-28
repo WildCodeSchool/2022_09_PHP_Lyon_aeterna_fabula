@@ -1,0 +1,22 @@
+	<form method="post">
+	<input type="hidden" value="{{ chapter.id }}" name="id">
+	<p>
+		<label for="name">Nom</label>
+		<input type="text" value="{{ chapter.name }}" name="name" id="name" required>
+	</p>
+	<p>
+		<label for="title">Titre</label>
+		<input type="text" value="{{ chapter.title }}" name="title" id="title" required>
+	</p>
+	<p>
+		<label for="description">Description</label>
+		<input type="text" value="{{ chapter.description }}" name="description" id="description" required>
+	</p>
+	<p>
+		<label for="background_image">Nom de l'image</label>
+		<input type="text" value="{{ chapter.background_image }}" name="background_image" id="background_image" required>
+	</p>
+	<p>
+		<label for="background_image_alt">Balise alt de l'image</label>
+		<input type="text" value="{{ chapter.background_image_alt }}" name="background_image_alt" id="background_image_alt" required>
+	</p>

@@ -13,4 +13,9 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
+    'chapters' => ['ChapterController', 'adminIndex',],
+    'chapter/show' => ['ChapterController', 'show', ['id']],
+    'chapters/admin_show' => ['ChapterController', 'adminShow', ['id']],
+    'chapters/admin_add' => ['ChapterController', 'adminAdd',],
+    'chapters/admin_edit' => ['ChapterController', 'adminEdit', ['id']],
 ];
