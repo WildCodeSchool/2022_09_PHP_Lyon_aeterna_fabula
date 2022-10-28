@@ -77,11 +77,9 @@ div.backgroundImage {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
-
 }
 
 /* Condition d'animation du bouton */
@@ -90,22 +88,4 @@ div.backgroundImage {
 .raise:focus {
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.25em);
-}
-
-/* style page admin à travailler */
-
-.admin {
-    background-color: #fff;
-    color: #000 !important;
-}
-
-.admin p {
-    color: #000 !important;
-}
-
-.logo {
-    z-index: 10;
-    align-self: flex-start;
-    margin-top: 15px;
-    margin-left: 15px;
 }
