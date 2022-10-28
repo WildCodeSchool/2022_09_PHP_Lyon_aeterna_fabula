@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
 body {
     background-image: url(../../assets/images/Groupe-15.jpg);
     background-position: 50% 50%;
@@ -9,6 +12,7 @@ body {
     font-size: max(39px, 4.88vw);
     color: #e4e4e4;
     text-align: center;
+    font-weight: bold;
 }
 
 .main-content img {

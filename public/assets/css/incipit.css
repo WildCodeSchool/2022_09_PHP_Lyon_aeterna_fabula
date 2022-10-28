@@ -6,6 +6,14 @@ body {
     margin: 25px;
 }
 
+h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: max(39px, 4.88vw);
+    color: #e4e4e4;
+    text-align: center;
+    font-weight: bold;
+}
+
 p {
     font-family: 'Crimson Text', italic;
     font-size: max(20px, 2.28vw);
@@ -23,11 +31,16 @@ p {
     margin: 0 auto;
 }
 
+#arrow {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 body {
     height: 100vh;
 }
 
 #incipit-block {
-    height: 100%;
+    height: 90%;
     padding-top: 10%;
 }
