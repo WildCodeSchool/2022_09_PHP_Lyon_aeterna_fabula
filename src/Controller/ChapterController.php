@@ -6,9 +6,6 @@ use App\Model\ChapterManager;
 
 class ChapterController extends AbstractController
 {
-    /*
-    Show informations for a specific chapter
-    */
     private array $errors = [];
     /**
      * String Check
