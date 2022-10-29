@@ -1,21 +1,23 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<div class="admin">
-	<h1>Ajouter un nouveau chapitre</h1>
-	{# TODO : manage errors display #}
-	<ul>
-		{% for error in errors %}
-			<li>{{ error }}</li>
-		{% endfor %}
-	</ul>
-	{% include 'Chapter/_admin_form.html.twig' %}
+	<main class="adminMain">
+		<div class="admin container-md">
+			<h1 class="adminTitle">Ajouter un nouveau chapitre</h1>
+			{# TODO : manage errors display #}
+			<ul>
+				{% for error in errors %}
+					<li>{{ error }}</li>
+				{% endfor %}
+			</ul>
+			{% include 'Chapter/_admin_form.html.twig' %}
 
-	<p>
-		<button>Ajouter le chapitre</button>
-	</p>
-</form>
-<p>Message à l'administrateur : bien penser à enregistrer le fichier image dans :
-public/assets/images/</p>
-<p>Saisir dans le formulaire le même nom d'image que celui enregistré.</p>
-</div>{% endblock %}
+			<p>
+				<button class="buttonAction">Ajouter le chapitre</button>
+			</p>
+		</form>
+		<p>Message à l'administrateur : bien penser à enregistrer le fichier image dans :
+																								public/assets/images/</p>
+		<p>Saisir dans le formulaire le même nom d'image que celui enregistré.</p>
+	</div>
+</main>{% endblock %}
