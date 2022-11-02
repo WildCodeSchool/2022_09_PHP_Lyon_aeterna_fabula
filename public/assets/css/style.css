@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     color: #000;
     background-color: #000;
@@ -29,7 +38,7 @@ main.chapter {
     animation: fadein 3s;
 }
 
-a.buttonAction {
+.buttonAction {
     font: 600 20px Crimson Text;
     text-decoration: none;
     padding: 15px;
@@ -72,7 +81,15 @@ div.backgroundImage {
     to {
         opacity: 1;
     }
+}
 
+.logo {
+    z-index: 10;
+    align-self: flex-start;
+    position: fixed;
+    margin-top: 15px;
+    margin-left: 15px;
+    filter: drop-shadow(0px 0px 3px black)
 }
 
 /* Condition d'animation du bouton */
@@ -81,15 +98,35 @@ div.backgroundImage {
 .raise:focus {
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.25em);
+    color: #000;
 }
 
-/* style page admin à travailler */
+/* GESTION DE LA PARTIE ADMIN */
 
 .admin {
-    background-color: #fff;
-    color: #000 !important;
+    color: #fff;
+}
+
+.adminMain {
+    background-image: url("/assets/images/bg_admin.jpg");
+    background-attachment: fixed;
+    padding-top: 30px;
+    padding-bottom: 80px;
 }
 
 .admin p {
-    color: #000 !important;
+    color: #fff;
+}
+
+.formAdmin {
+    width: 600px;
+}
+
+.adminTitle {
+    font: 700 40px Cinzel Decorative;
+    color: #e2e2e2;
+}
+
+.audioPage {
+    display: none;
 }
