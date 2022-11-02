@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+body {
+    background-image: url(../../assets/images/bg_admin.jpg);
+    background-position: 50% 50%;
+    margin: 25px;
+}
+
+.main-content h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: max(39px, 2.5vw);
+    color: #e4e4e4;
+    text-align: center;
+    font-weight: bold;
+}
+
+.main-content img {
+    display: block;
+    margin: 0 auto;
+}
+
+.sign-links {
+    text-decoration: none;
+    color: #e4e4e4;
+    font-size: 34px;
+    font-family: 'Crimson Text', serif;
+    padding: 0;
+}
+
+.table {
+    margin-top: 60px;
+}
+
+.table>tbody {
+    vertical-align: middle;
+}
+
+.table-dark {
+    --bs-table-bg: none;
+    --bs-table-striped-bg: none;
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+    border-color: initial;
+}
