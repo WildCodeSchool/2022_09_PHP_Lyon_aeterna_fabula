@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ChapterManager;
+use App\Model\ActionManager;
 
 class ChapterController extends AbstractController
 {
@@ -50,8 +51,11 @@ class ChapterController extends AbstractController
     {
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->selectOneById($id);
+        $actionManager = new ActionManager();
+        $action = $actionManager->selectOneById($id);
 
-        return $this->twig->render('Chapter/show.html.twig', ['chapter' => $chapter]);
+
+        return $this->twig->render('Chapter/show.html.twig', ['chapter' => $chapter, 'action' => $action]);
     }
 
     /**

@@ -17,13 +17,15 @@
 
 			<p>Chapitre
 				{{ chapter.id }}</p>
-			<h1 class="chapterTitle">{{ chapter.title }}</h1>
+			<h1 class="chapterTitle">
+				{{ chapter.title }}</h1>
 
-			<p class="chapterText">{{ chapter.description }}</p>
+			<p class="chapterText">
+				{{ chapter.description }}</p>
 
-			<a class="buttonAction raise" href="/chapter/show?id={{ chapter.id -1 }} ">Bouton précédent</a>
+			<a class="buttonAction raise" href="/chapter/show?id={{ chapter.id -1 }} ">	{{ action.label }} </a>
 
-			<a class="buttonAction raise" href="/chapter/show?id={{ chapter.id +1 }} ">Bouton suivant</a>
+			<a class="buttonAction raise" href="/chapter/show?id={{ chapter.id +1 }} "> {{ action.label }} </a>
 
 		</div>
 
