@@ -15,16 +15,20 @@ body {
     font-weight: bold;
 }
 
-.main-content img {
+.decoration {
     display: block;
     margin: 0 auto;
+}
+
+.miniature {
+    margin: initial;
 }
 
 .sign-links {
     text-decoration: none;
     color: #e4e4e4;
-    font-size: 34px;
-    font-family: 'Crimson Text', serif;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
     padding: 0;
 }
 
@@ -48,4 +52,13 @@ th,
 thead,
 tr {
     border-color: initial;
+}
+
+a:hover {
+    color: black;
+}
+
+.buttonAction {
+    margin-top: 40px;
+    margin-bottom: 0;
 }
