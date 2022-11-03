@@ -1,20 +1,47 @@
 {% extends 'layout.html.twig' %}
 
-{% block content %}
-
-	<div class="admin">
-		<a href="/"><img src="/assets/images/logo.svg"></a>
-		<h1>Chapitres</h1>
-		<ul>
-			{% for chapter in chapters %}
-				<li>
-					<a href="/chapters/admin_show?id={{ chapter.id }}">{{ chapter.id }}.
-						{{ chapter.name }}</a>
-				</li>
-			{% else %}
-				<li>Aucun chapitre pour le moment</li>
-			{% endfor %}
-		</ul>
-		<a href="/chapters/admin_add">Ajouter</a>
-	</div>
+{% block title %}
+	AF admin edit
 {% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/admin_index.css">
+{% endblock %}
+
+
+{% block content %}
+	<section>
+		<div class="container sm main-content col-md-12 order-md-2 mt-5 align-self-md-center"/>
+		<a href="/"><img class="decoration" src="/assets/images/logo.svg"></a>
+		<h1 class="mt-md-5">Liste des chapitres</h1>
+		<img class="decoration" src="/assets/images/noun-frame-346217.svg">
+		<a class="buttonAction raise" href="/chapters/admin_add">Ajouter un chapitre</a>
+		<table class="table table-striped table-dark table-hover table-sm">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">nom</th>
+					<th scope="col">image</th>
+					<th scope="col">lien</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for chapter in chapters %}
+					<tr>
+						<th scope="row">{{ chapter.id }}
+						</th>
+						<td>
+							{{ chapter.name }}
+						</td>
+						<td>
+							<img class="miniature" src="/assets/images/{{ chapter.background_image }}">
+						</td>
+						<td>
+							<a class="sign-links" href=" /chapters/admin_show?id={{ chapter.id }} ">voir</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>{% endblock %}
