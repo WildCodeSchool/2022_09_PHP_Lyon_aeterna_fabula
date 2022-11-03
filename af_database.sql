@@ -45,7 +45,9 @@ CREATE TABLE action (
   id INT NOT NULL AUTO_INCREMENT,
   label VARCHAR(60) NOT NULL,
   owner_id INT NOT NULL,
-  target_id INT NOT NULL,
+  target_id INT,
+
+
   PRIMARY KEY (id),
   CONSTRAINT fk_actionowner_chapter
         FOREIGN KEY (owner_id)
@@ -78,11 +80,16 @@ VALUES
 ("Emprunter la corniche", 7, 13),
 ("Le secret", 8, 9),
 ("Le silence", 8, 10),
-("Vous quittez Kastel Aeter en direction de la montagne", 9, 2),
+("Se diriger vers la montagne", 9, 2),
 ("Se diriger vers le donjon", 9, 5),
-("Vous quittez Kastel Aeter en direction de la montagne", 10, 2),
+("Se diriger vers la montagne", 10, 2),
 ("Se diriger vers le donjon", 10, 5),
 ("Faire demi tour", 13, 7),
 ("Aller au combat", 13, 14),
 ("Dégainer votre épée", 14, 15),
-("Décocher une flèche", 14, 16)
+("Décocher une flèche", 14, 16),
+("Essayez encore !", 11, NULL),
+("Essayez encore !", 12, NULL),
+("Essayez encore !", 15, NULL),
+("Félicitations !", 16, NULL);
+

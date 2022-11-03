@@ -65,4 +65,22 @@ class ChapterManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    /**
+     * Get rows from database by ID.
+     */
+    public function selectActionsByChapterId(int $id): array|false
+    {
+        // prepared request
+        $statement = $this->pdo->prepare(
+            "SELECT c.background_image, c.id, c.title, c.description, a.owner_id, a.target_id, label
+            FROM chapter AS c
+            LEFT JOIN action AS a ON a.owner_id = c.id
+            WHERE c.id=:id"
+        );
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }
