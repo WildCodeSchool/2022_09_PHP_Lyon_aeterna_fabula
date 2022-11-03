@@ -22,6 +22,7 @@ body {
 
 .miniature {
     margin: initial;
+    width: 250px;
 }
 
 .sign-links {
