@@ -130,3 +130,46 @@ div.backgroundImage {
 .audioPage {
     display: none;
 }
+
+.adminChapter {
+    display: flex;
+    justify-content: center;
+}
+
+.adminTitle {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.blockText {
+    width: 500px;
+    margin: 30px;
+}
+
+.blockImage {
+    width: 500px;
+    margin: 30px;
+}
+
+.adminImage {
+    width: 500px;
+}
+
+.buttonAdmin {
+    margin-bottom: 50px;
+    height: 60px;
+}
+
+.blockButton {
+    display: flex;
+    justify-content: center;
+}
+
+.adminDecoration {
+    text-align: center;
+}
+
+.tablechapterAdmin {
+    color: #e2e2e2;
+    font: 300 20px Crimson Text;
+}
