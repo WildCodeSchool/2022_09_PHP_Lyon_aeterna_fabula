@@ -101,32 +101,6 @@ div.backgroundImage {
     color: #000;
 }
 
-/* GESTION DE LA PARTIE ADMIN */
-
-.admin {
-    color: #fff;
-}
-
-.adminMain {
-    background-image: url("/assets/images/bg_admin.jpg");
-    background-attachment: fixed;
-    padding-top: 30px;
-    padding-bottom: 80px;
-}
-
-.admin p {
-    color: #fff;
-}
-
-.formAdmin {
-    width: 600px;
-}
-
-.adminTitle {
-    font: 700 40px Cinzel Decorative;
-    color: #e2e2e2;
-}
-
 .audioPage {
     display: none;
 }

@@ -39,4 +39,57 @@ VALUES
 (13, "mountain_top", "Cette route vous conduit tant bien que mal au sommet de la montagne.", "Les grondements se font de plus en plus menaçants. Vous apercevez la silhouette de la bête qui s'agite derrière de gros rochers. Le sol est jonché de cadavres. Êtes-vous prêt à combattre ? À devenir le héros que vous rêvez d'être ?", "image_13.jpg", "Au sommet de la montagne"),
 (14, "fighting", "Vous prenez votre courage à deux mains et vous dirigez vers le monstre.", "Le combat est acharné. Vous videz presque entièrement votre carquois tandis que le dragon vous crache ses flammes. En réponse à ses terribles griffures, vous lui asssénez quelques coups d'épée bien placés. Vous arrivez tout deux à bout de force. Le coup décisif doit être porté. Quelle arme choisir ?", "image_14.jpg", "Combat avec le dragon"),
 (15, "combat_death", "Vous dégainez votre épée, et pivotez pour décapiter le dragon ...", "Mais dans un ultime mouvement, celui-ci se jette sur vous et vous désarme. Vous touchez le sol, et la bête commence à vous grignoter. Vous perdez progressivement conscience, et dans un dernier sourire, vous réalisez que vous servirez d'engrais, comme tous les héros portés par cette maudite contrée.", "image_15.jpg", "Tué par le dragon"),
-(16, "victory", "En un éclair, vous décochez une flèche en direction du dragon ...", "Le projectile atteint le monstre, en plein dans l'oeil, et traverse son crâne. Il s'écroule, terrassé. Vous avez vaincu la bête, les villages alentours sont libérés de la terreur, et vous êtes porté en héros dans les rues de KastelÆter.", "image_16.jpg", "Victoire")
+(16, "victory", "En un éclair, vous décochez une flèche en direction du dragon ...", "Le projectile atteint le monstre, en plein dans l'oeil, et traverse son crâne. Il s'écroule, terrassé. Vous avez vaincu la bête, les villages alentours sont libérés de la terreur, et vous êtes porté en héros dans les rues de KastelÆter.", "image_16.jpg", "Victoire");
+
+CREATE TABLE action (
+  id INT NOT NULL AUTO_INCREMENT,
+  label VARCHAR(60) NOT NULL,
+  owner_id INT NOT NULL,
+  target_id INT,
+
+
+  PRIMARY KEY (id),
+  CONSTRAINT fk_actionowner_chapter
+        FOREIGN KEY (owner_id)
+        REFERENCES chapter(id),
+  CONSTRAINT fk_actiontarget_chapter
+        FOREIGN KEY (target_id)
+        REFERENCES chapter(id)  
+);
+
+INSERT INTO
+  action (
+    label,
+    owner_id,
+    target_id
+  )
+VALUES
+("Se diriger vers la montagne", 1, 2),
+("Suivre le chemin vers le château", 1, 3),
+("Suivre le chemin escarpé", 2, 6),
+("Se diriger vers la grotte", 2, 7),
+("Suivre la clameur de la foule", 3, 4),
+("Se diriger vers le donjon", 3, 5),
+("Se diriger vers le donjon", 4, 5),
+("Ecouter l'énigme du marchand", 4, 8),
+("Refuser son aide", 5, 2),
+("Accepter l'aide du chevalier", 5, 13),
+("Aller vers le bruit", 6, 11),
+("S'eloigner du bruit", 6, 13),
+("Sauter de l'autre côté", 7, 12),
+("Emprunter la corniche", 7, 13),
+("Le secret", 8, 9),
+("Le silence", 8, 10),
+("Se diriger vers la montagne", 9, 2),
+("Se diriger vers le donjon", 9, 5),
+("Se diriger vers la montagne", 10, 2),
+("Se diriger vers le donjon", 10, 5),
+("Faire demi tour", 13, 7),
+("Aller au combat", 13, 14),
+("Dégainer votre épée", 14, 15),
+("Décocher une flèche", 14, 16),
+("Essayez encore !", 11, NULL),
+("Essayez encore !", 12, NULL),
+("Essayez encore !", 15, NULL),
+("Félicitations !", 16, NULL);
+
