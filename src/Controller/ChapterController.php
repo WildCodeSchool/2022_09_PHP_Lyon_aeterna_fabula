@@ -10,27 +10,27 @@ class ChapterController extends AbstractController
     /**
      * String Check
      */
-    public function stringCheck(array $chapter, string $field, int $maxLength): void
+    public function stringCheck(array $chapter, string $field, string $fieldFrench, int $maxLength): void
     {
         if (!isset($chapter[$field]) || empty($chapter[$field])) {
-            $this->errors[] = 'Le ' . $field . ' est obligatoire';
+            $this->errors[] = "$fieldFrench est obligatoire";
         }
         if (strlen($chapter[$field]) > $maxLength) {
-            $this->errors[] = "Le $field ne doit pas dépasser $maxLength caractères";
+            $this->errors[] = "$fieldFrench ne doit pas dépasser $maxLength caractères";
         }
     }
 
-        /**
+    /**
      * Form Control
      */
     public function formControl(array $chapter): void
     {
         // TODO validations (length, format...)
-        $this->stringCheck($chapter, 'name', 35);
-        $this->stringCheck($chapter, 'title', 80);
-        $this->stringCheck($chapter, 'description', 500);
-        $this->stringCheck($chapter, 'background_image', 100);
-        $this->stringCheck($chapter, 'background_image_alt', 100);
+        $this->stringCheck($chapter, 'name', 'Le nom', 35);
+        $this->stringCheck($chapter, 'title', 'Le titre', 80);
+        $this->stringCheck($chapter, 'description', 'La description', 500);
+        $this->stringCheck($chapter, 'background_image', "Le nom de l'image", 100);
+        $this->stringCheck($chapter, 'background_image_alt', "Le nom de l'attribut alt", 100);
     }
 
     /**
@@ -43,7 +43,7 @@ class ChapterController extends AbstractController
 
         return $this->twig->render('Chapter/admin_index.html.twig', ['chapters' => $chapters]);
     }
-        /**
+    /**
      * Show informations for a specific chapter
      */
     public function show(int $id): string
