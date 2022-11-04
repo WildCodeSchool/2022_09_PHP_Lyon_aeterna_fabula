@@ -7,6 +7,16 @@ body {
     margin: 25px;
 }
 
+.main-content {
+    height: 75vh;
+}
+
+.main-content a {
+    font-family: 'Crimson Text', serif;
+    font-size: max(32px, 2.06vw);
+    text-decoration: none;
+}
+
 .main-content h1 {
     font-family: 'Cinzel Decorative', cursive;
     font-size: max(39px, 4.88vw);
@@ -15,17 +25,17 @@ body {
     font-weight: bold;
 }
 
-.main-content img {
-    display: block;
-    margin: 0 auto;
-}
-
 .main-content p {
     font-family: 'Crimson Text', serif;
     font-size: max(30px, 2.28vw);
     text-align: center;
     color: #e4e4e4;
     margin-top: 17.14px;
+}
+
+.main-content img {
+    display: block;
+    margin: 0 auto;
 }
 
 .play-button {
@@ -41,36 +51,13 @@ body {
     margin-bottom: 40px;
 }
 
-.main-content a {
-    font-family: 'Crimson Text', serif;
-    font-size: max(32px, 2.06vw);
-    text-decoration: none;
-}
-
-.main-content {
-    height: 75vh;
-}
-
-span {
+.initials {
     font-size: max(52px, 6.5vw);
 }
 
-#line {
-    width: 50px;
-}
-
 .sign-links {
-    display: flex;
-    padding-left: 0rem;
-
-}
-
-.row {
-    margin: 0;
-}
-
-.sign-links li a {
-    text-decoration: none;
+    display: block;
+    text-align: center;
     color: #e4e4e4;
     font-size: 34px;
     font-family: 'Crimson Text', serif;
@@ -83,6 +70,24 @@ span {
     justify-content: center;
 }
 
+.sign-links li a {
+    text-decoration: none;
+    color: #e4e4e4;
+    font-size: 34px;
+    font-family: 'Crimson Text', serif;
+    padding: 0;
+}
+
+.sign-links a {
+    text-decoration: none;
+    color: #e4e4e4;
+    text-align: center;
+}
+
 .user-bar {
     align-self: center;
-} 
+}
+
+#line {
+    width: 50px;
+}

@@ -1,24 +1,39 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+	AF admin add
+{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/admin_add.css">
+{% endblock %}
+
 {% block content %}
-	<a class="logo" href="/"><img src="/assets/images/logo.svg"></a>
-	<main class="adminMain">
-		<div class="admin container-md">
-			<h1 class="adminTitle">Ajouter un nouveau chapitre</h1>
+	<main class="container sm main-content col-md-12 order-md-2 mt-5 align-self-md-center">
+		<div class="container-md">
+			<a href="/"><img class="decoration" src="/assets/images/logo.svg"></a>
+			<h1 class="mt-md-5">Ajouter un nouveau chapitre</h1>
+			<img
+			class="decoration" src="/assets/images/noun-frame-346217.svg">
+
 			{# TODO : manage errors display #}
 			<ul>
 				{% for error in errors %}
-					<li>{{ error }}</li>
+					<li class="error">{{ error }}</li>
 				{% endfor %}
 			</ul>
 			{% include 'Chapter/_admin_form.html.twig' %}
+			<p>Message à l'administrateur : bien penser à enregistrer le fichier image dans : 2022_09_PHP_Lyon_aeterna_fabula/public/assets/images</p>
+			<p>Saisir dans le formulaire le même nom d'image que celui enregistré.</p>
 
 			<p>
-				<button class="buttonAction">Ajouter le chapitre</button>
+				<button class="buttonAction raise">Ajouter le chapitre</button>
 			</p>
 		</form>
+
 		<p>Message à l'administrateur : bien penser à enregistrer le fichier image dans :
 																											public/assets/images/</p>
 		<p>Saisir dans le formulaire le même nom d'image que celui enregistré.</p>
+
 	</div>
 </main>{% endblock %}
