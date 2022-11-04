@@ -20,9 +20,9 @@ class ChapterController extends AbstractController
         }
     }
 
-        /**
-     * Form Control
-     */
+    /**
+    * Form Control
+    */
     public function formControl(array $chapter): void
     {
         // TODO validations (length, format...)
