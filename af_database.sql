@@ -8,7 +8,7 @@ CREATE TABLE `chapter` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(35) NOT NULL,
   `title` VARCHAR(80) NOT NULL,
-  `description` VARCHAR(500) NOT NULL,
+  `description` TEXT NOT NULL,
   `background_image` VARCHAR(100) NOT NULL,
   `background_image_alt` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`)
