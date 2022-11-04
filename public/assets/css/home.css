@@ -64,7 +64,7 @@ body {
     padding: 0;
 }
 
-/* .sign-links li {
+.sign-links li {
     display: flex;
     padding: 0;
     justify-content: center;
@@ -76,7 +76,7 @@ body {
     font-size: 34px;
     font-family: 'Crimson Text', serif;
     padding: 0;
-} */
+}
 
 .sign-links a {
     text-decoration: none;
