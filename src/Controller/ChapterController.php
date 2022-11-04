@@ -52,6 +52,14 @@ class ChapterController extends AbstractController
         return $this->twig->render('Chapter/show.html.twig', ['chapters' => $chapters]);
     }
 
+    public function showWithActionForAdmin(int $id): string
+    {
+        $chapterManager = new ChapterManager();
+        $chapters = $chapterManager->selectActionsByChapterIdForAdmin($id);
+
+        return $this->twig->render('Chapter/admin_show.html.twig', ['chapters' => $chapters]);
+    }
+
     /**
      * Show informations for a specific chapter
      */

@@ -15,6 +15,7 @@
 			<h1 class="mt-md-5">Ajouter un nouveau chapitre</h1>
 			<img
 			class="decoration" src="/assets/images/noun-frame-346217.svg">
+
 			{# TODO : manage errors display #}
 			<ul>
 				{% for error in errors %}
@@ -29,7 +30,10 @@
 				<button class="buttonAction raise">Ajouter le chapitre</button>
 			</p>
 		</form>
-		<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
+
+		<p>Message à l'administrateur : bien penser à enregistrer le fichier image dans :
+																											public/assets/images/</p>
+		<p>Saisir dans le formulaire le même nom d'image que celui enregistré.</p>
 
 	</div>
 </main>{% endblock %}
