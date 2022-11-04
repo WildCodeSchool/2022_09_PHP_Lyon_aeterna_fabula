@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<main class="adminMain">
+		<div class="admin container-md">
+			<h1 class="adminTitle">Modifier le chapitre
+				{{ action.id }}</h1>
+			{# TODO : manage errors display #}
+			<ul>
+				{% for error in errors %}
+					<li>{{ error }}</li>
+				{% endfor %}
+			</ul>
+			{% include 'Action/_admin_form_action.html.twig' %}
+
+			<p>
+				<button class="buttonAction">Modifier l'action</button>
+			</p>
+		</form>
+		<a href="/chapters/admin_show?id={{ chapter.id }}">Retour</a>
+	</div>
+</main>{% endblock %}
