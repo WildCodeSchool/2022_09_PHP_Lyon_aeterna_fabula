@@ -16,7 +16,7 @@ return [
     'chapters' => ['ChapterController', 'adminIndex',],
     'chapter/show' => ['ChapterController', 'showWithAction', ['id']],
     'incipit' => ['IncipitController', 'incipit',],
-    'chapters/admin_show' => ['ChapterController', 'adminShow', ['id']],
+    'chapters/admin_show' => ['ChapterController', 'showWithActionForAdmin', ['id']],
     'chapters/admin_add' => ['ChapterController', 'adminAdd',],
     'chapters/admin_edit' => ['ChapterController', 'adminEdit', ['id']],
     'actions/admin_edit_action' => ['ActionController', 'adminEditAction', ['id']],

@@ -1,14 +1,59 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<div class="admin">
-    <h1>{{ chapter.id }} {{ chapter.name }}</h1>
-    <p>Titre : {{ chapter.title }}</p>
-    <p>Description : {{ chapter.description }}</p>
-    <p>Image : {{ chapter.background_image }}</p>
-    <p>Balise alt de l'image : {{ chapter.background_image_alt }}</p>
-    
-    <a href="/chapters/admin_edit?id={{ chapter.id }}">Modifier le chapitre</a>
-    <a href="/chapters">Back</a>
-</div>
-{% endblock %}
+	<a class="logo" href="/"><img src="/assets/images/logo.svg"></a>
+	<main class="adminMain">
+		<h1 class="adminTitle">Chapitre
+			{{ chapters.0.id }}</h1>
+		<h2>
+			<div class="blockButton">
+				<img class="adminDecoration" src="/assets/images/noun-frame-346217.svg">
+			</div>
+			<div class="adminChapter">
+				<div class="blockText">
+					<p>Nom :
+						{{ chapters.0.name }}</p>
+					<h1 class="chapterTitle">Titre :
+						{{ chapters.0.title }}</p>
+					<p class="chapterText">Description :
+						{{ chapters.0.description }}</p>
+
+					<a class="buttonAction raise buttonAdmin" href="/chapters/admin_edit?id={{ chapters.0.id }}">Modifier le chapitre</a><br>
+
+					<table class="table tablechapterAdmin">
+						<tr>
+							<th scope="col">Libellé</th>
+							<th scope="col">ID Action to</th>
+						</tr>
+						<tr>
+							<td scope="col">
+								{% for chapter in chapters %}
+									{{ chapter.label  }}<br>
+								{% endfor %}
+							</td>
+							<td scope="col">
+								{% for chapter in chapters %}
+									{{ chapter.target_id }}<br>
+								{% endfor %}
+							</td>
+						</tr>
+					</table>
+
+
+					<a class="buttonAction raise buttonAdmin" href="/chapters/admin_edit?id={{ chapters.0.id }}">Modifier les actions</a><br>
+				</div>
+				<div class="blockImage">
+					<img class="adminImage" src="/assets/images/{{ chapters.0.background_image }}">
+					<p>Balise alt de l'image :
+						{{ chapters.0.background_image_alt }}</p>
+				</div>
+			</div>
+			<div class="blockButton">
+				<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id -1 }} ">
+					← Chapitre précédent</a>
+				<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
+				<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id +1 }} ">Chapitre suivant →
+				</a>
+			</div>
+		</main>
+	{% endblock %}
