@@ -19,28 +19,31 @@
 						{{ chapters.0.description }}</p>
 
 					<a class="buttonAction raise buttonAdmin" href="/chapters/admin_edit?id={{ chapters.0.id }}">Modifier le chapitre</a><br>
-
-					<table class="table tablechapterAdmin">
-						<tr>
-							<th scope="col">Libellé</th>
-							<th scope="col">ID Action to</th>
-						</tr>
-						<tr>
-							<td scope="col">
-								{% for chapter in chapters %}
-									{{ chapter.label  }}<br>
-								{% endfor %}
-							</td>
-							<td scope="col">
-								{% for chapter in chapters %}
-									{{ chapter.target_id }}<br>
-								{% endfor %}
-							</td>
-						</tr>
-					</table>
-
-
-					<a class="buttonAction raise buttonAdmin" href="/chapters/admin_edit?id={{ chapters.0.id }}">Modifier les actions</a><br>
+					{% for chapter in chapters %}
+						{% if chapter.label == null %}
+							<p class="chapterText">Ce chapitre n'a pas encore d'action</p>
+						{% else %}
+							<table class="table tablechapterAdmin">
+								<tr>
+									<th scope="col">Libellé</th>
+									<th scope="col">ID Action to</th>
+								</tr>
+								<tr>
+									<td scope="col">
+										{% for chapter in chapters %}
+											{{ chapter.label }}<br>
+										{% endfor %}
+									</td>
+									<td scope="col">
+										{% for chapter in chapters %}
+											{{ chapter.target_id }}<br>
+										{% endfor %}
+									</td>
+								</tr>
+							</table>
+							<a class="buttonAction raise buttonAdmin" href="/chapters/admin_edit?id={{ chapters.0.id }}">Modifier les actions</a><br>
+						{% endif %}
+					{% endfor %}
 				</div>
 				<div class="blockImage">
 					<img class="adminImage" src="/assets/images/{{ chapters.0.background_image }}">
