@@ -7,6 +7,29 @@ use App\Model\ActionManager;
 class ActionController extends AbstractController
 {
     private array $errors = [];
+
+     /**
+     * List actions
+     */
+    public function adminIndexAction(): string
+    {
+        $actionManager = new ActionManager();
+        $actions = $actionManager->selectAll('target_id');
+
+        return $this->twig->render('Action/admin_index_action.html.twig', ['actions' => $actions]);
+    }
+
+    /**
+     * Show admin informations for a specific action
+     */
+    public function adminShowAction(int $id): string
+    {
+        $actionManager = new ActionManager();
+        $action = $actionManager->selectOneById($id);
+
+        return $this->twig->render('Action/admin_show_action.html.twig', ['action' => $action]);
+    }
+
     /**
      * String Check
      */
@@ -47,26 +70,49 @@ class ActionController extends AbstractController
     {
         $actionManager = new ActionManager();
         $action = $actionManager->selectOneById($id);
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $action = array_map('trim', $_POST);
-            $this->formControlAction($action);
+                // clean $_POST data
+                $action = array_map('trim', $_POST);
+                $this->formControlAction($action);
 
             if (!empty($this->errors)) {
-                return $this->twig->render('Action/admin_edit_action.html.twig', [
-                    'errors' => $this->errors,
-                ]);
+                return $this->twig->render('Action/admin_edit_action.html.twig', ['errors' => $this->errors,]);
             }
 
 
-            // if validation is ok, update and redirection
-            $actionManager->adminUpdateAction($action);
+                // if validation is ok, update and redirection
 
-            header('Location: /chapters/admin_index');
+                $actionManager->adminUpdateAction($action);
+                header('Location: /actions');
 
-            // we are redirecting so we don't want any content rendered
-            return null;
+                // we are redirecting so we don't want any content rendered
+                return null;
         }
-        return $this->twig->render('action/admin_edit_action.html.twig', ['action' => $action,]);
+        return $this->twig->render('Action/admin_edit_action.html.twig', ['action' => $action,]);
+    }
+
+    public function adminAddAction(): ?string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // clean $_POST data
+                $action = array_map('trim', $_POST);
+                $this->formControlAction($action);
+
+            if (!empty($this->errors)) {
+                return $this->twig->render('Action/admin_add_action.html.twig', ['errors' => $this->errors,]);
+            }
+
+                // if validation is ok, update and redirection
+
+                $actionManager = new ActionManager();
+                $actionManager->adminInsertAction($action);
+
+                header('Location: /actions');
+
+                // we are redirecting so we don't want any content rendered
+                return null;
+        }
+        return $this->twig->render('Action/admin_add_action.html.twig');
     }
 }

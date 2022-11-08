@@ -11,4 +11,9 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/index.html.twig');
     }
+
+    public function indexAdmin(): string
+    {
+        return $this->twig->render('Admin/admin_homepage.html.twig');
+    }
 }
