@@ -68,17 +68,20 @@ class ActionController extends AbstractController
      */
     public function adminEditAction(int $id): ?string
     {
-        $actionManager = new ActionManager();
-        $action = $actionManager->selectOneById($id);
+        $messageError = null;
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        try {
+            $actionManager = new ActionManager();
+            $action = $actionManager->selectOneById($id);
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // clean $_POST data
                 $action = array_map('trim', $_POST);
                 $this->formControlAction($action);
 
-            if (!empty($this->errors)) {
-                return $this->twig->render('Action/admin_edit_action.html.twig', ['errors' => $this->errors,]);
-            }
+                if (!empty($this->errors)) {
+                    return $this->twig->render('Action/admin_edit_action.html.twig', ['errors' => $this->errors,]);
+                }
 
 
                 // if validation is ok, update and redirection
@@ -88,13 +91,21 @@ class ActionController extends AbstractController
 
                 // we are redirecting so we don't want any content rendered
                 return null;
+            }
+        } catch (\Exception  $exception) {
+            if ($exception->getCode() == 23000) {
+                $messageError = 'Il est impossible d\'enregistrer un numéro de chapitre qui n\'existe pas';
+                return $this->twig->render('Action/admin_edit_action.html.twig', ['messageError' => $messageError,]);
+            } else {
+                $messageError = $exception->getMessage();
+            }
         }
         return $this->twig->render('Action/admin_edit_action.html.twig', ['action' => $action,]);
     }
 
     public function adminAddAction(): ?string
     {
-        $messageError = '';
+        $messageError = null;
 
         try {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -116,7 +127,11 @@ class ActionController extends AbstractController
                     return null;
             }
         } catch (\Exception  $exception) {
-            $messageError = $exception->getMessage();
+            if ($exception->getCode() == 23000) {
+                $messageError = 'Il est impossible d\'enregistrer un numéro de chapitre qui n\'existe pas';
+            } else {
+                $messageError = $exception->getMessage();
+            }
         }
         return $this->twig->render('Action/admin_add_action.html.twig', ['messageError' => $messageError,]);
     }
