@@ -160,3 +160,91 @@ div.backgroundImage {
     color: #e2e2e2;
     font: 300 20px Crimson Text;
 }
+
+/* popup historic start here */
+
+.sectionHistoric {
+    z-index: 20;
+    display: flex;
+    justify-content: end;
+}
+
+.popup-link {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.popup-link a {
+    background: #333;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer;
+    margin: 20px;
+    text-decoration: none;
+}
+
+.popup-container {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.3);
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 17, 17, 0.61);
+    display: flex;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.popup-content p {
+    font-size: 17px;
+    padding: 10px;
+    line-height: 20px;
+}
+
+.popup-content a.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+}
+
+.popup-content a.close:hover {
+    color: #333;
+}
+
+.popup-content span:hover,
+.popup-content span:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-container:target {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.popup-container h3 {
+    margin: 10px;
+}
+
+/*End popup styles*/
