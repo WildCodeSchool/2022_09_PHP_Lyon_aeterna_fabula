@@ -19,7 +19,7 @@
 						{{ chapters.0.description }}</p>
 
 					<a class="buttonAction raise buttonAdmin" href="/chapters/admin_edit?id={{ chapters.0.id }}">Modifier le chapitre</a><br>
-					{% for chapter in chapters %}
+
 						{% if chapter.label == null %}
 							<p class="chapterText">Ce chapitre n'a pas encore d'action</p>
 						{% else %}
