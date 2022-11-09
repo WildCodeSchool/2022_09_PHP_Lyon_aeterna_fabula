@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+
+	<link rel="stylesheet" href="/assets/css/log_reg.css">
+
+{% endblock %}
+
+{% block title %}
+
+	Se connecter
+
+{% endblock %}
+
+{% block content %}
+	<a class="log-reg-logo" href="/"><img src="/assets/images/logo.svg"></a>
+	<div class="d-flex justify-content-center">
+		<main class="container-fluid log-reg-layer">
+			<div class="row justify-content-center">
+				<div class="col text-center">
+					<h1 class="formTitle">Se connecter</h1>
+					<img class="w-50" src="/assets/images/noun-frame-346217.svg">
+					<form method="post" class="form" action="/">
+						<p class="log-reg-form">
+							<label class="formLabel" for="email">Email</label>
+							<input class="form-control" type "email" name="email" placeholder="Email">
+						</p>
+						<p class="log-reg-form">
+							<label class="formLabel" for="password">Mot de passe</label>
+							<input class="form-control" type "text" name="password" placeholder="Mot de passe">
+						</p>
+						<button class="log-reg-button" type="submit">Je me connecte</button>
+					</form>
+					<p>Vous n'avez pas de compte ?
+						<br>
+						<a class="log-reg" href="/register">Inscrivez-vous !</a><br/>
+					</p>
+				</div>
+			</div>
+		</main>
+	</div>
+{% endblock %}
