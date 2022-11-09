@@ -12,7 +12,7 @@
 	<main class="container sm main-content col-md-12 order-md-2 mt-5 align-self-md-center">
 		<div class="container-md">
 			<a href="/"><img class="decoration" src="/assets/images/logo.svg"></a>
-			<h1 class="mt-md-5">Modifier le chapitre
+			<h1 class="mt-md-5">Modifier le chapitre ID:
 				{{ chapter.id }}</h1>
 			<img
 			class="decoration" src="/assets/images/noun-frame-346217.svg">
@@ -23,7 +23,7 @@
 				{% endfor %}
 			</ul>
 			{% include 'Chapter/_admin_form.html.twig' %}
-
+			<p>Vérifier la cohérence du numéro de chapitre attribué.</p><br>
 			<p>Message à l'administrateur : bien penser à enregistrer le fichier image dans : 2022_09_PHP_Lyon_aeterna_fabula/public/assets/images</p>
 			<p>Saisir dans le formulaire le même nom d'image que celui enregistré.</p>
 

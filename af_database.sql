@@ -6,6 +6,7 @@ USE aeterna_fabula;
 
 CREATE TABLE `chapter` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `number` INT NOT NULL,
   `name` VARCHAR(35) NOT NULL,
   `title` VARCHAR(80) NOT NULL,
   `description` TEXT NOT NULL,
@@ -16,7 +17,7 @@ CREATE TABLE `chapter` (
 
 INSERT INTO
   `chapter` (
-    `id`,
+    `number`,
     `name`,
     `title`,
     `description`,
@@ -92,4 +93,3 @@ VALUES
 ("Essayez encore !", 12, NULL),
 ("Essayez encore !", 15, NULL),
 ("Félicitations !", 16, NULL);
-

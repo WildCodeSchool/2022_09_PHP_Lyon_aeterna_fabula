@@ -3,9 +3,8 @@
 {% block content %}
 	<a class="logo" href="/"><img src="/assets/images/logo.svg"></a>
 	<main class="adminMain">
-		<h1 class="adminTitle">Chapitre
+		<h1 class="adminTitle">Chapitre ID:
 			{{ chapters.0.id }}</h1>
-		<h2>
 			<div class="blockButton">
 				<img class="adminDecoration" src="/assets/images/noun-frame-346217.svg">
 			</div>
@@ -40,7 +39,7 @@
 								</td>
 							</tr>
 						</table>
-						<a class="buttonAction raise buttonAdmin" href="/chapters/admin_edit?id={{ chapters.0.id }}">Modifier les actions</a><br>
+						<a class="buttonAction raise buttonAdmin" href="/actions/">Modifier les actions</a><br>
 					{% endif %}
 				</div>
 				<div class="blockImage">
