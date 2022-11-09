@@ -98,6 +98,7 @@ class ActionController extends AbstractController
                 return $this->twig->render('Action/admin_edit_action.html.twig', ['messageError' => $messageError,]);
             } else {
                 $messageError = $exception->getMessage();
+                return $this->twig->render('Action/admin_edit_action.html.twig', ['messageError' => $messageError,]);
             }
         }
         return $this->twig->render('Action/admin_edit_action.html.twig', ['action' => $action,]);
