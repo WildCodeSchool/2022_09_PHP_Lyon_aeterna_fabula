@@ -19,4 +19,9 @@ return [
     'chapters/admin_show' => ['ChapterController', 'showWithActionForAdmin', ['id']],
     'chapters/admin_add' => ['ChapterController', 'adminAdd',],
     'chapters/admin_edit' => ['ChapterController', 'adminEdit', ['id']],
+    'actions' => ['ActionController', 'adminIndexAction',],
+    'actions/admin_show_action' => ['ActionController', 'adminShowAction', ['id']],
+    'actions/admin_edit_action' => ['ActionController', 'adminEditAction', ['id']],
+    'actions/admin_add_action' => ['ActionController', 'adminAddAction',],
+    'admin/admin_homepage' => ['HomeController', 'indexAdmin',],
 ];
