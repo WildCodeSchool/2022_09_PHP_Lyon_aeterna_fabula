@@ -19,14 +19,13 @@ class UserManager extends AbstractManager
         VALUES (
         :email,
         :password,
-        :is_admin
+        false
         )";
 
         $statement = $this->pdo->prepare($query);
 
         $statement->bindValue('email', $user['email'], PDO::PARAM_STR);
         $statement->bindValue('password', $user['password'], PDO::PARAM_STR);
-        $statement->bindValue('is_admin', false, PDO::PARAM_BOOL);
         $statement->execute();
 
         return (int)$this->pdo->lastInsertId();

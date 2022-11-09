@@ -14,19 +14,24 @@
 			<p>Rejoindre Aeterna Fabula</p>
 			<img src="/assets/images/noun-frame-346217.svg">
 			<form method="post">
-				<label for="email">Email</label>
-				<input type "email" name="email" placeholder="Email">
-				<label for="password">Mot de passe</label>
-				<input type "text" name="password" placeholder="Mot de passe">
-				<button type="submit">Je m'inscris</button>
+				<p>
+					<label for="email">Email</label>
+					<input type "email" name="email" placeholder="Email">
+				</p>
+				<p>
+					<label for="password">Mot de passe</label>
+					<input type "text" name="password" placeholder="Mot de passe">
+				</p>
+				<p>
+					<button type="submit">Je m'inscris</button>
+				</p>
 				<ul>
 					{% for error in errors %}
 						<li class="error">{{ error }}</li>
 					{% endfor %}
 				</ul>
 			</form>
-			<p>Vous avez un compte?<br><a href="/user/login">Connectez vous</p>
-			</p>
+			<p>Vous avez un compte?<br><a href="/login">Connectez vous</p>
 		</div>
 	</div>
 

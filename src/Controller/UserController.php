@@ -29,7 +29,7 @@ class UserController extends AbstractController
             $userManager = new UserManager();
             $userManager->addUser($data);
 
-            header('Location:/user/register');
+            header('Location:/register');
             return null;
         }
 
