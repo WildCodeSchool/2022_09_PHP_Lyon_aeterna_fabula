@@ -36,12 +36,12 @@ class UserController extends AbstractController
         return $this->twig->render('User/register.html.twig');
     }
 
-    public function emailValidator(?string $email): void
+    public function emailValidator(string $email): void
     {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->errors[] = "$email n'est pas un email valide";
         }
-        if (!isset($email) || empty($email)) {
+        if (empty($email)) {
             $this->errors[] = "Le champ Email est obligatoire";
         }
     }
