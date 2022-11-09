@@ -94,25 +94,30 @@ class ActionController extends AbstractController
 
     public function adminAddAction(): ?string
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // clean $_POST data
-                $action = array_map('trim', $_POST);
-                $this->formControlAction($action);
+        $messageError = '';
 
-            if (!empty($this->errors)) {
-                return $this->twig->render('Action/admin_add_action.html.twig', ['errors' => $this->errors,]);
+        try {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    // clean $_POST data
+                    $action = array_map('trim', $_POST);
+                    $this->formControlAction($action);
+
+                if (!empty($this->errors)) {
+                    return $this->twig->render('Action/admin_add_action.html.twig', ['errors' => $this->errors,]);
+                }
+
+                    // if validation is ok, update and redirection
+                    $actionManager = new ActionManager();
+                    $actionManager->adminInsertAction($action);
+
+                    header('Location: /actions');
+
+                    // we are redirecting so we don't want any content rendered
+                    return null;
             }
-
-                // if validation is ok, update and redirection
-
-                $actionManager = new ActionManager();
-                $actionManager->adminInsertAction($action);
-
-                header('Location: /actions');
-
-                // we are redirecting so we don't want any content rendered
-                return null;
+        } catch (\Exception  $exception) {
+            $messageError = $exception->getMessage();
         }
-        return $this->twig->render('Action/admin_add_action.html.twig');
+        return $this->twig->render('Action/admin_add_action.html.twig', ['messageError' => $messageError,]);
     }
 }
