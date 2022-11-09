@@ -26,4 +26,14 @@ class HistoricManager extends AbstractManager
 
         $statement->execute();
     }
+
+    public function selectActionsByHistoric(): array|false
+    {
+        // prepared request
+        $query = "SELECT h.id, h.action_id, h.historic_date, a.id AS actionID, a.label
+            FROM historic AS h
+            LEFT JOIN action AS a ON h.action_id  = a.id;";
+
+        return $this->pdo->query($query)->fetchAll();
+    }
 }

@@ -32,6 +32,11 @@
 					<a class="buttonAction raise" href="/chapter/show?id={{ chapter.target_id }}&action={{ chapter.actionID }} ">{{ chapter.label }}</a>
 				{% endif %}
 			{% endfor %}
+			<ul>
+				{% for historic in historics %}
+					<li>{{historic.label}}</li>
+				{% endfor %}
+			</ul>
 		</div>
 
 		<div class="backgroundImage d-none d-md-block" style="background-image: url(/assets/images/{{chapters.0.background_image}});"></div>

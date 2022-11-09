@@ -49,11 +49,12 @@ class ChapterController extends AbstractController
     {
         $historicManager = new HistoricManager();
         $historicManager->historicInsert($action);
+        $historics = $historicManager->selectActionsByHistoric();
 
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->selectActionsByChapterId($id);
 
-        return $this->twig->render('Chapter/show.html.twig', ['chapters' => $chapters]);
+        return $this->twig->render('Chapter/show.html.twig', ['chapters' => $chapters, 'historics' => $historics]);
     }
 
     public function showWithActionForAdmin(int $id): string
