@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+
+	S'inscrire
+
+{% endblock %}
+
+{% block stylesheet %}
+
+	<link rel="stylesheet" href="/assets/css/log_reg.css">
+
+{% endblock %}
+
+{% block content %}
+	<a class="log-reg-logo" href="/"><img src="/assets/images/logo.svg"></a>
+	<div class="d-flex justify-content-center">
+		<main class="container-fluid log-reg-layer">
+			<div class="row justify-content-center">
+				<div class="col text-center">
+					<h1 class="formTitle">Rejoindre Æterna Fabula</h1>
+					<img class="w-50" src="/assets/images/noun-frame-346217.svg">
+					<form method="post" class="form" action="/">
+						<p class="log-reg-form">
+							<label class="formLabel" for="email">Email</label>
+							<input class="form-control" type "email" name="email" placeholder="Email">
+						</p>
+						<p class="log-reg-form">
+							<label class="formLabel" for="password">Mot de passe</label>
+							<input class="form-control" type "text" name="password" placeholder="Mot de passe">
+						</p>
+						<p class="log-reg-form">
+							<label class="formLabel" for="password-repeat">Répétez votre mot de passe</label>
+							<input class="form-control" type "text" name="password-repeat" placeholder="Répétez votre mot de passe">
+						</p>
+						<button class="log-reg-button" type="submit">Je m'inscris</button>
+					</form>
+					<p>Vous avez un compte ?
+						<br>
+						<a class="log-reg" href="/login">Connectez-vous !</a><br/>
+					</p>
+				</div>
+			</div>
+		</main>
+	</div>
+
+{% endblock %}
