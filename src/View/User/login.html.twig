@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+
+	Se connecter
+
+{% endblock %}
+
+{% block content %}
+
+	<div>
+		<img src="/assets/images/logo.svg">
+		<div>
+			<p>Se connecter</p>
+			<img src="/assets/images/noun-frame-346217.svg">
+			<form method="post">
+				<label for="email">Email</label>
+				<input type "email" name="email" placeholder="Email">
+				<label for="password">Mot de passe</label>
+				<input type "text" name="password" placeholder="Mot de passe">
+				<button type="submit">Je me connecte</button>
+			</form>
+			<p>Vous n'avez pas de compte?<br><a href="/user/register">Inscrivez vous</p>
+			</p>
+		</div>
+	</div>
+
+{% endblock %}
