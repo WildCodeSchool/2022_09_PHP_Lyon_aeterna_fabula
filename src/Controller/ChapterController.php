@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ChapterManager;
+use App\Model\HistoricManager;
 
 class ChapterController extends AbstractController
 {
@@ -44,12 +45,16 @@ class ChapterController extends AbstractController
         return $this->twig->render('Chapter/admin_index.html.twig', ['chapters' => $chapters]);
     }
 
-    public function showWithAction(int $id): string
+    public function showWithAction(int $id, int | null $action = null): string
     {
+        $historicManager = new HistoricManager();
+        $historicManager->historicInsert($action);
+        $historics = $historicManager->selectActionsByHistoric();
+
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->selectActionsByChapterId($id);
 
-        return $this->twig->render('Chapter/show.html.twig', ['chapters' => $chapters]);
+        return $this->twig->render('Chapter/show.html.twig', ['chapters' => $chapters, 'historics' => $historics]);
     }
 
     public function showWithActionForAdmin(int $id): string
