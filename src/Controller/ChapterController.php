@@ -45,7 +45,7 @@ class ChapterController extends AbstractController
         return $this->twig->render('Chapter/admin_index.html.twig', ['chapters' => $chapters]);
     }
 
-    public function showWithAction(int $id, int | null $action = NULL): string
+    public function showWithAction(int $id, int | null $action = null): string
     {
         $historicManager = new HistoricManager();
         $historicManager->historicInsert($action);

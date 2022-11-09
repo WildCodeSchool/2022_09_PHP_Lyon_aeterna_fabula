@@ -26,5 +26,4 @@ class HistoricManager extends AbstractManager
 
         $statement->execute();
     }
-
 }
