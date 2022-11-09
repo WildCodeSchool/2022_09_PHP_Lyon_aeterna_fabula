@@ -8,7 +8,7 @@ class HistoricManager extends AbstractManager
 {
     public const TABLE = 'historic';
 
-    public function historicInsert(int | null $actionId): void
+    public function historicInsert(int $actionId): void
     {
         $query = "INSERT INTO " . self::TABLE . " (
             `historic_date`,
