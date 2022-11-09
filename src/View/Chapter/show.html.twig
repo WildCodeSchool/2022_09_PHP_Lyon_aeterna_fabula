@@ -10,7 +10,11 @@
 {% block content %}
 	<main class="chapter d-md-inline-flex">
 		<audio controls autoplay class="audioPage" src="/assets/sound/turnpage.mp3"></audio>
+		{% if chapters.0.id == 16 %}
+			<audio controls autoplay class="audioPage" src="/assets/sound/victorysound.mp3"></audio>
+		{% endif %}
 		<a class="logo" href="/"><img class="logoSize" src="/assets/images/logo.svg"></a>
+		<script src="/script/script.js"></script>
 		<div class="d-md-none">
 			<img class="MobileChapterImage" src="/assets/images/{{ chapters.0.background_image }}"></div>
 		<div class="chapterPage ms-md-5">
@@ -25,7 +29,7 @@
 				{% if chapter.target_id == NULL %}
 					<a class="buttonAction raise" href="/">{{ chapter.label }}</a>
 				{% else %}
-					<a class="buttonAction raise" href="/chapter/show?id={{ chapter.target_id }} ">{{ chapter.label }}</a>
+					<a class="buttonAction raise" href="/chapter/show?id={{ chapter.target_id }}&action={{ chapter.actionID }} ">{{ chapter.label }}</a>
 				{% endif %}
 			{% endfor %}
 		</div>
