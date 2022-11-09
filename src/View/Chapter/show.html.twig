@@ -32,11 +32,21 @@
 					<a class="buttonAction raise" href="/chapter/show?id={{ chapter.target_id }}&action={{ chapter.actionID }} ">{{ chapter.label }}</a>
 				{% endif %}
 			{% endfor %}
-			<ul>
-				{% for historic in historics %}
-					<li>{{historic.label}}</li>
-				{% endfor %}
-			</ul>
+		</div>
+
+		<div class="sectionHistoric">
+			<a href="#popup1"><img class="historicButton float-right" src="/assets/images/historicButton.png"></a>
+		</div>
+		<div id="popup1" class="popup-container">
+			<div class="popup-content">
+				<a href="#" class="close">&times;</a>
+				<h3>Mon parcours</h3>
+				<ul>
+					{% for historic in historics %}
+						<li>{{historic.label}}</li>
+					{% endfor %}
+				</ul>
+			</div>
 		</div>
 
 		<div class="backgroundImage d-none d-md-block" style="background-image: url(/assets/images/{{chapters.0.background_image}});"></div>
