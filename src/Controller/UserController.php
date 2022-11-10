@@ -10,6 +10,19 @@ class UserController extends AbstractController
 
     public function showLoginPage()
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $credentials = array_map('trim', $_POST);
+
+            $userManager = new UserManager();
+            // $user = $userManager->selectOneByEmail($credentials['email']);
+            $user = $userManager->selectOneByEmail($credentials);
+
+            if ($user && password_verify($credentials['password'], $user['password'])) {
+                $_SESSION['email'] = $user['email'];
+                header('Location: /');
+            }
+        }
+
         return $this->twig->render('User/login.html.twig');
     }
 
@@ -44,5 +57,11 @@ class UserController extends AbstractController
         if (empty($email)) {
             $this->errors[] = "Le champ Email est obligatoire";
         }
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['email']);
+        header('Location: /');
     }
 }

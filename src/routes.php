@@ -25,5 +25,7 @@ return [
     'actions/admin_add_action' => ['ActionController', 'adminAddAction',],
     'admin/admin_homepage' => ['HomeController', 'indexAdmin',],
     'login' => ['UserController', 'showLoginPage'],
-    'register' => ['UserController', 'showRegisterPage']
+    'register' => ['UserController', 'showRegisterPage'],
+    'login-test' => ['UserController', 'loginTest'],
+    'logout' => ['UserController', 'logout'],
 ];
