@@ -24,6 +24,6 @@ return [
     'actions/admin_edit_action' => ['ActionController', 'adminEditAction', ['id']],
     'actions/admin_add_action' => ['ActionController', 'adminAddAction',],
     'admin/admin_homepage' => ['HomeController', 'indexAdmin',],
-    'login' => ['UserController', 'showLoginPage',],
-    'register' => ['UserController', 'showRegisterPage',],
-    ];
+    'login' => ['UserController', 'showLoginPage'],
+    'register' => ['UserController', 'showRegisterPage']
+];
