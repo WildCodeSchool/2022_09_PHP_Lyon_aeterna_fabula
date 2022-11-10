@@ -25,6 +25,12 @@ h1.chapterTitle {
     font-size: min(20px);
 }
 
+h3 {
+    font: 700 28px Cinzel Decorative;
+    color: #e2e2e2;
+    text-align: center;
+}
+
 p {
     font: 300 20px Crimson Text;
     color: #e2e2e2;
@@ -163,15 +169,32 @@ div.backgroundImage {
 
 /* popup historic start here */
 
-.sectionHistoric {
-    z-index: 20;
+.sectionNav {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    height: 0px;
+}
+
+.sectionHistoric {
+    z-index: 30;
+    margin: 1%;
+}
+
+.sectionHistoric:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0px 0px 3px rgb(110, 110, 110));
 }
 
 .popup-link {
     display: flex;
     flex-wrap: wrap;
+}
+
+.historicList {
+    font: 300 20px Crimson Text;
+    margin-top: 25px;
+    color: #e2e2e2;
+    list-style: none
 }
 
 .popup-link a {
@@ -202,11 +225,11 @@ div.backgroundImage {
 }
 
 .popup-content {
-    background-color: #fefefe;
+    background-color: #000;
     margin: auto;
-    padding: 20px;
+    padding: 15px;
+    padding-right: 50px;
     border: 1px solid #888;
-    width: 50%;
 }
 
 .popup-content p {
