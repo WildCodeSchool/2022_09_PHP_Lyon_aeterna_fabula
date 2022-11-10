@@ -21,6 +21,13 @@ class ChapterController extends AbstractController
         }
     }
 
+    public function numericCheck(array $chapter, string $field, string $fieldInFrench): void
+    {
+        if (!is_numeric($chapter[$field])) {
+               $this->errors[] = "Le $fieldInFrench doit être un nombre entier";
+        }
+    }
+
     /**
      * Form Control
      */
@@ -32,6 +39,7 @@ class ChapterController extends AbstractController
         $this->stringCheck($chapter, 'description', 'La description', 500);
         $this->stringCheck($chapter, 'background_image', "Le nom de l'image", 100);
         $this->stringCheck($chapter, 'background_image_alt', "Le nom de l'attribut alt", 100);
+        $this->numericCheck($chapter, 'number', "numéro de chapitre");
     }
 
     /**
