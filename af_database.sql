@@ -6,6 +6,7 @@ USE aeterna_fabula;
 
 CREATE TABLE `chapter` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `number` INT NOT NULL,
   `name` VARCHAR(35) NOT NULL,
   `title` VARCHAR(80) NOT NULL,
   `description` TEXT NOT NULL,
@@ -16,7 +17,7 @@ CREATE TABLE `chapter` (
 
 INSERT INTO
   `chapter` (
-    `id`,
+    `number`,
     `name`,
     `title`,
     `description`,
@@ -93,32 +94,36 @@ VALUES
 ("Essayez encore !", 15, NULL),
 ("Félicitations !", 16, NULL);
 
-CREATE TABLE `historic` (
-  id INT NOT NULL auto_increment,
-  `historic_date` DATE NOT NULL,
-  action_id INT, 
-  
-  PRIMARY KEY (id),
-  CONSTRAINT fk_action_historic
-  FOREIGN KEY (action_id)
-REFERENCES action(id)
-);
-
 CREATE TABLE user (
   id INT NOT NULL AUTO_INCREMENT,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  is_admin BOOLEAN NOT NULL,
+  is_admin BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (id)
+);
+
+CREATE TABLE `alias` (
+  id INT NOT NULL auto_increment,
+  alias VARCHAR(255) NOT NULL,
+  user_id INT, 
+
+  PRIMARY KEY (id),
+  CONSTRAINT fk_alias_user
+    FOREIGN KEY (user_id)
+    REFERENCES user(id)
 );
 
 CREATE TABLE `historic` (
   id INT NOT NULL auto_increment,
   `historic_date` DATE NOT NULL,
-  action_id INT NULL, 
-  
+  action_id INT, 
+  alias_id INT,
+
   PRIMARY KEY (id),
   CONSTRAINT fk_action_historic
-  FOREIGN KEY (action_id)
-REFERENCES action(id)
+    FOREIGN KEY (action_id)
+    REFERENCES action(id),
+  CONSTRAINT fk_alias_historic
+    FOREIGN KEY (alias_id)
+    REFERENCES alias(id)
 );
