@@ -78,7 +78,7 @@ class ChapterManager extends AbstractManager
     {
         // prepared request
         $statement = $this->pdo->prepare(
-            "SELECT c.background_image, c.id, c.number, c.title, c.description, a.owner_id, a.target_id, label
+            "SELECT c.background_image, c.id, c.number, c.title, c.description, a.id AS actionID, a.owner_id, a.target_id, label
             FROM chapter AS c
             LEFT JOIN action AS a ON a.owner_id = c.id
             WHERE c.id=:id"
