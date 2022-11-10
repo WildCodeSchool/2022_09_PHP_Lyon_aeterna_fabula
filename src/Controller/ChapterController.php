@@ -48,9 +48,11 @@ class ChapterController extends AbstractController
     public function showWithAction(int $id, int | null $action = null): string
     {
         $historicManager = new HistoricManager();
-        $historicManager->historicInsert($action);
-        $historics = $historicManager->selectActionsByHistoric();
+        if ($action != null) {
+            $historicManager->historicInsert($action);
+        }
 
+        $historics = $historicManager->selectActionsByHistoric();
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->selectActionsByChapterId($id);
 
