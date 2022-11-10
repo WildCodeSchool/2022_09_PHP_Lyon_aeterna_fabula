@@ -93,14 +93,6 @@ VALUES
 ("Essayez encore !", 15, NULL),
 ("Félicitations !", 16, NULL);
 
-SELECT * FROM historic;
-
-TRUNCATE historic;
-
-USE aeterna_fabula;
-
-DROP TABLE historic;
-
 CREATE TABLE `historic` (
   id INT NOT NULL auto_increment,
   `historic_date` DATE NOT NULL,
