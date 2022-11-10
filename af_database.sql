@@ -93,10 +93,32 @@ VALUES
 ("Essayez encore !", 15, NULL),
 ("Félicitations !", 16, NULL);
 
+CREATE TABLE `historic` (
+  id INT NOT NULL auto_increment,
+  `historic_date` DATE NOT NULL,
+  action_id INT, 
+  
+  PRIMARY KEY (id),
+  CONSTRAINT fk_action_historic
+  FOREIGN KEY (action_id)
+REFERENCES action(id)
+);
+
 CREATE TABLE user (
   id INT NOT NULL AUTO_INCREMENT,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   is_admin BOOLEAN NOT NULL,
   PRIMARY KEY (id)
+);
+
+CREATE TABLE `historic` (
+  id INT NOT NULL auto_increment,
+  `historic_date` DATE NOT NULL,
+  action_id INT NULL, 
+  
+  PRIMARY KEY (id),
+  CONSTRAINT fk_action_historic
+  FOREIGN KEY (action_id)
+REFERENCES action(id)
 );
