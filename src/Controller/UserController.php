@@ -14,7 +14,6 @@ class UserController extends AbstractController
             $credentials = array_map('trim', $_POST);
 
             $userManager = new UserManager();
-            // $user = $userManager->selectOneByEmail($credentials['email']);
             $user = $userManager->selectOneByEmail($credentials);
 
             if ($user && password_verify($credentials['password'], $user['password'])) {
