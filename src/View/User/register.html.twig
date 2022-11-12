@@ -29,7 +29,17 @@
 							<label class="formLabel" for="password">Mot de passe</label>
 							<input class="form-control" type "text" name="password" placeholder="Mot de passe">
 						</p>
+						<p class="log-reg-form">
+							<label class="formLabel" for="password">Répétez votre mot de passe</label>
+							<input class="form-control" type "text" name="password2" placeholder="Mot de passe">
+						</p>
+						<ul>
+							{% for error in errors %}
+								<li class="text-white">{{ error }}</li>
+							{% endfor %}
+						</ul>
 						<button class="log-reg-button" type="submit">Je m'inscris</button>
+						
 					</form>
 					<p>Vous avez un compte ?
 						<br>
