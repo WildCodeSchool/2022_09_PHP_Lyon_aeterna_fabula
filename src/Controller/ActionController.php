@@ -80,7 +80,10 @@ class ActionController extends AbstractController
                 $this->formControlAction($action);
 
                 if (!empty($this->errors)) {
-                    return $this->twig->render('Action/admin_edit_action.html.twig', ['errors' => $this->errors,]);
+                    return $this->twig->render(
+                        'Action/admin_edit_action.html.twig',
+                        ['action' => $action, 'errors' => $this->errors,]
+                    );
                 }
 
 
@@ -95,10 +98,16 @@ class ActionController extends AbstractController
         } catch (\Exception  $exception) {
             if ($exception->getCode() == 23000) {
                 $messageError = 'Il est impossible d\'enregistrer un numéro de chapitre qui n\'existe pas';
-                return $this->twig->render('Action/admin_edit_action.html.twig', ['messageError' => $messageError,]);
+                return $this->twig->render(
+                    'Action/admin_edit_action.html.twig',
+                    ['action' => $action, 'messageError' => $messageError,]
+                );
             } else {
                 $messageError = $exception->getMessage();
-                return $this->twig->render('Action/admin_edit_action.html.twig', ['messageError' => $messageError,]);
+                return $this->twig->render(
+                    'Action/admin_edit_action.html.twig',
+                    ['action' => $action, 'messageError' => $messageError,]
+                );
             }
         }
         return $this->twig->render('Action/admin_edit_action.html.twig', ['action' => $action,]);
