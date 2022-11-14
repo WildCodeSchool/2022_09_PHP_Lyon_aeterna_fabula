@@ -90,7 +90,7 @@ class ActionController extends AbstractController
                 // if validation is ok, update and redirection
 
                 $actionManager->adminUpdateAction($action);
-                header('Location: /actions');
+                header('Location: /chapters');
 
                 // we are redirecting so we don't want any content rendered
                 return null;
@@ -131,7 +131,7 @@ class ActionController extends AbstractController
                     $actionManager = new ActionManager();
                     $actionManager->adminInsertAction($action);
 
-                    header('Location: /actions');
+                    header('Location: /chapters');
 
                     // we are redirecting so we don't want any content rendered
                     return null;
