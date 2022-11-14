@@ -72,7 +72,13 @@ class ChapterController extends AbstractController
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->selectActionsByChapterIdForAdmin($id);
 
-        return $this->twig->render('Chapter/admin_show.html.twig', ['chapters' => $chapters]);
+        $otherChapterManager = new ChapterManager();
+        $fromActions = $otherChapterManager->selectActionsFromAdmin($id);
+
+        return $this->twig->render(
+            'Chapter/admin_show.html.twig',
+            ['chapters' => $chapters, 'fromActions' => $fromActions]
+        );
     }
 
     /**

@@ -99,9 +99,24 @@ class ChapterManager extends AbstractManager
         // prepared request
         $statement = $this->pdo->prepare(
             "SELECT c.background_image, c.id, c.number, c.title, c.description, c.name, c.background_image_alt, 
-            a.owner_id, a.target_id, a.label
+            a.owner_id, a.target_id, a.label, a.id AS a_id
             FROM chapter AS c
             LEFT JOIN action AS a ON a.owner_id = c.id
+            WHERE c.id=:id"
+        );
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
+    public function selectActionsFromAdmin(int $id): array|false
+    {
+        // prepared request
+        $statement = $this->pdo->prepare(
+            "SELECT c.id AS c_id, c.title, a.owner_id, a.target_id, a.label, a.id AS a_id
+            FROM chapter AS c
+            LEFT JOIN action AS a ON a.target_id = c.id
             WHERE c.id=:id"
         );
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
