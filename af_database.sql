@@ -104,7 +104,8 @@ CREATE TABLE user (
 
 CREATE TABLE `alias` (
   id INT NOT NULL auto_increment,
-  alias VARCHAR(255) NOT NULL,
+  player_name VARCHAR(55) NOT NULL,
+  nature VARCHAR(15) NOT NULL DEFAULT "ONGOING",
   user_id INT, 
 
   PRIMARY KEY (id),

@@ -1,0 +1,29 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	créer un alias
+{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/alias.css">
+{% endblock %}
+
+{% block content %}
+	<main class="container sm main-content col-md-12 order-md-2 mt-5 align-self-md-center">
+		<div class="container-md">
+			<a href="/"><img class="decoration" src="/assets/images/logo.svg"></a>
+			<h1 class="mt-md-5">choisis ton alias</h1>
+			<img
+			class="decoration" src="/assets/images/noun-frame-346217.svg">
+
+			{# TODO : manage errors display #}
+			<ul>
+				{% for error in errors %}
+					<li class="error">{{ error }}</li>
+				{% endfor %}
+			</ul>
+			{% include 'Alias/alias_form.html.twig' %}
+
+		</div>
+	</main>
+{% endblock %}

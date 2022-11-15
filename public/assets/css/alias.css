@@ -1,0 +1,19 @@
+.buttonAlias {
+    background: url("/assets/images/StartButton.png") no-repeat;
+    border: none;
+    width: 100%;
+    height: 200px;
+    color: #fff;
+    text-align: center;
+    background-position: 50% 50%;
+    background-size: contain;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 15px;
+    color: #e4e4e4;
+    text-align: center;
+    font-weight: bold;
+}
+
+main {
+    height: 100vh;
+}

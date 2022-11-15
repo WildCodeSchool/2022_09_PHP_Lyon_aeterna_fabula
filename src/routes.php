@@ -28,4 +28,6 @@ return [
     'register' => ['UserController', 'showRegisterPage'],
     'login-test' => ['UserController', 'loginTest'],
     'logout' => ['UserController', 'logout'],
+    'alias' => ['AliasController', 'start',],
+    'alias/create' => ['AliasController', 'create',],
 ];
