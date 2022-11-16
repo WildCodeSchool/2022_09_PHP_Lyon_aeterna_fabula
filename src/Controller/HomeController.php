@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\UserManager;
+use Twig\Node\Expression\Test\NullTest;
+
 class HomeController extends AbstractController
 {
     /**
@@ -12,8 +15,13 @@ class HomeController extends AbstractController
         return $this->twig->render('Home/index.html.twig');
     }
 
-    public function indexAdmin(): string
+    public function indexAdmin(): ?string
     {
-        return $this->twig->render('Admin/admin_homepage.html.twig');
+        if ($this->checkIsAdmin()) {
+            return $this->twig->render('Admin/admin_homepage.html.twig');
+        } else {
+            header('location:/');
+            return null;
+        }
     }
 }
