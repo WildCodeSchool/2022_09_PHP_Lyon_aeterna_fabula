@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\ActionManager;
+use App\Model\ChapterManager;
 
 class ActionController extends AbstractController
 {
@@ -80,10 +81,14 @@ class ActionController extends AbstractController
     public function adminEditAction(int $id): ?string
     {
         if ($this->checkIsAdmin()) {
-            $messageError = null;
-            try {
-                $actionManager = new ActionManager();
-                $action = $actionManager->selectOneById($id);
+
+        $messageError = null;
+        $chaptersManager = new ChapterManager();
+        $chapters = $chaptersManager->selectAll();
+
+        try {
+            $actionManager = new ActionManager();
+            $action = $actionManager->selectOneById($id);
 
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // clean $_POST data
@@ -91,7 +96,10 @@ class ActionController extends AbstractController
                     $this->formControlAction($action);
 
                     if (!empty($this->errors)) {
-                        return $this->twig->render('Action/admin_edit_action.html.twig', ['errors' => $this->errors,]);
+                        return $this->twig->render(
+                            'Action/admin_edit_action.html.twig',
+                            ['action' => $action, 'errors' => $this->errors, 'chapters' => $chapters,]
+                        );
                     }
 
 
@@ -100,44 +108,52 @@ class ActionController extends AbstractController
                     $actionManager->adminUpdateAction($action);
                     header('Location: /chapters');
 
-                    // we are redirecting so we don't want any content rendered
-                    return null;
-                }
-            } catch (\Exception  $exception) {
-                if ($exception->getCode() == 23000) {
-                    $messageError = 'Il est impossible d\'enregistrer un numéro de chapitre qui n\'existe pas';
-                    return $this->twig->render(
-                        'Action/admin_edit_action.html.twig',
-                        ['messageError' => $messageError,]
-                    );
-                } else {
-                    $messageError = $exception->getMessage();
-                    return $this->twig->render(
-                        'Action/admin_edit_action.html.twig',
-                        ['messageError' => $messageError,]
-                    );
-                }
+                // we are redirecting so we don't want any content rendered
+                return null;
             }
-            return $this->twig->render('Action/admin_edit_action.html.twig', ['action' => $action,]);
+        } catch (\Exception  $exception) {
+            if ($exception->getCode() == 23000) {
+                $messageError = 'Il est impossible d\'enregistrer un numéro de chapitre qui n\'existe pas';
+                return $this->twig->render(
+                    'Action/admin_edit_action.html.twig',
+                    ['action' => $action, 'messageError' => $messageError, 'chapters' => $chapters,]
+                );
+            } else {
+                $messageError = $exception->getMessage();
+                return $this->twig->render(
+                    'Action/admin_edit_action.html.twig',
+                    ['action' => $action, 'messageError' => $messageError, 'chapters' => $chapters,]
+                );
+            }
+
+            return $this->twig->render(
+                'Action/admin_edit_action.html.twig',
+                ['action' => $action, 'chapters' => $chapters,]
+            );}
         } else {
-            header('location:/');
-            return null;
-        }
-    }
+        header('location:/');
+        return null;
+    }    
+}
 
     public function adminAddAction(): ?string
     {
         if ($this->checkIsAdmin()) {
-            $messageError = null;
-            try {
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $messageError = null;
+        $chaptersManager = new ChapterManager();
+        $chapters = $chaptersManager->selectAll();
+
+        try {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // clean $_POST data
                     $action = array_map('trim', $_POST);
                     $this->formControlAction($action);
 
-                    if (!empty($this->errors)) {
-                        return $this->twig->render('Action/admin_add_action.html.twig', ['errors' => $this->errors,]);
-                    }
+                if (!empty($this->errors)) {
+                    return $this->twig->render('Action/admin_add_action.html.twig',
+                    ['errors' => $this->errors, 'chapters' => $chapters,]
+                    );
+                }
 
                     // if validation is ok, update and redirection
                     $actionManager = new ActionManager();
@@ -155,8 +171,11 @@ class ActionController extends AbstractController
                     $messageError = $exception->getMessage();
                 }
             }
-            return $this->twig->render('Action/admin_add_action.html.twig', ['messageError' => $messageError,]);
-        } else {
+            return $this->twig->render(
+                'Action/admin_add_action.html.twig',
+                ['messageError' => $messageError,'chapters' => $chapters,]
+            );
+            } else {
             header('location:/');
             return null;
         }

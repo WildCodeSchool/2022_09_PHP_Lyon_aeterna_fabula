@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-	AF admin edit
+	AF admin edit action
 {% endblock %}
 
 {% block stylesheet %}
@@ -24,9 +24,6 @@
 			</ul>
 			<p class="error">{{ messageError }}</p>
 			{% include 'Action/_admin_form_action.html.twig' %}
-
-			
-			<p>Saisir dans le formulaire uniquement des ID de chapitres existants.</p>
 
 			<p>
 				<button class="buttonAction raise">Modifier l'action</button>
