@@ -16,15 +16,23 @@
 			<a href="#popup1"><img class="historicButton" src="/assets/images/historicButton.png"></a>
 		</div>
 		<div id="popup1" class="popup-container">
-			<div class="popup-content">
+			<div class="popup-content col-11 col-md-6">
 				<a href="#" class="close">&times;</a>
 				<h3>Mon parcours</h3>
-				<ul class="historicList">
+				<ul class="accordion">
 					{% for historic in historics %}
 						{% if historic.label != NULL %}
-							<li>
-								➞
-								{{historic.label}}</li>
+							<li class="container">
+								<div class="historicDetail">
+									<p>Chapitre
+										{{historic.number}}</p>
+									<h1>{{historic.title}}</h1>
+									<p class="detailText">{{historic.description}}</p>
+								</div>
+								<div class="detailButton">
+									{{historic.label}}
+								</div>
+							</li>
 						{% endif %}
 					{% endfor %}
 				</ul>
@@ -36,7 +44,6 @@
 		{% if chapters.0.id == 16 %}
 			<audio controls autoplay class="audioPage" src="/assets/sound/victorysound.mp3"></audio>
 		{% endif %}
-		<script src="/script/script.js"></script>
 		<div class="d-md-none">
 			<img class="MobileChapterImage" src="/assets/images/{{ chapters.0.background_image }}"></div>
 		<div class="chapterPage ms-md-5">
@@ -57,4 +64,6 @@
 		</div>
 		<div class="backgroundImage d-none d-md-block" style="background-image: url(/assets/images/{{chapters.0.background_image}});"></div>
 	</main>
+
+	<script src="/script/script.js"></script>
 {% endblock %}
