@@ -22,8 +22,17 @@
 					<li class="error">{{ error }}</li>
 				{% endfor %}
 			</ul>
-			{% include 'Alias/alias_form.html.twig' %}
+			<form method="post" class="formAdmin">
 
+				<p class="form-group">
+					<label for="player_name">Alias</label>
+					<input class="form-control" type="text" value="{{ alias.player_name }}" placeholder="ex : Gandalf" name="player_name" id="player_name" required>
+				</p>
+
+				<p>
+					<button class="buttonAction raise">Commencer à jouer</button>
+				</p>
+			</form>
 		</div>
 	</main>
 {% endblock %}
