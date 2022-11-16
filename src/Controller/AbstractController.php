@@ -26,4 +26,12 @@ abstract class AbstractController
         $this->user = isset($_SESSION['email']) ? $userManager->selectOneByEmail($_SESSION) : false;
         $this->twig->addGlobal('user', $this->user);
     }
+
+    public function checkIsAdmin(): bool
+    {
+        if (!empty($_SESSION)) {
+            return $_SESSION['is_admin'];
+        }
+        return false;
+    }
 }
