@@ -5,10 +5,32 @@
 		<input class="form-control" type="text" value="{{ action.label }}" placeholder="Entrez le libellé du bouton" name="label" id="label" required>
 	</p>
 	<p class="form-group">
-		<label for="owner_id">ID du chapitre de départ</label>
-		<input class="form-control" type="number" value="{{ action.owner_id }}" placeholder="Entrez l'ID d'un chapitre existant" name="owner_id" id="owner_id" required>
+		<label for="owner_id" class="form-label">ID du chapitre de départ</label>
+		<select class="form-select" type="number" name="owner_id" id="owner_id">
+			<option>Sélectionner un ID de chapitre</option>
+			{% for chapter in chapters %}
+				<option value="{{ chapter.id }}" {% if chapter.id == action.owner_id %} selected {% endif %}>
+					{{ chapter.id }}
+					- Chapitre numéro
+					{{ chapter.number }}
+					-
+					{{ chapter.title }}
+				</option>
+			{% endfor %}
+		</select>
 	</p>
 	<p class="form-group">
-		<label for="target_id">ID du chapitre d'arrivée</label>
-		<input class="form-control" type="number" value="{{ action.target_id }}" placeholder="Entrez l'ID d'un chapitre existant" name="target_id" id="target_id">
+		<label for="target_id" class="form-label">ID du chapitre d'arrivée</label>
+		<select class="form-select" type="number" name="target_id" id="target_id">
+			<option>Sélectionner un ID de chapitre</option>
+			{% for chapter in chapters %}
+				<option value="{{ chapter.id }}" {% if chapter.id == action.target_id %} selected {% endif %}>
+					{{ chapter.id }}
+					- Chapitre numéro
+					{{ chapter.number }}
+					-
+					{{ chapter.title }}
+				</option>
+			{% endfor %}
+		</select>
 	</p>
