@@ -10,7 +10,7 @@ class AliasManager extends AbstractManager
 
     //insert new alias
 
-    public function addAlias(array $alias, int $user_id): void
+    public function addAlias(array $alias, int $userId): int
     {
         $query = "INSERT INTO " . self::TABLE . " (
             `player_name`,
@@ -27,9 +27,10 @@ class AliasManager extends AbstractManager
         $statement = $this->pdo->prepare($query);
 
         $statement->bindValue('player_name', $alias['player_name'], PDO::PARAM_STR);
-        $statement->bindValue('user_id', $user_id, PDO::PARAM_INT);
+        $statement->bindValue('user_id', $userId, PDO::PARAM_INT);
 
 
         $statement->execute();
+        return (int)$this->pdo->lastInsertId();
     }
 }

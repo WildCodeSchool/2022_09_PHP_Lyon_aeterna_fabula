@@ -24,7 +24,7 @@ class ChapterController extends AbstractController
     public function numericCheck(array $chapter, string $field, string $fieldInFrench): void
     {
         if (!is_numeric($chapter[$field])) {
-               $this->errors[] = "Le $fieldInFrench doit être un nombre entier";
+            $this->errors[] = "Le $fieldInFrench doit être un nombre entier";
         }
     }
 
@@ -56,11 +56,12 @@ class ChapterController extends AbstractController
     public function showWithAction(int $id, int | null $action = null): string
     {
         $historicManager = new HistoricManager();
+        $aliasId = $_SESSION['alias_id'];
         if ($action != null) {
-            $historicManager->historicInsert($action);
+            $historicManager->historicInsert($action, $aliasId);
         }
 
-        $historics = $historicManager->selectActionsByHistoric();
+        $historics = $historicManager->selectActionsByHistoric($aliasId);
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->selectActionsByChapterId($id);
 

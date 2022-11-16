@@ -34,7 +34,7 @@ class AliasController extends AbstractController
         return $this->twig->render('Alias/alias_index.html.twig');
     }
 
-    public function create(int $user_id = 1): ?string
+    public function create(): ?string
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
@@ -53,8 +53,13 @@ class AliasController extends AbstractController
             // if validation is ok, insert and redirection
 
             // récuperer l'id user de la session : voir avec les experts
+            // $_SESSION['user_id'] = $user['email']
+            $userId = $_SESSION['user_id'];
+
             $aliasManager = new AliasManager();
-            $aliasManager->addAlias($alias, $user_id);
+            $activeAlias = $aliasManager->addAlias($alias, $userId);
+
+            $_SESSION['alias_id'] = $activeAlias;
 
             header('Location:/incipit');
             return null;

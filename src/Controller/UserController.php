@@ -24,6 +24,7 @@ class UserController extends AbstractController
 
             if ($user && password_verify($credentials['password'], $user['password'])) {
                 $_SESSION['email'] = $user['email'];
+                $_SESSION['user_id'] = $user['id'];
                 header('Location: /');
             }
         }
@@ -74,17 +75,23 @@ class UserController extends AbstractController
 
         if (!$upperCase) {
             $this->errors[] = "Le mot de passe doit contenir au moins une majuscule";
-        } if (!$lowerCase) {
+        }
+        if (!$lowerCase) {
             $this->errors[] = "Le mot de passe doit contenir au moins une minuscule";
-        } if (!$number) {
+        }
+        if (!$number) {
             $this->errors[] = "Le mot de passe doit contenir au moins un chiffre";
-        } if (!$specialCharacter) {
+        }
+        if (!$specialCharacter) {
             $this->errors[] = "Le mot de passe doit contenir au moins un caractère spécial";
-        } if (strlen($password) < 8) {
+        }
+        if (strlen($password) < 8) {
             $this->errors[] = "Le mot de passe doit contenir au mininum 8 caractères";
-        } if (empty($password)) {
+        }
+        if (empty($password)) {
             $this->errors[] = "Le mot de passe est obligatoire";
-        } if ($password != $password2) {
+        }
+        if ($password != $password2) {
             $this->errors[] = "Les mots de passe doivent être identiques";
         }
     }
