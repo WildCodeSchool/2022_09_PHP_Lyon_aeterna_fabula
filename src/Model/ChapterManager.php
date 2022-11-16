@@ -124,18 +124,4 @@ class ChapterManager extends AbstractManager
 
         return $statement->fetchAll();
     }
-
-    public function selectAllChapterId(): array|false
-    {
-        // prepared request
-        $statement = $this->pdo->prepare(
-            "SELECT c.id, c.number, c.title, c.name, 
-            a.owner_id, a.target_id, a.label, a.id AS a_id
-            FROM chapter AS c
-            LEFT JOIN action AS a ON a.owner_id = c.id"
-        );
-        $statement->execute();
-
-        return $statement->fetchAll();
-    }
 }
