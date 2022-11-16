@@ -7,25 +7,30 @@
 //          3. (optional) array of query string keys to send as parameter to the method
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
 return [
+    // simple MVC example routes
     '' => ['HomeController', 'index',],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
-    'chapters' => ['ChapterController', 'adminIndex',],
+    // simple MVC example routes
+
+    // user routes
     'chapter/show' => ['ChapterController', 'showWithAction', ['id', 'action']],
     'incipit' => ['IncipitController', 'incipit',],
-    'chapters/admin_show' => ['ChapterController', 'showWithActionForAdmin', ['id']],
-    'chapters/admin_add' => ['ChapterController', 'adminAdd',],
-    'chapters/admin_edit' => ['ChapterController', 'adminEdit', ['id']],
-    'actions' => ['ActionController', 'adminIndexAction',],
-    'actions/admin_show_action' => ['ActionController', 'adminShowAction', ['id']],
-    'actions/admin_edit_action' => ['ActionController', 'adminEditAction', ['id']],
-    'actions/admin_add_action' => ['ActionController', 'adminAddAction',],
-    'admin/admin_homepage' => ['HomeController', 'indexAdmin',],
-    'login' => ['UserController', 'showLoginPage'],
+    'login' => ['UserController', 'showLoginPage', ['inscrit']],
     'register' => ['UserController', 'showRegisterPage'],
-    'login-test' => ['UserController', 'loginTest'],
     'logout' => ['UserController', 'logout'],
+
+    // admin routes
+    'chapters' => ['ChapterController', 'adminIndex',], /* réservé à l'admin */
+    'chapters/admin_show' => ['ChapterController', 'showWithActionForAdmin', ['id']], /* réservé à l'admin */
+    'chapters/admin_add' => ['ChapterController', 'adminAdd',], /* réservé à l'admin */
+    'chapters/admin_edit' => ['ChapterController', 'adminEdit', ['id']], /* réservé à l'admin */
+    'actions' => ['ActionController', 'adminIndexAction',], /* réservé à l'admin */
+    'actions/admin_show_action' => ['ActionController', 'adminShowAction', ['id']], /* réservé à l'admin */
+    'actions/admin_edit_action' => ['ActionController', 'adminEditAction', ['id']], /* réservé à l'admin */
+    'actions/admin_add_action' => ['ActionController', 'adminAddAction',], /* réservé à l'admin */
+    'admin/admin_homepage' => ['HomeController', 'indexAdmin',], /*  réservé à l'admin */
 ];
