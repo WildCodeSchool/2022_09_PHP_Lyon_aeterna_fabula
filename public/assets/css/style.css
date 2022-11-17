@@ -109,6 +109,11 @@ div.backgroundImage {
     width: 80px;
 }
 
+.deconnexion {
+    font: 300 20px Crimson Text;
+    color: #e2e2e2;
+}
+
 /* Condition d'animation du bouton */
 
 .raise:hover,

@@ -4,7 +4,9 @@
 body {
     background-image: url(../../assets/images/Groupe-15.jpg);
     background-position: 50% 50%;
-    margin: 25px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: fadein 0.8s;
 }
 
 .main-content {
@@ -62,6 +64,8 @@ body {
     font-size: 34px;
     font-family: 'Crimson Text', serif;
     padding: 0;
+    padding-top: 25px;
+    padding-right: 25px;
 }
 
 .sign-links li {

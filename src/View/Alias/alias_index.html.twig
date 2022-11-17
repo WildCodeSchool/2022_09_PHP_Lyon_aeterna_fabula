@@ -10,15 +10,81 @@
 {% endblock %}
 
 {% block content %}
-	<main class="container sm main-content col-md-12 order-md-2 mt-5 align-self-md-center">
-		<div class="container-md">
-			<a href="/"><img class="decoration" src="/assets/images/logo.svg"></a>
-			<div class="sectionHistoric">
+	<div class="backgroundImageAdmin d-md-block"></div>
+	<nav class="sectionNav">
+		<div class="sectionHistoric">
+			<a class="logo" href="/"><img class="logoSize" src="/assets/images/logo.svg"></a>
+		</div>
+		<div class="sectionHistoric">
+			<a href="METTRELADECOICI" class="deconnexion">Se déconnecter</a>
+		</div>
+	</nav>
+
+	{% if chapter.target_id != NULL %}
+		<main class="container sm col-md-12 mt-5 align-self-md-center">
+			<div class="sectionbuttonAlias container-md">
 				<a href="/alias/create">
 					<button type="button" class="buttonAlias">Commencer une<br>nouvelle histoire</button>
 				</a>
 			</div>
-
-
 		</main>
-	{% endblock %}
+	{% endif %}
+
+	{% if chapter.target_id == NULL %}
+
+		<main
+			class="container sm col-md-12 mt-5 align-self-md-center">
+			{# {% for alias.player_name in alias.player_names %}
+																	{{ loop.index }}
+																	-
+																	{{ user.username }} #}
+			<div class="sectionbuttonAlias container-md">
+				<a href="/alias/create">
+					<button type="button" class="buttonAlias">Continuer
+						<br>l'histoire
+						<br>de
+						{{ alias.player_name }}</button>
+				</a>
+				<a href="/alias/create">
+					<button type="button" class="buttonAliasText">Supprimer cette<br>
+						histoire</button>
+				</a>
+			</div>
+
+			<div class="sectionbuttonAlias container-md">
+				<a href="/alias/create">
+					<button type="button" class="buttonAlias">Continuer
+						<br>l'histoire
+						<br>de
+						{{ alias.player_name }}</button>
+				</a>
+				<a href="/alias/create">
+					<button type="button" class="buttonAliasText">Supprimer cette<br>
+						histoire</button>
+				</a>
+			</div>
+
+			<div class="sectionbuttonAlias container-md">
+				<a href="/alias/create">
+					<button type="button" class="buttonAlias">Continuer
+						<br>l'histoire
+						<br>de
+						{{ alias.player_name }}</button>
+				</a>
+				<a href="/alias/create">
+					<button type="button" class="buttonAliasText">Supprimer cette<br>
+						histoire</button>
+				</a>
+			</div>
+			{# {% endfor %} #}
+			<div>
+				<a href="/alias/create">
+					<button type="button" class="buttonAliasText">Commencer une<br>nouvelle histoire</button>
+				</a>
+				<a href="/alias/create">
+					<button type="button" class="buttonAliasText">Supprimer<br>son compte</button>
+				</a>
+			</div>
+		</main>
+	{% endif %}
+{% endblock %}
