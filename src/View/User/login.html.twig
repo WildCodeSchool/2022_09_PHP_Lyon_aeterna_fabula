@@ -19,6 +19,12 @@
 			<div class="row justify-content-center">
 				<div class="col text-center">
 					<h1 class="formTitle">Se connecter</h1>
+					{% if inscrit %}
+						<p>{{ inscrit }}<br/>
+							{{ message }}</p>
+					{% else %}
+						<p>{{ message }}</p>
+					{% endif %}
 					<img class="w-50" src="/assets/images/noun-frame-346217.svg">
 					<form method="post" class="form">
 						<p class="log-reg-form">
@@ -29,7 +35,7 @@
 							<label class="formLabel" for="password">Mot de passe</label>
 							<input type="password" class="form-control" id="password" name="password">
 						</p>
-							<ul>
+						<ul>
 							{% for error in errors %}
 								<li>{{ error }}</li>
 							{% endfor %}

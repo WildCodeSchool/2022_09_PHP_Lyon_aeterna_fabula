@@ -79,3 +79,12 @@ then, run it to open it on your localhot :
 docker run -i -t --name simple-mvc  -p 80:80 simple-mvc-container
 ```
 
+## Æterna Fabula
+
+Accès : 
+
+user@af.fr
+AF-mdp-123
+
+admin@af.fr
+AF-mdp-123

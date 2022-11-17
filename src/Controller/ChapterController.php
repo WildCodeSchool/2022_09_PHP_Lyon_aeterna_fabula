@@ -47,12 +47,17 @@ class ChapterController extends AbstractController
     /**
      * List chapters
      */
-    public function adminIndex(): string
+    public function adminIndex(): ?string
     {
-        $chapterManager = new ChapterManager();
-        $chapters = $chapterManager->selectAll('id');
+        if ($this->checkIsAdmin()) {
+            $chapterManager = new ChapterManager();
+            $chapters = $chapterManager->selectAll('id');
 
-        return $this->twig->render('Chapter/admin_index.html.twig', ['chapters' => $chapters]);
+            return $this->twig->render('Chapter/admin_index.html.twig', ['chapters' => $chapters]);
+        } else {
+            header('location:/');
+            return null;
+        }
     }
 
     public function showWithAction(int $id, int | null $action = null): string
@@ -70,18 +75,23 @@ class ChapterController extends AbstractController
         return $this->twig->render('Chapter/show.html.twig', ['chapters' => $chapters, 'historics' => $historics]);
     }
 
-    public function showWithActionForAdmin(int $id): string
+    public function showWithActionForAdmin(int $id): ?string
     {
-        $chapterManager = new ChapterManager();
-        $chapters = $chapterManager->selectActionsByChapterIdForAdmin($id);
+        if ($this->checkIsAdmin()) {
+            $chapterManager = new ChapterManager();
+            $chapters = $chapterManager->selectActionsByChapterIdForAdmin($id);
 
-        $otherChapterManager = new ChapterManager();
-        $fromActions = $otherChapterManager->selectActionsFromAdmin($id);
+            $otherChapterManager = new ChapterManager();
+            $fromActions = $otherChapterManager->selectActionsFromAdmin($id);
 
-        return $this->twig->render(
-            'Chapter/admin_show.html.twig',
-            ['chapters' => $chapters, 'fromActions' => $fromActions]
-        );
+            return $this->twig->render(
+                'Chapter/admin_show.html.twig',
+                ['chapters' => $chapters, 'fromActions' => $fromActions]
+            );
+        } else {
+            header('location:/');
+            return null;
+        }
     }
 
     /**
@@ -111,31 +121,36 @@ class ChapterController extends AbstractController
      */
     public function adminEdit(int $id): ?string
     {
-        $chapterManager = new ChapterManager();
-        $chapter = $chapterManager->selectOneById($id);
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $chapter = array_map('trim', $_POST);
-            $this->formControl($chapter);
+        if ($this->checkIsAdmin()) {
+            $chapterManager = new ChapterManager();
+            $chapter = $chapterManager->selectOneById($id);
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // clean $_POST data
+                $chapter = array_map('trim', $_POST);
+                $this->formControl($chapter);
 
-            if (!empty($this->errors)) {
-                return $this->twig->render('Chapter/admin_edit.html.twig', [
-                    'errors' => $this->errors,
-                ]);
+                if (!empty($this->errors)) {
+                    return $this->twig->render('Chapter/admin_edit.html.twig', [
+                        'errors' => $this->errors,
+                    ]);
+                }
+
+
+                // if validation is ok, update and redirection
+                $chapterManager->adminUpdate($chapter);
+
+                header('Location: /chapters/admin_show?id=' . $id);
+
+                // we are redirecting so we don't want any content rendered
+                return null;
             }
-
-
-            // if validation is ok, update and redirection
-            $chapterManager->adminUpdate($chapter);
-
-            header('Location: /chapters/admin_show?id=' . $id);
-
-            // we are redirecting so we don't want any content rendered
+            return $this->twig->render('Chapter/admin_edit.html.twig', [
+                'chapter' => $chapter,
+            ]);
+        } else {
+            header('location:/');
             return null;
         }
-        return $this->twig->render('Chapter/admin_edit.html.twig', [
-            'chapter' => $chapter,
-        ]);
     }
 
     /**
@@ -143,30 +158,35 @@ class ChapterController extends AbstractController
      */
     public function adminAdd(): ?string
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $chapter = array_map('trim', $_POST);
-            $this->formControl($chapter);
+        if ($this->checkIsAdmin()) {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // clean $_POST data
+                $chapter = array_map('trim', $_POST);
+                $this->formControl($chapter);
 
 
-            // TODO validations (length, format...)
+                // TODO validations (length, format...)
 
-            if (!empty($this->errors)) {
-                return $this->twig->render('Chapter/admin_add.html.twig', [
-                    'errors' => $this->errors,
-                ]);
+                if (!empty($this->errors)) {
+                    return $this->twig->render('Chapter/admin_add.html.twig', [
+                        'errors' => $this->errors,
+                    ]);
+                }
+
+                // if validation is ok, insert and redirection
+                $chapterManager = new ChapterManager();
+                $id = $chapterManager->adminInsert($chapter);
+
+                header('Location:/chapters/admin_show?id=' . $id);
+                return null;
             }
 
-            // if validation is ok, insert and redirection
-            $chapterManager = new ChapterManager();
-            $id = $chapterManager->adminInsert($chapter);
-
-            header('Location:/chapters/admin_show?id=' . $id);
+            return $this->twig->render(
+                'Chapter/admin_add.html.twig'
+            );
+        } else {
+            header('location:/');
             return null;
         }
-
-        return $this->twig->render(
-            'Chapter/admin_add.html.twig'
-        );
     }
 }

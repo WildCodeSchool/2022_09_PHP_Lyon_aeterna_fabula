@@ -23,15 +23,15 @@
 					<form method="post" class="form">
 						<p class="log-reg-form">
 							<label class="formLabel" for="email">Email</label>
-							<input class="form-control" type "email" name="email" placeholder="Email">
+							<input class="form-control" type "email" name="email" id="email" placeholder="Email">
 						</p>
 						<p class="log-reg-form">
 							<label class="formLabel" for="password">Mot de passe</label>
-							<input class="form-control" type "text" name="password" placeholder="Mot de passe">
+							<input class="form-control" type="password" name="password" id="password" placeholder="Mot de passe">
 						</p>
 						<p class="log-reg-form">
-							<label class="formLabel" for="password">Répétez votre mot de passe</label>
-							<input class="form-control" type "text" name="password2" placeholder="Mot de passe">
+							<label class="formLabel" for="password2">Répétez votre mot de passe</label>
+							<input class="form-control" type="password" name="password2" id="password2" placeholder="Mot de passe">
 						</p>
 						<ul>
 							{% for error in errors %}
