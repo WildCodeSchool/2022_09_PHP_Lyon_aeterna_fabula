@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\ActionManager;
+use App\Model\AliasManager;
 use App\Model\ChapterManager;
 use App\Model\HistoricManager;
 
@@ -61,11 +63,12 @@ class ChapterController extends AbstractController
     public function showWithAction(int $id, int | null $action = null): string
     {
         $historicManager = new HistoricManager();
+        $aliasId = $_SESSION['alias_id'];
         if ($action != null) {
-            $historicManager->historicInsert($action);
+            $historicManager->historicInsert($action, $aliasId);
         }
 
-        $historics = $historicManager->selectActionsByHistoric();
+        $historics = $historicManager->selectActionsByHistoric($aliasId);
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->selectActionsByChapterId($id);
 

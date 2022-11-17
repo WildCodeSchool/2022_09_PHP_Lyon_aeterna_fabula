@@ -7,6 +7,8 @@ body {
     background-position: 50% 50%;
     background-repeat: no-repeat;
     margin: 25px;
+    background-size: cover;
+    animation: fadein 0.8s;
 }
 
 h1.formTitle {

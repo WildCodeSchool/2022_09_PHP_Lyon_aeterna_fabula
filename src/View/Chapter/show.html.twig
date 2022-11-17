@@ -56,7 +56,7 @@
 
 			{% for chapter in chapters %}
 				{% if chapter.target_id == NULL %}
-					<a class="buttonAction raise" href="/">{{ chapter.label }}</a>
+					<a class="buttonAction raise" href="/?action={{ chapter.actionID }}">{{ chapter.label }}</a>
 				{% else %}
 					<a class="buttonAction raise" href="/chapter/show?id={{ chapter.target_id }}&action={{ chapter.actionID }} ">{{ chapter.label }}</a>
 				{% endif %}

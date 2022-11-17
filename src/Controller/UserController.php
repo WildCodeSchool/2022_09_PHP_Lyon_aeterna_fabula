@@ -22,6 +22,7 @@ class UserController extends AbstractController
                 password_verify($credentials['password'], $user['password'])
             ) {
                 $_SESSION['email'] = $user['email'];
+                $_SESSION['user_id'] = $user['id'];
                 $_SESSION['is_admin'] = $user['is_admin'];
                 header('Location: /');
             } else {

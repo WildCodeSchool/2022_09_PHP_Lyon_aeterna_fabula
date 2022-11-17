@@ -217,7 +217,8 @@ VALUES
 
 CREATE TABLE `alias` (
   id INT NOT NULL auto_increment,
-  alias VARCHAR(255) NOT NULL,
+  player_name VARCHAR(55) NOT NULL,
+  nature VARCHAR(15) NOT NULL DEFAULT "ONGOING",
   user_id INT, 
 
   PRIMARY KEY (id),
@@ -228,7 +229,7 @@ CREATE TABLE `alias` (
 
 CREATE TABLE `historic` (
   id INT NOT NULL auto_increment,
-  `historic_date` DATE NOT NULL,
+  `historic_date` DATETIME NOT NULL,
   action_id INT, 
   alias_id INT,
 
