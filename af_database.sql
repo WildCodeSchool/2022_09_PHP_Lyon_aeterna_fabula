@@ -116,7 +116,7 @@ CREATE TABLE `alias` (
 
 CREATE TABLE `historic` (
   id INT NOT NULL auto_increment,
-  `historic_date` DATE NOT NULL,
+  `historic_date` DATETIME NOT NULL,
   action_id INT, 
   alias_id INT,
 

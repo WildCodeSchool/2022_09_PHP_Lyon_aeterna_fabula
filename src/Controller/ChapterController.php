@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\ActionManager;
+use App\Model\AliasManager;
 use App\Model\ChapterManager;
 use App\Model\HistoricManager;
 

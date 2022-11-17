@@ -91,7 +91,7 @@ class ChapterManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-        /**
+    /**
      * Get rows from database by ID.
      */
     public function selectActionsByChapterIdForAdmin(int $id): array|false
