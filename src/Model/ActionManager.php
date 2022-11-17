@@ -44,4 +44,11 @@ class ActionManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function selectActionWithTargetIdIsNull(): array
+    {
+        $query = "SELECT id FROM " . self::TABLE . " WHERE target_id IS NULL;";
+
+        return $this->pdo->query($query)->fetchAll();
+    }
 }

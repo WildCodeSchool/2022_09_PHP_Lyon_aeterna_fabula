@@ -17,7 +17,6 @@ class AliasManager extends AbstractManager
             `nature`,
             `user_id`
             )
-
              VALUES (
                 :player_name,
                 'ONGOING',
@@ -29,8 +28,13 @@ class AliasManager extends AbstractManager
         $statement->bindValue('player_name', $alias['player_name'], PDO::PARAM_STR);
         $statement->bindValue('user_id', $userId, PDO::PARAM_INT);
 
-
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
+    }
+
+    public function modifyNature(int $aliasId): void
+    {
+        $query = "UPDATE " . self::TABLE . " SET nature='FINISHED' WHERE id = $aliasId;";
+        $this->pdo->exec($query);
     }
 }
