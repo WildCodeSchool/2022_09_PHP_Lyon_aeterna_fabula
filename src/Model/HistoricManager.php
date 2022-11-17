@@ -30,7 +30,7 @@ class HistoricManager extends AbstractManager
         $statement->execute();
     }
 
-    public function selectActionsByHistoric(int $aliasId): array|false
+        public function selectActionsByHistoric(int $aliasId): array|false
     {
         // prepared request
         $query = "SELECT h.id, h.action_id, h.historic_date, a.id AS actionID, a.label, c.number, c.title, c.description

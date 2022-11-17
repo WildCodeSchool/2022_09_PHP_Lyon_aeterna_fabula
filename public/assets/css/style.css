@@ -19,6 +19,14 @@ body {
     background-color: #000;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #e2e2e2;
+}
+
 h1.chapterTitle {
     font: 700 2vw Cinzel Decorative;
     color: #e2e2e2;
@@ -195,12 +203,7 @@ div.backgroundImage {
     flex-wrap: wrap;
 }
 
-.historicList {
-    font: 300 20px Crimson Text;
-    margin-top: 25px;
-    color: #e2e2e2;
-    list-style: none
-}
+
 
 .popup-link a {
     background: #333;
@@ -233,14 +236,17 @@ div.backgroundImage {
     background-color: #000;
     margin: auto;
     padding: 15px;
-    padding-right: 50px;
     border: 1px solid #888;
+    max-height: 100%;
+    overflow: auto;
 }
 
 .popup-content p {
-    font-size: 17px;
-    padding: 10px;
-    line-height: 20px;
+    line-height: 1.3;
+    font-weight: 300;
+    font-size: 1.2rem;
+    font-family: "Crimson Text";
+    color: #e2e2e2;
 }
 
 .popup-content a.close {
@@ -274,5 +280,69 @@ div.backgroundImage {
 .popup-container h3 {
     margin: 10px;
 }
+
+.accordion {
+    font: 300 20px Crimson Text;
+    margin-top: 25px;
+    color: #e2e2e2;
+    list-style: none;
+    max-height: 90%;
+}
+
+.detailButton {
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.3;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.line {
+    text-decoration: overline;
+    text-decoration-style: dashed;
+    text-decoration-color: #efd807;
+    text-decoration-thickness: 1px;
+}
+
+.detailButton::before {
+    content: '+';
+    padding-right: 10px;
+    text-decoration: none;
+}
+
+.container.active .detailButton::before {
+    content: '➞';
+    text-decoration: none;
+}
+
+.historicDetail {
+    display: none;
+}
+
+h2 {
+    font: 700 2vw Cinzel Decorative;
+    color: #efd807;
+    font-size: 1rem;
+}
+
+.detailText {
+    font-style: italic;
+    line-height: 1.3;
+    font-size: 1rem;
+}
+
+.popup-content .chapter {
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.3;
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+
+.container.active .historicDetail {
+    display: block;
+}
+
+
 
 /*End popup styles*/
