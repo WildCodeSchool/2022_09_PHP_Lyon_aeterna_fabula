@@ -16,7 +16,7 @@
 			<a href="#popup1"><img class="historicButton" src="/assets/images/historicButton.png"></a>
 		</div>
 		<div id="popup1" class="popup-container">
-			<div class="popup-content col-11 col-md-6">
+			<div class="popup-content col-12 col-md-6">
 				<a href="#" class="close">&times;</a>
 				<h3>Mon parcours</h3>
 				<ul class="accordion">
@@ -24,12 +24,12 @@
 						{% if historic.label != NULL %}
 							<li class="container">
 								<div class="historicDetail">
-									<p>Chapitre
+									<p class="chapter">Chapitre
 										{{historic.number}}</p>
-									<h1>{{historic.title}}</h1>
+									<h2>{{historic.title}}</h2>
 									<p class="detailText">{{historic.description}}</p>
 								</div>
-								<div class="detailButton">
+								<div class="detailButton line">
 									{{historic.label}}
 								</div>
 							</li>
