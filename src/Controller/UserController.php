@@ -65,12 +65,20 @@ class UserController extends AbstractController
 
     public function emailValidator(string $email): void
     {
+        $userManager = new UserManager();
+        $storedEmails = $userManager->selectAll();
+        $storedEmails = array_column($storedEmails, 'email');
+
         if (empty($email)) {
-            $this->errors[] = "Le champ Email est obligatoire";
+            $this->errors[] = "Le champ e-mail est obligatoire.";
         }
 
         if (!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $this->errors[] = "$email n'est pas un email valide";
+            $this->errors[] = "$email n'est pas un e-mail valide.";
+        }
+
+        if (in_array($email, $storedEmails)) {
+            $this->errors[] = "Un compte existe déjà pour cet e-mail.";
         }
     }
 
