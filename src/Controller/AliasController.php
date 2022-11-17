@@ -29,9 +29,31 @@ class AliasController extends AbstractController
         // TODO validations (length, format...)
         $this->stringCheck($alias, 'player_name', 'L\'alias', 55);
     }
+
     public function start()
     {
-        return $this->twig->render('Alias/alias_index.html.twig');
+        $userId = $_SESSION['user_id'];
+        $aliasManager = new AliasManager();
+        $alias = $aliasManager->selectOneByUserId($userId);
+        $aliasNatures = array_column($alias, 'nature');
+        $aliasOngoing = $aliasManager->selectAliasNameOngoing($userId);
+        $aliasNames = array_column($aliasOngoing, 'player_name');
+
+        $aliasWithLastChapter = [];
+        foreach ($alias as $aliasSelected) {
+            if ($aliasSelected['nature'] == 'ONGOING') {
+                $aliasLastChapterId = $aliasManager->selectLastActionByHistoric($aliasSelected['id']);
+                $aliasSelected['lastChapter'] = $aliasLastChapterId;
+                $aliasWithLastChapter[] = $aliasSelected;
+            }
+        }
+
+            return $this->twig->render(
+                'Alias/alias_index.html.twig',
+                ['aliasNatures' => $aliasNatures,
+                'aliasNames' => $aliasNames,
+                'aliasWithLastChapter' => $aliasWithLastChapter,]
+            );
     }
 
     public function create(): ?string
@@ -52,8 +74,6 @@ class AliasController extends AbstractController
 
             // if validation is ok, insert and redirection
 
-            // récuperer l'id user de la session : voir avec les experts
-            // $_SESSION['user_id'] = $user['email']
             $userId = $_SESSION['user_id'];
 
             $aliasManager = new AliasManager();

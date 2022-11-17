@@ -17,12 +17,12 @@ class HomeController extends AbstractController
         if ($action != null) {
             $actionManager = new ActionManager();
             $targetIdIsNull = $actionManager->selectActionWithTargetIdIsNull();
-            $toto = array_column($targetIdIsNull, 'id');
+            $endingAction = array_column($targetIdIsNull, 'id');
 
             $aliasId = $_SESSION['alias_id'];
 
 
-            if (in_array($action, $toto)) {
+            if (in_array($action, $endingAction)) {
                 $aliasManager = new AliasManager();
                 $aliasManager->modifyNature($aliasId);
             };
