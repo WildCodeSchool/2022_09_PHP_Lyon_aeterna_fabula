@@ -10,7 +10,9 @@
 {% block content %}
 	<nav class="sectionNav">
 		<div class="sectionHistoric">
-			<a class="logo" href="/logoutAlias"><img class="logoSize" src="/assets/images/logo.svg"></a>
+			{% for chapter in chapters %}
+				<a class="logo" href="/logoutAlias?alias={{ aliasId }}&action={{ chapter.actionID }}"><img class="logoSize" src="/assets/images/logo.svg"></a>
+			{% endfor %}
 		</div>
 		<div class="sectionHistoric">
 			<a href="#popup1"><img class="historicButton" src="/assets/images/historicButton.png"></a>
@@ -56,9 +58,9 @@
 
 			{% for chapter in chapters %}
 				{% if chapter.target_id == NULL %}
-					<a class="buttonAction raise" href="/logoutAlias">{{ chapter.label }}</a>
+					<a class="buttonAction raise" href="/logoutAlias?alias={{ aliasId }}&action={{ chapter.actionID }}">{{ chapter.label }}</a>
 				{% else %}
-					<a class="buttonAction raise" href="/chapter/show?id={{ chapter.target_id }}&action={{ chapter.actionID }} ">{{ chapter.label }}</a>
+					<a class="buttonAction raise" href="/chapter/show?alias={{ aliasId }}&id={{ chapter.target_id }}&action={{ chapter.actionID }} ">{{ chapter.label }}</a>
 				{% endif %}
 			{% endfor %}
 		</div>

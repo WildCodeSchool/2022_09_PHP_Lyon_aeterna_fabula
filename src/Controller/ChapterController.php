@@ -60,7 +60,7 @@ class ChapterController extends AbstractController
         }
     }
 
-    public function showWithAction(int | null $alias = null, int $id, int | null $action = null): string
+    public function showWithAction(int $alias, int $id, int | null $action = null): string
     {
         if (isset($_SESSION['alias_id'])) {
             $aliasId = $_SESSION['alias_id'];
@@ -78,7 +78,10 @@ class ChapterController extends AbstractController
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->selectActionsByChapterId($id);
 
-        return $this->twig->render('Chapter/show.html.twig', ['chapters' => $chapters, 'historics' => $historics]);
+        return $this->twig->render(
+            'Chapter/show.html.twig',
+            ['aliasId' => $aliasId, 'chapters' => $chapters, 'historics' => $historics]
+        );
     }
 
     public function showWithActionForAdmin(int $id): ?string

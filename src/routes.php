@@ -21,7 +21,7 @@ return [
     'login' => ['UserController', 'showLoginPage', ['inscrit']],
     'register' => ['UserController', 'showRegisterPage'],
     'logout' => ['UserController', 'logout'],
-    'logoutAlias' => ['AliasController', 'logoutAlias'],
+    'logoutAlias' => ['AliasController', 'logoutAlias', ['alias', 'action']],
     'alias' => ['AliasController', 'start',],
     'alias/create' => ['AliasController', 'create',],
 

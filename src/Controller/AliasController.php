@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\AliasManager;
 use App\Model\HistoricManager;
+use App\Model\ActionManager;
 
 class AliasController extends AbstractController
 {
@@ -91,9 +92,27 @@ class AliasController extends AbstractController
         return $this->twig->render('Alias/alias_create.html.twig');
     }
 
-    public function logoutAlias()
+    public function logoutAlias(int $alias, int | null $action)
     {
+        if ($action != null) {
+            $actionManager = new ActionManager();
+            $targetIdIsNull = $actionManager->selectActionWithTargetIdIsNull();
+            $endingAction = array_column($targetIdIsNull, 'id');
+
+            if (isset($_SESSION['alias_id'])) {
+                $aliasId = $_SESSION['alias_id'];
+            } else {
+                $aliasId = $alias;
+            }
+
+            if (in_array($action, $endingAction)) {
+                $aliasManager = new AliasManager();
+                $aliasManager->modifyNature($aliasId);
+            };
+        }
+
         unset($_SESSION['alias_id']);
+
         header('Location: /');
     }
 }
