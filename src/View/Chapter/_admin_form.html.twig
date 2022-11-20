@@ -7,6 +7,9 @@
 	<p class="form-group">
 		<label for="number">Numéro du chapitre</label>
 		<input class="form-control" type="number" value="{{ chapter.number }}" placeholder="Entrez un numéro de chapitre dont vous aurez vérifié la cohérence" name="number" id="number" required>
+		<span class="disclaimer">
+			Attention: vérifier la cohérence du numéro de chapitre attribué.
+		</span>
 	</p>
 	<p class="form-group">
 		<label for="title">Titre</label>
@@ -19,6 +22,9 @@
 	<p class="form-group">
 		<label for="background_image">Nom de l'image</label>
 		<input class="form-control" type="text" value="{{ chapter.background_image }}" placeholder="Entrez le nom de l'image de fond tel qu'enregistré dans le projet avec l'extension" name="background_image" id="background_image" required>
+		<span class="disclaimer">
+			Attention : enregistrer le fichier image dans /public/assets/images
+		</span>
 	</p>
 	<p class="form-group">
 		<label for="background_image_alt">Balise alt de l'image</label>

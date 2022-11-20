@@ -128,14 +128,13 @@ class ChapterController extends AbstractController
                 // clean $_POST data
                 $chapter = array_map('trim', $_POST);
                 $this->formControl($chapter);
-
+                // if validation is ko, return errors without emptying form
                 if (!empty($this->errors)) {
                     return $this->twig->render('Chapter/admin_edit.html.twig', [
+                        'chapter' => $chapter,
                         'errors' => $this->errors,
                     ]);
                 }
-
-
                 // if validation is ok, update and redirection
                 $chapterManager->adminUpdate($chapter);
 

@@ -187,7 +187,7 @@ VALUES
   ("Se diriger vers le donjon", 9, 5),
   ("Se diriger vers la montagne", 10, 2),
   ("Se diriger vers le donjon", 10, 5),
-  ("Faire demi tour", 13, 7),
+  ("Retourner au pied de la montagne", 13, 2),
   ("Aller au combat", 13, 14),
   ("Dégainer votre épée", 14, 15),
   ("Décocher une flèche", 14, 16),

@@ -7,6 +7,7 @@
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/style.css">
 	<link rel="stylesheet" href="/assets/css/alias.css">
+	<link rel="stylesheet" href="/assets/css/home.css">
 {% endblock %}
 
 {% block content %}
@@ -15,8 +16,9 @@
 		<div class="sectionHistoric">
 			<a class="logo" href="/"><img class="logoSize" src="/assets/images/logo.svg"></a>
 		</div>
-		<div class="sectionHistoric">
-			<a href="METTRELADECOICI" class="deconnexion">Se déconnecter</a>
+		<div class="sectionHistoric sign-links">
+			<a href="/logout">Se déconnecter
+			</a>
 		</div>
 	</nav>
 
@@ -44,9 +46,6 @@
 			<div>
 				<a href="/alias/create">
 					<button type="button" class="buttonAliasText">Commencer une<br>nouvelle histoire</button>
-				</a>
-				<a href="/alias/create">
-					<button type="button" class="buttonAliasText">Supprimer<br>son compte</button>
 				</a>
 			</div>
 		</main>
