@@ -41,7 +41,8 @@ class AliasManager extends AbstractManager
     public function selectOneByUserId(int $id): array|false
     {
         // prepared request
-        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE user_id=:id");
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE .
+            " WHERE user_id=:id AND nature='ONGOING' ORDER BY id DESC LIMIT 3;");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 

@@ -34,26 +34,34 @@ class AliasController extends AbstractController
     {
         $userId = $_SESSION['user_id'];
         $aliasManager = new AliasManager();
-        $alias = $aliasManager->selectOneByUserId($userId);
-        $aliasNatures = array_column($alias, 'nature');
-        $aliasOngoing = $aliasManager->selectAliasNameOngoing($userId);
-        $aliasNames = array_column($aliasOngoing, 'player_name');
+        $aliasOngoing = $aliasManager->selectOneByUserId($userId);
+        // var_dump($aliasOngoing);
+        // die();
+
+        // $aliasNatures = array_column($alias, 'nature');
+        // $aliasOngoing = $aliasManager->selectAliasNameOngoing($userId);
+        // $aliasNames = array_column($aliasOngoing, 'player_name');
 
         $aliasWithLastChapter = [];
-        foreach ($alias as $aliasSelected) {
-            if ($aliasSelected['nature'] == 'ONGOING') {
-                $aliasLastChapterId = $aliasManager->selectLastActionByHistoric($aliasSelected['id']);
-                $aliasSelected['lastChapter'] = $aliasLastChapterId;
-                $aliasWithLastChapter[] = $aliasSelected;
-            }
+        foreach ($aliasOngoing as $aliasSelected) {
+            // if ($aliasSelected['nature'] == 'ONGOING') {
+            $aliasLastChapterId = $aliasManager->selectLastActionByHistoric($aliasSelected['id']);
+            $aliasSelected['lastChapter'] = $aliasLastChapterId;
+            $aliasWithLastChapter[] = $aliasSelected;
+            // }
         }
+        // var_dump($aliasWithLastChapter);
+        // die();
 
-            return $this->twig->render(
-                'Alias/alias_index.html.twig',
-                ['aliasNatures' => $aliasNatures,
-                'aliasNames' => $aliasNames,
-                'aliasWithLastChapter' => $aliasWithLastChapter,]
-            );
+        return $this->twig->render(
+            'Alias/alias_index.html.twig',
+            [
+                // 'aliasNatures' => $aliasNatures,
+                // 'aliasNames' => $aliasNames,
+                'aliasOngoing' => $aliasOngoing,
+                'aliasWithLastChapter' => $aliasWithLastChapter,
+            ]
+        );
     }
 
     public function create(): ?string

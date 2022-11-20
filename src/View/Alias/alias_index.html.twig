@@ -20,12 +20,33 @@
 		</div>
 	</nav>
 
-	{% if 'ONGOING' in aliasNatures %}
+	{# {% if 'ONGOING' in aliasNatures %}
+															<main class="container sm col-md-12 mt-5 align-self-md-center">
+																{% for alias in aliasWithLastChapter %}
+																	<div class="sectionbuttonAlias container-md">
+																		{% for lastChapter in alias.lastChapter %}
+																			<a href="/chapter/show?id={{ alias.lastChapter.target_id }}&action={{alias.lastChapter.id}}">
+																			{% endfor %}
+																			<button type="button" class="buttonAlias">Continuer
+																				<br>l'histoire
+																				<br>de
+																				{{ alias.player_name }}</button>
+																		</a>
+													
+																		<a href="/chapter/show?id={{ aliasLastChapterId.target_id }}">
+																			<button type="button" class="buttonAliasText">Supprimer cette<br>
+																				histoire</button>
+																		</a>
+													
+																	</div>
+																{% endfor %} #}
+
+	{% if aliasOngoing is not empty %}
 		<main class="container sm col-md-12 mt-5 align-self-md-center">
-			{% for alias in aliasWithLastChapter %}
+			{% for alias in aliasOngoing %}
 				<div class="sectionbuttonAlias container-md">
-					{% for lastChapter in alias.lastChapter %}
-						<a href="/chapter/show?id={{ alias.lastChapter.target_id }}&action={{alias.lastChapter.id}}">
+					{% for lastChapter in aliasWithLastChapter %}
+						<a href="/chapter/show?id={{ lastChapter.target_id }}&action={{lastChapter.id}}">
 						{% endfor %}
 						<button type="button" class="buttonAlias">Continuer
 							<br>l'histoire
@@ -33,14 +54,15 @@
 							{{ alias.player_name }}</button>
 					</a>
 
-					<a href="/chapter/show?id={{ aliasLastChapterId.target_id }}">
-						<button type="button" class="buttonAliasText">Supprimer cette<br>
-							histoire</button>
-					</a>
+					{# <a href="/chapter/show?id={{ aliasLastChapterId.target_id }}">
+																															<button type="button" class="buttonAliasText">Supprimer cette<br>
+																																histoire</button>
+																														</a> #}
 
 				</div>
-			{% endfor %}
 
+
+			{% endfor %}
 			<div>
 				<a href="/alias/create">
 					<button type="button" class="buttonAliasText">Commencer une<br>nouvelle histoire</button>
@@ -49,9 +71,11 @@
 					<button type="button" class="buttonAliasText">Supprimer<br>son compte</button>
 				</a>
 			</div>
+
 		</main>
 
 	{% else %}
+
 
 		<main class="container sm col-md-12 mt-5 align-self-md-center">
 			<div class="sectionbuttonAlias container-md">
@@ -60,6 +84,5 @@
 				</a>
 			</div>
 		</main>
-
 	{% endif %}
 {% endblock %}
