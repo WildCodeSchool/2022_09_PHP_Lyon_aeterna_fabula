@@ -35,6 +35,7 @@ class AliasController extends AbstractController
         $userId = $_SESSION['user_id'];
         $aliasManager = new AliasManager();
         $alias = $aliasManager->selectOneByUserId($userId);
+
         $aliasNatures = array_column($alias, 'nature');
         $aliasOngoing = $aliasManager->selectAliasNameOngoing($userId);
         $aliasNames = array_column($aliasOngoing, 'player_name');
@@ -80,11 +81,19 @@ class AliasController extends AbstractController
             $activeAlias = $aliasManager->addAlias($alias, $userId);
 
             $_SESSION['alias_id'] = $activeAlias;
+            $_SESSION['player_name'] = $activeAlias;
 
             header('Location:/incipit');
+
             return null;
         }
 
         return $this->twig->render('Alias/alias_create.html.twig');
+    }
+
+    public function logoutAlias()
+    {
+        unset($_SESSION['alias_id']);
+        header('Location: /');
     }
 }

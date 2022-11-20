@@ -16,7 +16,7 @@
 			<a class="logo" href="/"><img class="logoSize" src="/assets/images/logo.svg"></a>
 		</div>
 		<div class="sectionHistoric">
-			<a href="METTRELADECOICI" class="deconnexion">Se déconnecter</a>
+			<a href="/logout" class="deconnexion">Se déconnecter</a>
 		</div>
 	</nav>
 
@@ -25,7 +25,7 @@
 			{% for alias in aliasWithLastChapter %}
 				<div class="sectionbuttonAlias container-md">
 					{% for lastChapter in alias.lastChapter %}
-						<a href="/chapter/show?id={{ alias.lastChapter.target_id }}&action={{alias.lastChapter.id}}">
+						<a href="/chapter/show?alias={{ alias.id }}&id={{ alias.lastChapter.target_id }}&action={{alias.lastChapter.id}}">
 						{% endfor %}
 						<button type="button" class="buttonAlias">Continuer
 							<br>l'histoire

@@ -60,10 +60,16 @@ class ChapterController extends AbstractController
         }
     }
 
-    public function showWithAction(int $id, int | null $action = null): string
+    public function showWithAction(int | null $alias = null, int $id, int | null $action = null): string
     {
+        if (isset($_SESSION['alias_id'])) {
+            $aliasId = $_SESSION['alias_id'];
+        } else {
+            $aliasId = $alias;
+        }
+
         $historicManager = new HistoricManager();
-        $aliasId = $_SESSION['alias_id'];
+
         if ($action != null) {
             $historicManager->historicInsert($action, $aliasId);
         }
