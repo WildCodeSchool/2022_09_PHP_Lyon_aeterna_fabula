@@ -203,8 +203,6 @@ div.backgroundImage {
     flex-wrap: wrap;
 }
 
-
-
 .popup-link a {
     background: #333;
     color: #fff;
@@ -333,7 +331,5 @@ h2 {
 .container.active .historicDetail {
     display: block;
 }
-
-
 
 /*End popup styles*/
