@@ -84,11 +84,27 @@
 			</div>
 		</div>
 		<div class="blockButton">
-			<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id -1 }} ">
-				← Chapitre précédent</a>
-			<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
-			<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id +1 }} ">Chapitre suivant →
-			</a>
+			{% if haspreviouschapter == 0 %}
+				{% if hasnextchapter == 0 %}
+					<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
+				{% else %}
+					<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
+					<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id +1 }} ">Chapitre suivant →
+					</a>
+				{% endif %}
+			{% else %}
+				{% if hasnextchapter == 0 %}
+					<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id -1 }} ">
+						← Chapitre précédent</a>
+					<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
+				{% else %}
+					<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id -1 }} ">
+						← Chapitre précédent</a>
+					<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
+					<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id +1 }} ">Chapitre suivant →
+					</a>
+				{% endif %}
+			{% endif %}
 		</div>
 	</main>
 {% endblock %}

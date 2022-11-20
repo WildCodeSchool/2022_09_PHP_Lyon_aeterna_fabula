@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
 
-
-body {
+/* body {
     background-image: url(../../assets/images/Groupe-15.jpg);
     background-position: 50% 50%;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     margin: 25px;
     background-size: cover;
     animation: fadein 0.8s;
-}
+} */
 
 h1.formTitle {
     font-size: 30px;

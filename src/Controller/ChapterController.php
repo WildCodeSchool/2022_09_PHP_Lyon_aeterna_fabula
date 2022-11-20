@@ -84,9 +84,17 @@ class ChapterController extends AbstractController
             $otherChapterManager = new ChapterManager();
             $fromActions = $otherChapterManager->selectActionsFromAdmin($id);
 
+            $hasNextChapter = $chapterManager->hasNextChapter($id);
+            $hasPreviousChapter = $chapterManager->hasPreviousChapter($id);
+
             return $this->twig->render(
                 'Chapter/admin_show.html.twig',
-                ['chapters' => $chapters, 'fromActions' => $fromActions]
+                [
+                    'chapters' => $chapters,
+                    'fromActions' => $fromActions,
+                    'hasnextchapter' => $hasNextChapter,
+                    'haspreviouschapter' => $hasPreviousChapter
+                ]
             );
         } else {
             header('location:/');

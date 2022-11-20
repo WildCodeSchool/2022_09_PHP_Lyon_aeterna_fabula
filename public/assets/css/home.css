@@ -4,9 +4,11 @@
 body {
     background-image: url(../../assets/images/Groupe-15.jpg);
     background-position: 50% 50%;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
+    margin: 25px;
     background-size: cover;
     animation: fadein 0.8s;
+    height: 130vh;
 }
 
 .main-content {
@@ -49,8 +51,8 @@ body {
     color: #e4e4e4;
     display: block;
     margin: 0 auto;
-    margin-top: 80px;
-    margin-bottom: 40px;
+    margin-top: 0;
+    margin-bottom: 2em;
 }
 
 .initials {
@@ -61,11 +63,9 @@ body {
     display: block;
     text-align: center;
     color: #e4e4e4;
-    font-size: 34px;
+    font-size: 2em;
     font-family: 'Crimson Text', serif;
     padding: 0;
-    padding-top: 25px;
-    padding-right: 25px;
 }
 
 .sign-links li {
