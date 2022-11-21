@@ -124,4 +124,24 @@ class ChapterManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function hasNextChapter(int $id): bool
+    {
+        $query = "SELECT * FROM " . self::TABLE . " WHERE id=:id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $id + 1, \PDO::PARAM_INT);
+        $statement->execute();
+        $nextChapter = $statement->fetchAll();
+        return !empty($nextChapter);
+    }
+
+    public function hasPreviousChapter(int $id): bool
+    {
+        $query = "SELECT * FROM " . self::TABLE . " WHERE id=:id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue('id', $id - 1, \PDO::PARAM_INT);
+        $statement->execute();
+        $previousChapter = $statement->fetchAll();
+        return !empty($previousChapter);
+    }
 }

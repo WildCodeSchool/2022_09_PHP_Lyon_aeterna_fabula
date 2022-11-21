@@ -93,9 +93,17 @@ class ChapterController extends AbstractController
             $otherChapterManager = new ChapterManager();
             $fromActions = $otherChapterManager->selectActionsFromAdmin($id);
 
+            $hasNextChapter = $chapterManager->hasNextChapter($id);
+            $hasPreviousChapter = $chapterManager->hasPreviousChapter($id);
+
             return $this->twig->render(
                 'Chapter/admin_show.html.twig',
-                ['chapters' => $chapters, 'fromActions' => $fromActions]
+                [
+                    'chapters' => $chapters,
+                    'fromActions' => $fromActions,
+                    'hasnextchapter' => $hasNextChapter,
+                    'haspreviouschapter' => $hasPreviousChapter
+                ]
             );
         } else {
             header('location:/');
@@ -137,14 +145,13 @@ class ChapterController extends AbstractController
                 // clean $_POST data
                 $chapter = array_map('trim', $_POST);
                 $this->formControl($chapter);
-
+                // if validation is ko, return errors without emptying form
                 if (!empty($this->errors)) {
                     return $this->twig->render('Chapter/admin_edit.html.twig', [
+                        'chapter' => $chapter,
                         'errors' => $this->errors,
                     ]);
                 }
-
-
                 // if validation is ok, update and redirection
                 $chapterManager->adminUpdate($chapter);
 
