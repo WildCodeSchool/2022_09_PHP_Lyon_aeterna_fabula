@@ -9,6 +9,9 @@ class IncipitController extends AbstractController
      */
     public function incipit(): string
     {
-        return $this->twig->render('Incipit/incipit.html.twig');
+        $aliasId = $_SESSION['alias_id'];
+        $aliasName = $_SESSION['player_name'];
+
+        return $this->twig->render('Incipit/incipit.html.twig', ['aliasId' => $aliasId, 'aliasName' => $aliasName]);
     }
 }

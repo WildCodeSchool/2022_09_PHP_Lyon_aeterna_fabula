@@ -26,7 +26,7 @@
 			{% for alias in aliasWithLastChapter %}
 				<div class="sectionbuttonAlias container-md">
 					{% for lastChapter in alias.lastChapter %}
-						<a href="/chapter/show?id={{ alias.lastChapter.target_id }}&action={{alias.lastChapter.id}}">
+						<a href="/chapter/show?alias={{ alias.id }}&id={{ alias.lastChapter.target_id }}&action={{alias.lastChapter.id}}">
 						{% endfor %}
 						<button type="button" class="buttonAlias">Continuer
 							<br>l'histoire

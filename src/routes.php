@@ -8,7 +8,6 @@
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
 return [
     // simple MVC example routes
-    '' => ['HomeController', 'index', ['action']],
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
@@ -16,11 +15,13 @@ return [
     'items/delete' => ['ItemController', 'delete',],
 
     // user routes
-    'chapter/show' => ['ChapterController', 'showWithAction', ['id', 'action']],
-    'incipit' => ['IncipitController', 'incipit',],
+    '' => ['HomeController', 'index', ['action']],
+    'chapter/show' => ['ChapterController', 'showWithAction', ['alias', 'id', 'action']],
+    'incipit' => ['IncipitController', 'incipit'],
     'login' => ['UserController', 'showLoginPage', ['inscrit']],
     'register' => ['UserController', 'showRegisterPage'],
     'logout' => ['UserController', 'logout'],
+    'logoutAlias' => ['AliasController', 'logoutAlias', ['alias', 'action']],
     'alias' => ['AliasController', 'start',],
     'alias/create' => ['AliasController', 'create',],
 
