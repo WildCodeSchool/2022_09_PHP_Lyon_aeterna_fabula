@@ -18,8 +18,8 @@
 
 		<section class="container-fluid">
 
-			<div class="row">
-				<div class="main-content order-md-2 mt-5">
+			<div class="row d-inline-flex d-md-flex">
+				<div class="main-content order-md-2">
 					<h1>
 						<span class="initials">Æ</span>terna
 						<span class="initials">F</span>abula</h1>
@@ -27,26 +27,28 @@
 					<p>Bonjour
 						{{ user.email }}<br>
 						Bienvenue dans une histoire dont vous êtes le héros, l'héroine</p>
-					<a href="/alias">
-						<button class="play-button">Jouer</button>
-					</a>
+					<div class="m-3">
+						<a href="/alias">
+							<button class="play-button">Jouer</button>
+						</a>
+					</div>
 				</div>
-				<div class="order-md-1 mb-md-5">
+				<div class="order-md-1 m-0 mb-md-5">
 
-					<div class="sign-links d-md-flex justify-content-end">
+					<div class="sign-links mt-5 mt-md-0 d-md-flex justify-content-end">
 						{% if user.is_admin == 1 %}
 							<div class="mx-3">
 								<a href="/admin/admin_homepage">Administration</a>
 							</div>
 							<div class="mx-3 d-none d-md-block">|</div>
 							<div class="mx-3 d-md-none"><img id="line" src="/assets/images/Vector_1.svg"></div>
-							<div>
+							<div class="mx-3">
 								<a href="/logout">Se déconnecter
 								</a>
 							</div>
 
 						{% else %}
-							<div>
+							<div class="mx-3">
 								<a href="/logout">Se déconnecter
 								</a>
 							</div>
@@ -60,25 +62,27 @@
 	{% else %}
 
 		<section class="container-fluid">
-			<div class="row">
-				<div class="main-content order-md-2 mt-5">
+			<div class="row d-inline-flex d-md-flex">
+				<div class="main-content order-md-2">
 					<h1>
 						<span class="initials">Æ</span>terna
 						<span class="initials">F</span>abula</h1>
 					<img src="/assets/images/noun-frame-346217.svg">
 					<p>Une histoire dont vous êtes le héros, l'héroine</p>
-					<a href="/login">
-						<button class="play-button">Jouer</button>
-					</a>
+					<div class="m-3">
+						<a href="/login">
+							<button class="play-button">Jouer</button>
+						</a>
+					</div>
 				</div>
-				<div class="order-md-1 mb-md-5">
-					<div class="sign-links d-md-flex justify-content-end">
+				<div class="order-md-1 m-0 mb-md-5">
+					<div class="sign-links mt-5 mt-md-0 d-md-flex justify-content-end">
 						<div class="mx-3">
 							<a href="/register">S'inscrire</a>
 						</div>
 						<div class="mx-3 d-none d-md-block">|</div>
 						<div class="mx-3 d-md-none"><img id="line" src="/assets/images/Vector_1.svg"></div>
-						<div>
+						<div class="mx-3">
 							<a href="/login">Se connecter</a>
 						</div>
 					</div>
