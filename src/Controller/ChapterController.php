@@ -60,28 +60,35 @@ class ChapterController extends AbstractController
         }
     }
 
-    public function showWithAction(int $alias, int $id, int | null $action = null): string
+    public function showWithAction(int $alias, int $id, int | null $action = null): ?string
     {
-        if (isset($_SESSION['alias_id'])) {
-            $aliasId = $_SESSION['alias_id'];
+        // restriction à un utilisateur connecté
+        if (empty($_SESSION)) {
+            header('location:/');
+            return null;
         } else {
-            $aliasId = $alias;
+
+            if (isset($_SESSION['alias_id'])) {
+                $aliasId = $_SESSION['alias_id'];
+            } else {
+                $aliasId = $alias;
+            }
+
+            $historicManager = new HistoricManager();
+
+            if ($action != null) {
+                $historicManager->historicInsert($action, $aliasId);
+            }
+
+            $historics = $historicManager->selectActionsByHistoric($aliasId);
+            $chapterManager = new ChapterManager();
+            $chapters = $chapterManager->selectActionsByChapterId($id);
+
+            return $this->twig->render(
+                'Chapter/show.html.twig',
+                ['aliasId' => $aliasId, 'chapters' => $chapters, 'historics' => $historics]
+            );
         }
-
-        $historicManager = new HistoricManager();
-
-        if ($action != null) {
-            $historicManager->historicInsert($action, $aliasId);
-        }
-
-        $historics = $historicManager->selectActionsByHistoric($aliasId);
-        $chapterManager = new ChapterManager();
-        $chapters = $chapterManager->selectActionsByChapterId($id);
-
-        return $this->twig->render(
-            'Chapter/show.html.twig',
-            ['aliasId' => $aliasId, 'chapters' => $chapters, 'historics' => $historics]
-        );
     }
 
     public function showWithActionForAdmin(int $id): ?string

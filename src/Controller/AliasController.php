@@ -33,63 +33,79 @@ class AliasController extends AbstractController
 
     public function start()
     {
-        $userId = $_SESSION['user_id'];
-        $aliasManager = new AliasManager();
-        $alias = $aliasManager->selectOneByUserId($userId);
+        // restriction à un utilisateur connecté
+        if (empty($_SESSION)) {
+            header('location:/');
+            return null;
+        } else {
 
-        $aliasNatures = array_column($alias, 'nature');
-        $aliasOngoing = $aliasManager->selectAliasNameOngoing($userId);
-        $aliasNames = array_column($aliasOngoing, 'player_name');
+            $userId = $_SESSION['user_id'];
+            $aliasManager = new AliasManager();
+            $alias = $aliasManager->selectOneByUserId($userId);
 
-        $aliasWithLastChapter = [];
-        foreach ($alias as $aliasSelected) {
-            if ($aliasSelected['nature'] == 'ONGOING') {
-                $aliasLastChapterId = $aliasManager->selectLastActionByHistoric($aliasSelected['id']);
-                $aliasSelected['lastChapter'] = $aliasLastChapterId;
-                $aliasWithLastChapter[] = $aliasSelected;
+            $aliasNatures = array_column($alias, 'nature');
+            $aliasOngoing = $aliasManager->selectAliasNameOngoing($userId);
+            $aliasNames = array_column($aliasOngoing, 'player_name');
+
+            $aliasWithLastChapter = [];
+            foreach ($alias as $aliasSelected) {
+                if ($aliasSelected['nature'] == 'ONGOING') {
+                    $aliasLastChapterId = $aliasManager->selectLastActionByHistoric($aliasSelected['id']);
+                    $aliasSelected['lastChapter'] = $aliasLastChapterId;
+                    $aliasWithLastChapter[] = $aliasSelected;
+                }
             }
-        }
 
             return $this->twig->render(
                 'Alias/alias_index.html.twig',
-                ['aliasNatures' => $aliasNatures,
-                'aliasNames' => $aliasNames,
-                'aliasWithLastChapter' => $aliasWithLastChapter,]
+                [
+                    'aliasNatures' => $aliasNatures,
+                    'aliasNames' => $aliasNames,
+                    'aliasWithLastChapter' => $aliasWithLastChapter,
+                ]
             );
+        }
     }
 
     public function create(): ?string
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $alias = array_map('trim', $_POST);
-            $this->formControl($alias);
+        // restriction à un utilisateur connecté
+        if (empty($_SESSION)) {
+            header('location:/');
+            return null;
+        } else {
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // clean $_POST data
+                $alias = array_map('trim', $_POST);
+                $this->formControl($alias);
 
 
-            // TODO validations (length, format...)
+                // TODO validations (length, format...)
 
-            if (!empty($this->errors)) {
-                return $this->twig->render('Alias/alias_create.html.twig', [
-                    'errors' => $this->errors,
-                ]);
+                if (!empty($this->errors)) {
+                    return $this->twig->render('Alias/alias_create.html.twig', [
+                        'errors' => $this->errors,
+                    ]);
+                }
+
+                // if validation is ok, insert and redirection
+
+                $userId = $_SESSION['user_id'];
+
+                $aliasManager = new AliasManager();
+                $activeAlias = $aliasManager->addAlias($alias, $userId);
+
+                $_SESSION['alias_id'] = $activeAlias;
+                $_SESSION['player_name'] = $activeAlias;
+
+                header('Location:/incipit');
+
+                return null;
             }
 
-            // if validation is ok, insert and redirection
-
-            $userId = $_SESSION['user_id'];
-
-            $aliasManager = new AliasManager();
-            $activeAlias = $aliasManager->addAlias($alias, $userId);
-
-            $_SESSION['alias_id'] = $activeAlias;
-            $_SESSION['player_name'] = $activeAlias;
-
-            header('Location:/incipit');
-
-            return null;
+            return $this->twig->render('Alias/alias_create.html.twig');
         }
-
-        return $this->twig->render('Alias/alias_create.html.twig');
     }
 
     public function logoutAlias(int $alias, int | null $action)
