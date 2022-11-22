@@ -38,6 +38,12 @@ class AliasManager extends AbstractManager
         $this->pdo->exec($query);
     }
 
+    public function endStory(int $aliasId): void
+    {
+        $query = "UPDATE " . self::TABLE . " SET nature='ABANDONNED' WHERE id = $aliasId;";
+        $this->pdo->exec($query);
+    }
+
     public function selectOneByUserId(int $id): array|false
     {
         // prepared request
@@ -73,5 +79,12 @@ class AliasManager extends AbstractManager
             ORDER BY historic_date DESC LIMIT 1;";
 
         return $this->pdo->query($query)->fetch();
+    }
+
+    public function selectAliasWithOngoing(): array
+    {
+        $query = "SELECT id FROM ALIAS WHERE nature = 'ONGOING';";
+
+        return $this->pdo->query($query)->fetchAll();
     }
 }

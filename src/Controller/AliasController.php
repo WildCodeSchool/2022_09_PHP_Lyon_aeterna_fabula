@@ -115,4 +115,20 @@ class AliasController extends AbstractController
 
         header('Location: /');
     }
+
+    public function deleteAlias(int $alias)
+    {
+        if (isset($_SESSION['alias_id'])) {
+            $aliasId = $_SESSION['alias_id'];
+        } else {
+            $aliasId = $alias;
+        }
+
+            $aliasManager = new AliasManager();
+            $aliasManager->endStory($aliasId);
+
+        unset($_SESSION['alias_id']);
+
+        header('Location: /alias');
+    }
 }
