@@ -40,26 +40,19 @@ class AliasController extends AbstractController
         } else {
             $userId = $_SESSION['user_id'];
             $aliasManager = new AliasManager();
-            $alias = $aliasManager->selectOneByUserId($userId);
-
-            $aliasNatures = array_column($alias, 'nature');
-            $aliasOngoing = $aliasManager->selectAliasNameOngoing($userId);
-            $aliasNames = array_column($aliasOngoing, 'player_name');
+            $aliasOngoing = $aliasManager->selectOneByUserId($userId);
 
             $aliasWithLastChapter = [];
-            foreach ($alias as $aliasSelected) {
-                if ($aliasSelected['nature'] == 'ONGOING') {
-                    $aliasLastChapterId = $aliasManager->selectLastActionByHistoric($aliasSelected['id']);
-                    $aliasSelected['lastChapter'] = $aliasLastChapterId;
-                    $aliasWithLastChapter[] = $aliasSelected;
-                }
+            foreach ($aliasOngoing as $aliasSelected) {
+                $aliasLastChapterId = $aliasManager->selectLastActionByHistoric($aliasSelected['id']);
+                $aliasSelected['lastChapter'] = $aliasLastChapterId;
+                $aliasWithLastChapter[] = $aliasSelected;
             }
 
             return $this->twig->render(
                 'Alias/alias_index.html.twig',
                 [
-                    'aliasNatures' => $aliasNatures,
-                    'aliasNames' => $aliasNames,
+                    'aliasOngoing' => $aliasOngoing,
                     'aliasWithLastChapter' => $aliasWithLastChapter,
                 ]
             );
@@ -128,5 +121,21 @@ class AliasController extends AbstractController
         unset($_SESSION['alias_id']);
 
         header('Location: /');
+    }
+
+    public function deleteAlias(int $alias)
+    {
+        if (isset($_SESSION['alias_id'])) {
+            $aliasId = $_SESSION['alias_id'];
+        } else {
+            $aliasId = $alias;
+        }
+
+        $aliasManager = new AliasManager();
+        $aliasManager->endStory($aliasId);
+
+        unset($_SESSION['alias_id']);
+
+        header('Location: /alias');
     }
 }

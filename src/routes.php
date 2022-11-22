@@ -26,6 +26,8 @@ return [
     /* pas de restriction - renvoie déjà sur la hp */
     'alias' => ['AliasController', 'start',], /* restriction à un user loggé */
     'alias/create' => ['AliasController', 'create',], /* restriction à un user loggé */
+    'alias/delete' => ['AliasController', 'deleteAlias', ['alias']],
+
 
     // admin routes
     'chapters' => ['ChapterController', 'adminIndex',], /* réservé à l'admin */
