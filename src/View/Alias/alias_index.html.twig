@@ -23,10 +23,10 @@
 
 	{% if aliasOngoing is not empty %}
 		<main class="container sm col-md-12 mt-5 align-self-md-center">
-			{% for alias in aliasOngoing %}
+			{% for alias in aliasWithLastChapter %}
 				<div class="sectionbuttonAlias container-md">
-					{% for lastChapter in aliasWithLastChapter %}
-						<a href="/chapter/show?alias={{ alias.id }}&id={{ lastChapter.target_id }}&action={{lastChapter.id}}">
+					{% for lastChapter in alias.lastChapter %}
+						<a href="/chapter/show?alias={{ alias.id }}&id={{ alias.lastChapter.target_id }}&action={{alias.lastChapter.id}}">
 						{% endfor %}
 						<button type="button" class="buttonAlias">Continuer
 							<br>l'histoire
@@ -52,7 +52,6 @@
 		</main>
 
 	{% else %}
-
 
 		<main class="container sm col-md-12 mt-5 align-self-md-center">
 			<div class="sectionbuttonAlias container-md">
