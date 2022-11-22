@@ -22,26 +22,28 @@
 	</nav>
 
 	{% if aliasOngoing is not empty %}
-		<main class="container sm col-md-12 mt-5 align-self-md-center">
-			{% for alias in aliasWithLastChapter %}
-				<div class="sectionbuttonAlias container-md">
-					{% for lastChapter in alias.lastChapter %}
-						<a href="/chapter/show?alias={{ alias.id }}&id={{ alias.lastChapter.target_id }}&action={{alias.lastChapter.id}}">
-						{% endfor %}
-						<button type="button" class="buttonAlias">Continuer
-							<br>l'histoire
-							<br>de
-							{{ alias.player_name }}</button>
-					</a>
-					<a href="/alias/delete?alias={{ alias.id }}">
-						<button type="button" class="buttonAliasText">Supprimer cette<br>
-							histoire</button>
-					</a>
-				</div>
-			{% endfor %}
-			<div>
+		<main>
+			<div class="container sm col-md-12 mt-5 align-self-md-center aliasContainer">
+				{% for alias in aliasWithLastChapter %}
+					<div class="sectionbuttonAlias container-md">
+						{% for lastChapter in alias.lastChapter %}
+							<a href="/chapter/show?alias={{ alias.id }}&id={{ alias.lastChapter.target_id }}&action={{alias.lastChapter.id}}">
+							{% endfor %}
+							<button type="button" class="buttonAlias">Continuer
+								<br>l'histoire
+								<br>de
+								{{ alias.player_name }}</button>
+						</a>
+						<a href="/alias/delete?alias={{ alias.id }}">
+							<button type="button" class="buttonAliasText">Supprimer cette<br>
+								histoire</button>
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="buttonnew">
 				<a href="/alias/create">
-					<button type="button" class="buttonAliasText">Commencer une<br>nouvelle histoire</button>
+					<button type="button" class="buttonAliasText buttonNew">Commencer une<br>nouvelle histoire</button>
 				</a>
 			</div>
 

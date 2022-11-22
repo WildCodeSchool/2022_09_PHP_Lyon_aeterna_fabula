@@ -118,7 +118,7 @@ define('APP_DB_PWD', 'your_db_password');
 ### Admin pages :
 * Get the list of the chapters at [localhost:8000/chapters](http://localhost:8000/chapters)
 * Add a new chapter at [localhost:8000/chapters/admin_add](http://localhost:8000/chapters/admin_add)
-* Add new actions at [localhost:8000/chapters/admin_add](http://localhost:8000/actions/admin_add_action)
+* Add new actions at [localhost:8000/actions/admin_add_action](http://localhost:8000/actions/admin_add_action)
 
 ## Connect to Æterna Fabula
 
