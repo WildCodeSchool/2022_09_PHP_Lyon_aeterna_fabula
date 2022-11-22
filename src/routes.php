@@ -15,15 +15,20 @@ return [
     'items/delete' => ['ItemController', 'delete',],
 
     // user routes
-    '' => ['HomeController', 'index', ['action']],
+    '' => ['HomeController', 'index', ['action']], /* pas de restriction */
     'chapter/show' => ['ChapterController', 'showWithAction', ['alias', 'id', 'action']],
-    'incipit' => ['IncipitController', 'incipit'],
-    'login' => ['UserController', 'showLoginPage', ['inscrit']],
-    'register' => ['UserController', 'showRegisterPage'],
-    'logout' => ['UserController', 'logout'],
+    /* restriction à un user loggé */
+    'incipit' => ['IncipitController', 'incipit'], /* restriction à un user loggé */
+    'login' => ['UserController', 'showLoginPage', ['inscrit']], /* pas de restriction */
+    'register' => ['UserController', 'showRegisterPage'], /* pas de restriction */
+    'logout' => ['UserController', 'logout'], /* pas de restriction - renvoie déjà sur la hp */
     'logoutAlias' => ['AliasController', 'logoutAlias', ['alias', 'action']],
-    'alias' => ['AliasController', 'start',],
-    'alias/create' => ['AliasController', 'create',],
+    /* pas de restriction - renvoie déjà sur la hp */
+    'alias' => ['AliasController', 'start',], /* restriction à un user loggé */
+    'alias/create' => ['AliasController', 'create',], /* restriction à un user loggé */
+    'alias/delete' => ['AliasController', 'deleteAlias', ['alias']],
+    '404' => ['LostController', 'lost'],
+
 
     // admin routes
     'chapters' => ['ChapterController', 'adminIndex',], /* réservé à l'admin */

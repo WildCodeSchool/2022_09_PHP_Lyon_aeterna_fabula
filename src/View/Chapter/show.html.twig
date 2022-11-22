@@ -3,7 +3,7 @@
 {% block title %}
 
 	Chapitre
-	{{ chapter.number }}
+	{{ chapters.0.number }}
 
 {% endblock %}
 
@@ -45,6 +45,9 @@
 		<audio controls autoplay class="audioPage" src="/assets/sound/turnpage.mp3"></audio>
 		{% if chapters.0.id == 16 %}
 			<audio controls autoplay class="audioPage" src="/assets/sound/victorysound.mp3"></audio>
+		{% endif %}
+		{% if chapters.0.id == 15 %}
+			<audio controls autoplay class="audioPage" src="/assets/sound/dragonsound.mp3"></audio>
 		{% endif %}
 		<div class="d-md-none">
 			<img class="MobileChapterImage" src="/assets/images/{{ chapters.0.background_image }}"></div>

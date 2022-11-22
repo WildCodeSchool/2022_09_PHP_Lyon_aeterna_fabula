@@ -1,0 +1,32 @@
+.lostBG {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    position: absolute;
+    animation: fadein 0.8s;
+    background-image: url(../../assets/images/bg_admin.jpg);
+}
+
+.lostPage {
+    display: grid;
+}
+
+.lostTitle {
+    padding-top: 10%;
+    font: 700 50px Cinzel Decorative;
+    color: #e2e2e2;
+    text-align: center;
+}
+
+.lostText {
+    font: 700 2vw Cinzel Decorative;
+    color: #e2e2e2;
+    font-size: min(20px);
+    text-align: center;
+}
+
+.lostButton {
+    margin: auto;
+}

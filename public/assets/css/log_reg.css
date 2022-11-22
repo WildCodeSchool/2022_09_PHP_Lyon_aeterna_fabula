@@ -63,3 +63,10 @@ h1.formTitle {
 a.log-reg {
     color: #e2e2e2;
 }
+
+.disclaimer {
+    color: #efd807;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-top: 0px;
+}

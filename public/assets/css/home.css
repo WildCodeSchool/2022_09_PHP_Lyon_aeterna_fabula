@@ -8,7 +8,8 @@ body {
     margin: 25px;
     background-size: cover;
     animation: fadein 0.8s;
-    height: 130vh;
+    height: 93vh;
+    background-repeat: no-repeat;
 }
 
 .main-content {
