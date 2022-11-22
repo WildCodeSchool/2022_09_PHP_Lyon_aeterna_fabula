@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\AliasManager;
 use App\Model\HistoricManager;
+use App\Model\ActionManager;
 
 class AliasController extends AbstractController
 {
@@ -35,29 +36,17 @@ class AliasController extends AbstractController
         $userId = $_SESSION['user_id'];
         $aliasManager = new AliasManager();
         $aliasOngoing = $aliasManager->selectOneByUserId($userId);
-        // var_dump($aliasOngoing);
-        // die();
-
-        // $aliasNatures = array_column($alias, 'nature');
-        // $aliasOngoing = $aliasManager->selectAliasNameOngoing($userId);
-        // $aliasNames = array_column($aliasOngoing, 'player_name');
 
         $aliasWithLastChapter = [];
         foreach ($aliasOngoing as $aliasSelected) {
-            // if ($aliasSelected['nature'] == 'ONGOING') {
             $aliasLastChapterId = $aliasManager->selectLastActionByHistoric($aliasSelected['id']);
             $aliasSelected['lastChapter'] = $aliasLastChapterId;
             $aliasWithLastChapter[] = $aliasSelected;
-            // }
         }
-        // var_dump($aliasWithLastChapter);
-        // die();
 
         return $this->twig->render(
             'Alias/alias_index.html.twig',
             [
-                // 'aliasNatures' => $aliasNatures,
-                // 'aliasNames' => $aliasNames,
                 'aliasOngoing' => $aliasOngoing,
                 'aliasWithLastChapter' => $aliasWithLastChapter,
             ]
@@ -88,11 +77,37 @@ class AliasController extends AbstractController
             $activeAlias = $aliasManager->addAlias($alias, $userId);
 
             $_SESSION['alias_id'] = $activeAlias;
+            $_SESSION['player_name'] = $activeAlias;
 
             header('Location:/incipit');
+
             return null;
         }
 
         return $this->twig->render('Alias/alias_create.html.twig');
+    }
+
+    public function logoutAlias(int $alias, int | null $action)
+    {
+        if ($action != null) {
+            $actionManager = new ActionManager();
+            $targetIdIsNull = $actionManager->selectActionWithTargetIdIsNull();
+            $endingAction = array_column($targetIdIsNull, 'id');
+
+            if (isset($_SESSION['alias_id'])) {
+                $aliasId = $_SESSION['alias_id'];
+            } else {
+                $aliasId = $alias;
+            }
+
+            if (in_array($action, $endingAction)) {
+                $aliasManager = new AliasManager();
+                $aliasManager->modifyNature($aliasId);
+            };
+        }
+
+        unset($_SESSION['alias_id']);
+
+        header('Location: /');
     }
 }

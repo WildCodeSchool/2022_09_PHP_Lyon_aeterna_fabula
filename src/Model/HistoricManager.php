@@ -37,8 +37,14 @@ class HistoricManager extends AbstractManager
             FROM historic AS h
             LEFT JOIN action AS a ON h.action_id  = a.id
             LEFT JOIN chapter AS c ON a.owner_id = c.id
-            WHERE h.alias_id = $aliasId;";
+            WHERE h.alias_id = :alias_id;";
 
-        return $this->pdo->query($query)->fetchAll();
+        $statement = $this->pdo->prepare($query);
+
+        $statement->bindValue('alias_id', $aliasId, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }

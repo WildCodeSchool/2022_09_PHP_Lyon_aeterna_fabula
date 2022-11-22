@@ -19,7 +19,11 @@ class HomeController extends AbstractController
             $targetIdIsNull = $actionManager->selectActionWithTargetIdIsNull();
             $endingAction = array_column($targetIdIsNull, 'id');
 
-            $aliasId = $_SESSION['alias_id'];
+            if (isset($_SESSION['alias_id'])) {
+                $aliasId = $_SESSION['alias_id'];
+            } else {
+                $aliasId = $_GET ['alias'];
+            }
 
 
             if (in_array($action, $endingAction)) {
