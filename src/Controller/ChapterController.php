@@ -76,7 +76,10 @@ class ChapterController extends AbstractController
             $historicManager = new HistoricManager();
 
             if ($action != null) {
-                $historicManager->historicInsert($action, $aliasId);
+                $lastHistoric = $historicManager->selectLastHistoricByAlias($aliasId);
+                if (!$lastHistoric || $action != $lastHistoric['action_id']) {
+                    $historicManager->historicInsert($action, $aliasId);
+                }
             }
 
             $historics = $historicManager->selectActionsByHistoric($aliasId);
