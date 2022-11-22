@@ -29,8 +29,7 @@
 						Bienvenue dans une histoire dont vous êtes le héros, l'héroine
 					</p>
 					{% if user.is_admin == 1 %}
-						<div class="d-none m-3">
-						</div>
+						<div class="d-none m-3"></div>
 					{% else %}
 						<div class="m-3">
 							<a href="/alias">
@@ -44,7 +43,7 @@
 					<div class="sign-links mt-5 mt-md-0 d-md-flex justify-content-end">
 						{% if user.is_admin == 1 %}
 							<div class="mx-3">
-								<a href="/admin/admin_homepage">Administration</a>
+								<a href="/chapters">Administration</a>
 							</div>
 							<div class="mx-3 d-none d-md-block">|</div>
 							<div class="mx-3 d-md-none"><img id="line" src="/assets/images/Vector_1.svg"></div>
