@@ -47,4 +47,18 @@ class HistoricManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function selectLastHistoricByAlias(int $aliasId): array|false
+    {
+        $query = "SELECT * FROM " . self::TABLE . " WHERE alias_id=:alias_id 
+            ORDER BY historic_date DESC LIMIT 1;";
+
+        $statement = $this->pdo->prepare($query);
+
+        $statement->bindValue(':alias_id', $aliasId, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }
