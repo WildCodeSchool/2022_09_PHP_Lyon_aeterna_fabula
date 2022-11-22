@@ -9,14 +9,19 @@ class IncipitController extends AbstractController
     /**
      * Display incipit page
      */
-    public function incipit(): string
+    public function incipit(): ?string
     {
-        $aliasId = $_SESSION['alias_id'];
+        if (empty($_SESSION)) {
+            header('location:/');
+            return null;
+        } else {
+            $aliasId = $_SESSION['alias_id'];
 
-        $aliasManager = new AliasManager();
-        $alias = $aliasManager->selectOneById($aliasId);
+            $aliasManager = new AliasManager();
+            $alias = $aliasManager->selectOneById($aliasId);
 
 
-        return $this->twig->render('Incipit/incipit.html.twig', ['alias' => $alias]);
+            return $this->twig->render('Incipit/incipit.html.twig', ['alias' => $alias]);
+        }
     }
 }

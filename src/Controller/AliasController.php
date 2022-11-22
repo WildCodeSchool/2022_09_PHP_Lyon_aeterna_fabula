@@ -33,58 +33,70 @@ class AliasController extends AbstractController
 
     public function start()
     {
-        $userId = $_SESSION['user_id'];
-        $aliasManager = new AliasManager();
-        $aliasOngoing = $aliasManager->selectOneByUserId($userId);
+        // restriction à un utilisateur connecté
+        if (empty($_SESSION)) {
+            header('location:/');
+            return null;
+        } else {
+            $userId = $_SESSION['user_id'];
+            $aliasManager = new AliasManager();
+            $aliasOngoing = $aliasManager->selectOneByUserId($userId);
 
-        $aliasWithLastChapter = [];
-        foreach ($aliasOngoing as $aliasSelected) {
-            $aliasLastChapterId = $aliasManager->selectLastActionByHistoric($aliasSelected['id']);
-            $aliasSelected['lastChapter'] = $aliasLastChapterId;
-            $aliasWithLastChapter[] = $aliasSelected;
+            $aliasWithLastChapter = [];
+            foreach ($aliasOngoing as $aliasSelected) {
+                $aliasLastChapterId = $aliasManager->selectLastActionByHistoric($aliasSelected['id']);
+                $aliasSelected['lastChapter'] = $aliasLastChapterId;
+                $aliasWithLastChapter[] = $aliasSelected;
+            }
+
+            return $this->twig->render(
+                'Alias/alias_index.html.twig',
+                [
+                    'aliasOngoing' => $aliasOngoing,
+                    'aliasWithLastChapter' => $aliasWithLastChapter,
+                ]
+            );
         }
-
-        return $this->twig->render(
-            'Alias/alias_index.html.twig',
-            [
-                'aliasOngoing' => $aliasOngoing,
-                'aliasWithLastChapter' => $aliasWithLastChapter,
-            ]
-        );
     }
 
     public function create(): ?string
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $alias = array_map('trim', $_POST);
-            $this->formControl($alias);
+        // restriction à un utilisateur connecté
+        if (empty($_SESSION)) {
+            header('location:/');
+            return null;
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // clean $_POST data
+                $alias = array_map('trim', $_POST);
+                $this->formControl($alias);
 
 
-            // TODO validations (length, format...)
+                // TODO validations (length, format...)
 
-            if (!empty($this->errors)) {
-                return $this->twig->render('Alias/alias_create.html.twig', [
-                    'errors' => $this->errors,
-                ]);
+                if (!empty($this->errors)) {
+                    return $this->twig->render('Alias/alias_create.html.twig', [
+                        'errors' => $this->errors,
+                    ]);
+                }
+
+                // if validation is ok, insert and redirection
+
+                $userId = $_SESSION['user_id'];
+
+                $aliasManager = new AliasManager();
+                $activeAlias = $aliasManager->addAlias($alias, $userId);
+
+                $_SESSION['alias_id'] = $activeAlias;
+                $_SESSION['player_name'] = $activeAlias;
+
+                header('Location:/incipit');
+
+                return null;
             }
 
-            // if validation is ok, insert and redirection
-
-            $userId = $_SESSION['user_id'];
-
-            $aliasManager = new AliasManager();
-            $activeAlias = $aliasManager->addAlias($alias, $userId);
-
-            $_SESSION['alias_id'] = $activeAlias;
-            $_SESSION['player_name'] = $activeAlias;
-
-            header('Location:/incipit');
-
-            return null;
+            return $this->twig->render('Alias/alias_create.html.twig');
         }
-
-        return $this->twig->render('Alias/alias_create.html.twig');
     }
 
     public function logoutAlias(int $alias, int | null $action)
@@ -119,8 +131,8 @@ class AliasController extends AbstractController
             $aliasId = $alias;
         }
 
-            $aliasManager = new AliasManager();
-            $aliasManager->endStory($aliasId);
+        $aliasManager = new AliasManager();
+        $aliasManager->endStory($aliasId);
 
         unset($_SESSION['alias_id']);
 

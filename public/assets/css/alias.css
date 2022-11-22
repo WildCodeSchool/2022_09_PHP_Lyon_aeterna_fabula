@@ -90,4 +90,12 @@ p {
 .error {
     font: 300 20px Crimson Text;
     color: #e2e2e2;
+    
+.aliasContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buttonNew {
+    width: 100%
 }
