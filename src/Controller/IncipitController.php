@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\AliasManager;
+
 class IncipitController extends AbstractController
 {
     /**
@@ -10,8 +12,11 @@ class IncipitController extends AbstractController
     public function incipit(): string
     {
         $aliasId = $_SESSION['alias_id'];
-        $aliasName = $_SESSION['player_name'];
 
-        return $this->twig->render('Incipit/incipit.html.twig', ['aliasId' => $aliasId, 'aliasName' => $aliasName]);
+        $aliasManager = new AliasManager();
+        $alias = $aliasManager->selectOneById($aliasId);
+
+
+        return $this->twig->render('Incipit/incipit.html.twig', ['alias' => $alias]);
     }
 }
