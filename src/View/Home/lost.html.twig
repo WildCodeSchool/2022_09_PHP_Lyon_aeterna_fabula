@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="stylesheet" href="/assets/css/lost.css">
+{% endblock %}
+
+{% block title %}
+	Erreur 404
+{% endblock %}
+
+{% block content %}
+	<div class="lostBG">
+		<div class="lostPage">
+			<h1 class="lostTitle">Erreur 404</h1><br>
+			<p class="lostText">Vous êtes perdu ?</p>
+			<a class="buttonAction raise lostButton" href="/">Retour à l'accueil</a>
+		</div>
+	</div>
+{% endblock %}

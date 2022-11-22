@@ -55,7 +55,6 @@ main.chapter {
     padding: 25px;
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.7);
-    padding-bottom: 50px;
     animation: fadein 3s;
 }
 

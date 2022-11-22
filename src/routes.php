@@ -27,6 +27,7 @@ return [
     'alias' => ['AliasController', 'start',], /* restriction à un user loggé */
     'alias/create' => ['AliasController', 'create',], /* restriction à un user loggé */
     'alias/delete' => ['AliasController', 'deleteAlias', ['alias']],
+    '404' => ['LostController', 'lost'],
 
 
     // admin routes
