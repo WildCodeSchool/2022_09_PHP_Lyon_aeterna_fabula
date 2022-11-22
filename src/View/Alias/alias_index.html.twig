@@ -21,8 +21,8 @@
 		</div>
 	</nav>
 
-	{% if 'ONGOING' in aliasNatures %}
-		<main class="container sm col-md-12 mt-5 align-self-md-center aliasContainer">
+	{% if aliasOngoing is not empty %}
+		<main class="container sm col-md-12 mt-5 align-self-md-center">
 			{% for alias in aliasWithLastChapter %}
 				<div class="sectionbuttonAlias container-md">
 					{% for lastChapter in alias.lastChapter %}
@@ -39,12 +39,12 @@
 					</a>
 				</div>
 			{% endfor %}
-
-			<div class="buttonNew">
+			<div>
 				<a href="/alias/create">
 					<button type="button" class="buttonAliasText">Commencer une<br>nouvelle histoire</button>
 				</a>
 			</div>
+
 		</main>
 
 	{% else %}
@@ -56,6 +56,5 @@
 				</a>
 			</div>
 		</main>
-
 	{% endif %}
 {% endblock %}

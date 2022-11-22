@@ -26,12 +26,18 @@
 					<img src="/assets/images/noun-frame-346217.svg">
 					<p>Bonjour
 						{{ user.email }}<br>
-						Bienvenue dans une histoire dont vous êtes le héros, l'héroine</p>
-					<div class="m-3">
-						<a href="/alias">
-							<button class="play-button">Jouer</button>
-						</a>
-					</div>
+						Bienvenue dans une histoire dont vous êtes le héros, l'héroine
+					</p>
+					{% if user.is_admin == 1 %}
+						<div class="d-none m-3">
+						</div>
+					{% else %}
+						<div class="m-3">
+							<a href="/alias">
+								<button class="play-button">Jouer</button>
+							</a>
+						</div>
+					{% endif %}
 				</div>
 				<div class="order-md-1 m-0 mb-md-5">
 
