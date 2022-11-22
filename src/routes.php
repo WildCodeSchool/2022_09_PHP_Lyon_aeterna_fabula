@@ -23,7 +23,7 @@ return [
     'register' => ['UserController', 'showRegisterPage'], /* pas de restriction */
     'logout' => ['UserController', 'logout'], /* pas de restriction - renvoie déjà sur la hp */
     'logoutAlias' => ['AliasController', 'logoutAlias', ['alias', 'action']],
-    'deleteUser' => ['UserController', 'delete', ['user_id']],
+    'deleteUser' => ['UserController', 'delete'],
     /* pas de restriction - renvoie déjà sur la hp */
     'alias' => ['AliasController', 'start',], /* restriction à un user loggé */
     'alias/create' => ['AliasController', 'create',], /* restriction à un user loggé */

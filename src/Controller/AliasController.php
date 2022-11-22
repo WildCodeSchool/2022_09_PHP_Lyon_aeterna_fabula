@@ -54,6 +54,7 @@ class AliasController extends AbstractController
                 [
                     'aliasOngoing' => $aliasOngoing,
                     'aliasWithLastChapter' => $aliasWithLastChapter,
+                    'userId' => $userId
                 ]
             );
         }
