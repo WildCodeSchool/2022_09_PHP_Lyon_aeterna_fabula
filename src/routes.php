@@ -25,6 +25,7 @@ return [
     'alias' => ['AliasController', 'start',],
     'alias/create' => ['AliasController', 'create',],
     'alias/delete' => ['AliasController', 'deleteAlias', ['alias']],
+    '404' => ['LostController', 'lost'],
 
     // admin routes
     'chapters' => ['ChapterController', 'adminIndex',], /* réservé à l'admin */

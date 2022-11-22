@@ -86,3 +86,12 @@ p {
 .divaliasname {
     width: 220px;
 }
+
+.aliasContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buttonNew {
+    width: 100%
+}

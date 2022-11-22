@@ -22,7 +22,7 @@
 	</nav>
 
 	{% if 'ONGOING' in aliasNatures %}
-		<main class="container sm col-md-12 mt-5 align-self-md-center">
+		<main class="container sm col-md-12 mt-5 align-self-md-center aliasContainer">
 			{% for alias in aliasWithLastChapter %}
 				<div class="sectionbuttonAlias container-md">
 					{% for lastChapter in alias.lastChapter %}
@@ -33,16 +33,14 @@
 							<br>de
 							{{ alias.player_name }}</button>
 					</a>
-
 					<a href="/alias/delete?alias={{ alias.id }}">
 						<button type="button" class="buttonAliasText">Supprimer cette<br>
 							histoire</button>
 					</a>
-
 				</div>
 			{% endfor %}
 
-			<div>
+			<div class="buttonNew">
 				<a href="/alias/create">
 					<button type="button" class="buttonAliasText">Commencer une<br>nouvelle histoire</button>
 				</a>
