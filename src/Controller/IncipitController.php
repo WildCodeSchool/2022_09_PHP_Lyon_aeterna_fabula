@@ -14,7 +14,6 @@ class IncipitController extends AbstractController
             header('location:/');
             return null;
         } else {
-
             $aliasId = $_SESSION['alias_id'];
             $aliasName = $_SESSION['player_name'];
 

@@ -67,7 +67,6 @@ class ChapterController extends AbstractController
             header('location:/');
             return null;
         } else {
-
             if (isset($_SESSION['alias_id'])) {
                 $aliasId = $_SESSION['alias_id'];
             } else {

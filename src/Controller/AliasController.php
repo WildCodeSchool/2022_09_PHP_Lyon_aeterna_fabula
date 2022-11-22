@@ -38,7 +38,6 @@ class AliasController extends AbstractController
             header('location:/');
             return null;
         } else {
-
             $userId = $_SESSION['user_id'];
             $aliasManager = new AliasManager();
             $alias = $aliasManager->selectOneByUserId($userId);
@@ -74,7 +73,6 @@ class AliasController extends AbstractController
             header('location:/');
             return null;
         } else {
-
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // clean $_POST data
                 $alias = array_map('trim', $_POST);
