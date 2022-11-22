@@ -20,7 +20,6 @@ class IncipitController extends AbstractController
             $aliasManager = new AliasManager();
             $alias = $aliasManager->selectOneById($aliasId);
 
-
             return $this->twig->render('Incipit/incipit.html.twig', ['alias' => $alias]);
         }
     }
