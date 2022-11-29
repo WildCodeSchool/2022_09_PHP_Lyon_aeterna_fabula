@@ -225,6 +225,7 @@ CREATE TABLE `alias` (
   CONSTRAINT fk_alias_user
     FOREIGN KEY (user_id)
     REFERENCES user(id)
+    ON DELETE CASCADE
 );
 
 CREATE TABLE `historic` (
@@ -240,4 +241,5 @@ CREATE TABLE `historic` (
   CONSTRAINT fk_alias_historic
     FOREIGN KEY (alias_id)
     REFERENCES alias(id)
+    ON DELETE CASCADE
 );

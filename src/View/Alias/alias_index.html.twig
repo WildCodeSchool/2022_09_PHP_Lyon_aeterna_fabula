@@ -45,18 +45,30 @@
 				<a href="/alias/create">
 					<button type="button" class="buttonAliasText buttonNew">Commencer une<br>nouvelle histoire</button>
 				</a>
+				<div class="buttonnew mt-5">
+					<form action="/deleteUser" method="POST" onsubmit="return confirm('Voulez vous vraiment supprimer votre compte?');">
+						<input type="hidden" name="id" value="{{ userId }}">
+						<button type="submit" class="buttonAliasText buttonNew">Supprimer mon compte</button>
+					</form>
+				</div>
+
+			</main>
+
+		{% else %}
+
+			<main class="container sm col-md-12 mt-5 align-self-md-center">
+				<div class="sectionbuttonAlias container-md">
+					<a href="/alias/create">
+						<button type="button" class="buttonAlias">Commencer une<br>nouvelle histoire</button>
+					</a>
+				</div>
+			</main>
+			<div class="buttonnew mt-5">
+				<form action="/deleteUser" method="POST" onsubmit="return confirm('Voulez vous vraiment supprimer votre compte?');">
+					<input type="hidden" name="id" value="{{ userId }}">
+					<button type="submit" class="buttonAliasText buttonNew">Supprimer mon compte</button>
+				</form>
 			</div>
 
-		</main>
-
-	{% else %}
-
-		<main class="container sm col-md-12 mt-5 align-self-md-center">
-			<div class="sectionbuttonAlias container-md">
-				<a href="/alias/create">
-					<button type="button" class="buttonAlias">Commencer une<br>nouvelle histoire</button>
-				</a>
-			</div>
-		</main>
-	{% endif %}
-{% endblock %}
+		{% endif %}
+	{% endblock %}

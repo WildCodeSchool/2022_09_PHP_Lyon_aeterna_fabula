@@ -118,4 +118,17 @@ class UserController extends AbstractController
         session_destroy();
         header('Location: /');
     }
+
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $userManager = new UserManager();
+            $userManager->delete((int)$id);
+
+            unset($_SESSION);
+            session_destroy();
+            header('Location: /');
+        }
+    }
 }
