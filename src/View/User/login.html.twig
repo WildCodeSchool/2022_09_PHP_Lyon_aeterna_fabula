@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+
+	<link rel="stylesheet" href="/assets/css/log_reg.css">
+	<link rel="stylesheet" href="/assets/css/home.css">
+
+{% endblock %}
+
+{% block title %}
+
+	Se connecter
+
+{% endblock %}
+
+{% block content %}
+	<a class="log-reg-logo" href="/"><img src="/assets/images/logo.svg"></a>
+	<div class="d-flex justify-content-center">
+		<main class="container-fluid log-reg-layer">
+			<div class="row justify-content-center">
+				<div class="col text-center">
+					<h1 class="formTitle">Se connecter</h1>
+					{% if inscrit %}
+						<p>{{ inscrit }}<br/>
+							{{ message }}</p>
+					{% else %}
+						<p>{{ message }}</p>
+					{% endif %}
+					<img class="w-50" src="/assets/images/noun-frame-346217.svg">
+					<form method="post" class="form">
+						<p class="log-reg-form">
+							<label class="formLabel" for="email">Email</label>
+							<input type="email" class="form-control" id="email" name="email">
+						</p>
+						<p class="log-reg-form">
+							<label class="formLabel" for="password">Mot de passe</label>
+							<input type="password" class="form-control" id="password" name="password">
+						</p>
+						<ul>
+							{% for error in errors %}
+								<li>{{ error }}</li>
+							{% endfor %}
+						</ul>
+						<button class="log-reg-button" type="submit">Je me connecte</button>
+					</form>
+					<p>Vous n'avez pas de compte ?
+						<br>
+						<a class="log-reg" href="/register">Inscrivez-vous !</a><br/>
+					</p>
+				</div>
+			</div>
+		</main>
+	</div>
+{% endblock %}

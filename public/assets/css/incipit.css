@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+
+main.incipit {
+    height: 100vh;
+    width: 100%;
+}
+
+.incipitPage {
+    z-index: 10;
+    animation: fadein 3s;
+    max-width: 90%;
+}
+
+
+h1.incipit {
+    font-size: max(30px);
+}
+
+p.incipit {
+    font-size: max(20px);
+    margin-top: 2em;
+}

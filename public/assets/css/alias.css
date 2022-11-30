@@ -1,0 +1,103 @@
+h1 {
+    font: 700 2vw Cinzel Decorative;
+    color: #e2e2e2;
+    font-size: min(40px);
+    text-align: center;
+    padding-top: 20vh;
+}
+
+.sectionbuttonAlias {
+    width: 250px;
+}
+
+.buttonAlias {
+    background: url("/assets/images/StartButton.png") no-repeat;
+    border: none;
+    width: 100%;
+    height: 200px;
+    color: #fff;
+    text-align: center;
+    background-position: 50% 50%;
+    background-size: contain;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 15px;
+    color: #e4e4e4;
+    font-weight: bold;
+    animation: fadein 1.5s;
+    margin-top: 20vh;
+}
+
+.buttonAliasText {
+    width: 100%;
+    border: none;
+    color: #fff;
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 15px;
+    color: #e4e4e4;
+    text-align: center;
+    font-weight: bold;
+    animation: fadein 1.5s;
+    background: none;
+    margin-top: 30px;
+}
+
+div.backgroundImageAdmin {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    position: fixed;
+    animation: fadein 0.8s;
+    background-image: url(/assets/images/bg_admin.jpg);
+    z-index: -1;
+}
+
+div.backgroundImageAlias {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    position: absolute;
+    animation: fadein 0.8s;
+    background-image: url(/assets/images/BG_alias.jpg);
+    z-index: -1;
+}
+
+.formAlias {
+    width: 100%;
+    height: 80px;
+    align-self: center;
+    font-size: 30px;
+    display: flex;
+    align-self: center;
+    margin-top: 5%;
+}
+
+p {
+    font-family: 'Crimson Text', cursive;
+    font-size: 40px;
+    color: #000;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.divaliasname {
+    width: 220px;
+}
+
+.error {
+    font: 300 20px Crimson Text;
+    color: #e2e2e2;
+}
+
+.aliasContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.buttonNew {
+    width: 100%
+}

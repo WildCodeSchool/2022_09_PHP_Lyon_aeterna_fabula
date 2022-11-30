@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap');
+
+h1.formTitle {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Cinzel Decorative;
+    color: #e2e2e2;
+    text-align: center;
+}
+
+.formLabel {
+    color: #e2e2e2;
+    margin-top: 1rem;
+}
+
+.log-reg-button {
+    height: max(160px);
+    width: max(160px);
+    border-radius: 50%;
+    border: 3px solid #e4e4e4;
+    background: none;
+    color: #e4e4e4;
+    display: block;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 1em;
+    font-family: 'Crimson Text', serif;
+    font-size: 24px;
+    text-align: center;
+}
+
+.log-reg-form {
+    color: #e2e2e2;
+    margin-top: 1rem;
+    text-align: left !important;
+}
+
+.log-reg-layer {
+    width: 90%;
+    height: auto;
+    max-width: 480px;
+    min-width: 240px;
+    z-index: 10;
+    padding: 25px;
+    margin: 1rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding-bottom: 50px;
+    animation: fadein 3s;
+}
+
+.log-reg-logo {
+    z-index: 10;
+    align-self: flex-start;
+    position: relative;
+    margin-top: 15px;
+    margin-left: 15px;
+    filter: drop-shadow(0px 0px 3px black);
+}
+
+a.log-reg {
+    color: #e2e2e2;
+}
+
+.disclaimer {
+    color: #efd807;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-top: 0px;
+}

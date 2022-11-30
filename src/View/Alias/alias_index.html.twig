@@ -1,0 +1,74 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	page historique
+{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="stylesheet" href="/assets/css/alias.css">
+{% endblock %}
+
+{% block content %}
+	<div class="backgroundImageAdmin d-md-block"></div>
+	<nav class="sectionNav">
+		<div class="sectionHistoric">
+			<a class="logo" href="/"><img class="logoSize" src="/assets/images/logo.svg"></a>
+		</div>
+		<div class="sectionHistoric sign-links me-5 mt-4">
+			<a href="/logout">Se déconnecter
+			</a>
+		</div>
+	</nav>
+
+	{% if aliasOngoing is not empty %}
+		<main>
+			<div class="container sm col-md-12 mt-5 align-self-md-center aliasContainer">
+				{% for alias in aliasWithLastChapter %}
+					<div class="sectionbuttonAlias container-md">
+						{% for lastChapter in alias.lastChapter %}
+							<a href="/chapter/show?alias={{ alias.id }}&id={{ alias.lastChapter.target_id }}&action={{alias.lastChapter.id}}">
+							{% endfor %}
+							<button type="button" class="buttonAlias">Continuer
+								<br>l'histoire
+								<br>de
+								{{ alias.player_name }}</button>
+						</a>
+						<a href="/alias/delete?alias={{ alias.id }}">
+							<button type="button" class="buttonAliasText">Supprimer cette<br>
+								histoire</button>
+						</a>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="buttonnew">
+				<a href="/alias/create">
+					<button type="button" class="buttonAliasText buttonNew">Commencer une<br>nouvelle histoire</button>
+				</a>
+				<div class="buttonnew mt-5">
+					<form action="/deleteUser" method="POST" onsubmit="return confirm('Voulez vous vraiment supprimer votre compte?');">
+						<input type="hidden" name="id" value="{{ userId }}">
+						<button type="submit" class="buttonAliasText buttonNew">Supprimer mon compte</button>
+					</form>
+				</div>
+
+			</main>
+
+		{% else %}
+
+			<main class="container sm col-md-12 mt-5 align-self-md-center">
+				<div class="sectionbuttonAlias container-md">
+					<a href="/alias/create">
+						<button type="button" class="buttonAlias">Commencer une<br>nouvelle histoire</button>
+					</a>
+				</div>
+			</main>
+			<div class="buttonnew mt-5">
+				<form action="/deleteUser" method="POST" onsubmit="return confirm('Voulez vous vraiment supprimer votre compte?');">
+					<input type="hidden" name="id" value="{{ userId }}">
+					<button type="submit" class="buttonAliasText buttonNew">Supprimer mon compte</button>
+				</form>
+			</div>
+
+		{% endif %}
+	{% endblock %}

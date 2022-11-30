@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 // Get the required route (without query string) and remove trailing slashes
 $route = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '', '/');
 
@@ -8,7 +9,7 @@ $routes = require_once __DIR__ . '/../src/routes.php';
 
 // If required route is not is $routes, return a 404 Page not found error
 if (!key_exists($route, $routes)) {
-    header("HTTP/1.0 404 Not Found");
+    header('Location: /404');
     echo '404 - Page not found';
     exit();
 }

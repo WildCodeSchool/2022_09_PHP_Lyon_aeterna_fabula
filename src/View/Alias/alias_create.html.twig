@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	créer un alias
+{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="stylesheet" href="/assets/css/alias.css">
+{% endblock %}
+
+{% block content %}
+	<div class="backgroundImageAlias d-md-block"></div>
+	<nav class="sectionNav">
+		<div class="sectionHistoric">
+			<a class="logo" href="/"><img class="logoSize" src="/assets/images/logo.svg"></a>
+		</div>
+		<div class="sectionHistoric sign-links me-5 mt-4">
+			<a href="/logout">Se déconnecter
+			</a>
+		</div>
+	</nav>
+	<main class="container aliascontainer sm main-content col-md-12 order-md-2 mt-5 align-self-md-center">
+		<div class="container-md align-self-md-center">
+			<h1 class="mt-md-5">choisis ton alias</h1>
+
+			{# TODO : manage errors display #}
+			<ul class="error">
+				{% for error in errors %}
+					<li class="error">{{ error }}</li>
+				{% endfor %}
+			</ul>
+			<form method="post" class="formAdmin">
+
+				<p class="form-group">
+					<input class="form-control formAlias" type="text" value="{{ alias.player_name }}" placeholder="Choisissez votre alias" name="player_name" id="player_name" required>
+				</p>
+
+				<p>
+					<button class="buttonAction raise">Commencer à jouer</button>
+				</p>
+			</form>
+		</div>
+	</main>
+{% endblock %}

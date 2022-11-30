@@ -1,6 +1,100 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}
+
+	Æterna Fabula
+
+{% endblock %}
+
+{% block stylesheet %}
+
+	<link rel="stylesheet" href="/assets/css/home.css">
+
+{% endblock %}
+
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+
+	{% if user %}
+
+		<section class="container-fluid">
+
+			<div class="row d-inline-flex d-md-flex">
+				<div class="main-content order-md-2">
+					<h1>
+						<span class="initials">Æ</span>terna
+						<span class="initials">F</span>abula</h1>
+					<img src="/assets/images/noun-frame-346217.svg">
+					<p>Bonjour
+						{{ user.email }}<br>
+						Bienvenue dans une histoire dont vous êtes le héros, l'héroine
+					</p>
+					{% if user.is_admin == 1 %}
+						<div class="d-none m-3"></div>
+					{% else %}
+						<div class="m-3">
+							<a href="/alias">
+								<button class="play-button">Jouer</button>
+							</a>
+						</div>
+					{% endif %}
+				</div>
+				<div class="order-md-1 m-0 mb-md-5">
+
+					<div class="sign-links mt-5 mt-md-0 d-md-flex justify-content-end">
+						{% if user.is_admin == 1 %}
+							<div class="mx-3">
+								<a href="/chapters">Administration</a>
+							</div>
+							<div class="mx-3 d-none d-md-block">|</div>
+							<div class="mx-3 d-md-none"><img id="line" src="/assets/images/Vector_1.svg"></div>
+							<div class="mx-3">
+								<a href="/logout">Se déconnecter
+								</a>
+							</div>
+
+						{% else %}
+							<div class="mx-3">
+								<a href="/logout">Se déconnecter
+								</a>
+							</div>
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+	{% else %}
+
+		<section class="container-fluid">
+			<div class="row d-inline-flex d-md-flex">
+				<div class="main-content order-md-2">
+					<h1>
+						<span class="initials">Æ</span>terna
+						<span class="initials">F</span>abula</h1>
+					<img src="/assets/images/noun-frame-346217.svg">
+					<p>Une histoire dont vous êtes le héros, l'héroine</p>
+					<div class="m-3">
+						<a href="/login">
+							<button class="play-button">Jouer</button>
+						</a>
+					</div>
+				</div>
+				<div class="order-md-1 m-0 mb-md-5">
+					<div class="sign-links mt-5 mt-md-0 d-md-flex justify-content-end">
+						<div class="mx-3">
+							<a href="/register">S'inscrire</a>
+						</div>
+						<div class="mx-3 d-none d-md-block">|</div>
+						<div class="mx-3 d-md-none"><img id="line" src="/assets/images/Vector_1.svg"></div>
+						<div class="mx-3">
+							<a href="/login">Se connecter</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	{% endif %}
+
 {% endblock %}

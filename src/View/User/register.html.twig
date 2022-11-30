@@ -1,0 +1,57 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+
+	S'inscrire
+
+{% endblock %}
+
+{% block stylesheet %}
+
+	<link rel="stylesheet" href="/assets/css/log_reg.css">
+	<link rel="stylesheet" href="/assets/css/home.css">
+
+{% endblock %}
+
+{% block content %}
+	<a class="log-reg-logo" href="/"><img src="/assets/images/logo.svg"></a>
+	<div class="d-flex justify-content-center">
+		<main class="container-fluid log-reg-layer">
+			<div class="row justify-content-center">
+				<div class="col text-center">
+					<h1 class="formTitle">Rejoindre Æterna Fabula</h1>
+					<img class="w-50" src="/assets/images/noun-frame-346217.svg">
+					<form method="post" class="form">
+						<p class="log-reg-form">
+							<label class="formLabel" for="email">Email</label>
+							<input class="form-control" type "email" name="email" id="email" placeholder="Email">
+						</p>
+						<p class="log-reg-form">
+							<label class="formLabel" for="password">Mot de passe</label>
+							<input class="form-control" type="password" name="password" id="password" placeholder="Mot de passe">
+							<span class="disclaimer">
+								Le mot de passe doit contenir au moins 8 caractères dont 1 minuscule, 1 majuscule, 1 chiffre, 1 caractère spécial.
+							</span>
+						</p>
+						<p class="log-reg-form">
+							<label class="formLabel" for="password2">Répétez votre mot de passe</label>
+							<input class="form-control" type="password" name="password2" id="password2" placeholder="Mot de passe">
+						</p>
+						<ul>
+							{% for error in errors %}
+								<li class="text-white">{{ error }}</li>
+							{% endfor %}
+						</ul>
+						<button class="log-reg-button" type="submit">Je m'inscris</button>
+
+					</form>
+					<p>Vous avez un compte ?
+						<br>
+						<a class="log-reg" href="/login">Connectez-vous !</a><br/>
+					</p>
+				</div>
+			</div>
+		</main>
+	</div>
+
+{% endblock %}

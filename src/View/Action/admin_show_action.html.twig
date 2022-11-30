@@ -1,0 +1,57 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	AF admin show
+{% endblock %}
+
+{% block content %}
+	<a class="logo" href="/"><img src="/assets/images/logo.svg"></a>
+	<main class="adminMain">
+		<h1 class="adminTitle">Action
+			{{ action.id }}</h1>
+			<div class="blockButton">
+				<img class="adminDecoration" src="/assets/images/noun-frame-346217.svg">
+			</div>
+			<div class="adminChapter">
+				<div class="blockText">
+					<p>Libellé :
+						{{ action.label }}</p>
+					<h1 class="chapterTitle">Numéro du chapitre de départ :
+						{{ action.owner_id }}</p>
+					<p class="chapterText">Numéro du chapitre d'arrivée :
+						{{ action.target_id }}</p>
+
+					<a class="buttonAction raise buttonAdmin" href="/actions/admin_edit_action?id={{ action.id }}">Modifier l'action</a><br>
+
+					<table class="table tablechapterAdmin">
+						<tr>
+							<th scope="col">Libellé</th>
+							<th scope="col">Numéro du chapitre de départ</th>
+							<th scope="col">Numéro du chapitre d'arrivée</th>
+						</tr>
+						<tr>
+							<td scope="col">
+								{{ action.label }}
+							</td>
+							<td scope="col">
+								{{ action.owner_id }}
+							</td>
+							<td scope="col">
+								{{ action.target_id }}
+							</td>
+						</tr>
+					</table>
+
+
+					<a class="buttonAction raise buttonAdmin" href="/actions/admin_edit_action?id={{ action.id }}">Modifier l'action</a><br>
+				</div>
+			</div>
+			<div class="blockButton">
+				<a class="buttonAction raise" href="/actions/admin_show_action?id={{ action.id -1 }} ">
+					← Action précédente</a>
+				<a class="buttonAction raise" href="/actions">Retour aux actions</a>
+				<a class="buttonAction raise" href="/actions/admin_show_action?id={{ action.id +1 }} ">Action suivante →
+				</a>
+			</div>
+		</main>
+	{% endblock %}

@@ -79,3 +79,71 @@ then, run it to open it on your localhot :
 docker run -i -t --name simple-mvc  -p 80:80 simple-mvc-container
 ```
 
+## Æterna Fabula
+
+![Æterna Fabula](https://i.imgur.com/yxHa9Ct.jpeg)
+### v0.4 / Updated 21/11/22
+
+## Clone and run Æterna Fabula
+
+1. Clone the repo from Github.
+
+2. Run `composer install`.
+
+3. Run the file `af_database.sql` with MySQL
+
+4. Create *config/db.php* from *config/db.php.dist* file and add your DB parameters.
+
+```php
+define('APP_DB_HOST', 'localhost');
+define('APP_DB_NAME', 'aeterna_fabula');
+define('APP_DB_USER', 'your_db_user_wich_is_not_root');
+define('APP_DB_PWD', 'your_db_password');
+```
+
+5. Run the internal PHP webserver with `php -S localhost:8000 -t public/`. 
+
+6. Go to `localhost:8000` with your favorite browser.
+
+## Architecture of Æterna Fabula
+
+### Here is the list of the main categories of Æterna Fabula :
+
+### Player pages :
+* Home page at [localhost:8000/](http://localhost:8000/)
+* Launch a new game and retrieve your historics at [localhost:8000/Alias](http://localhost:8000/alias)
+* Read the introduction at [localhost:8000/incipit](http://localhost:8000/incipit)
+* Play at [localhost:8000/chapter/show?id=1](http://localhost:8000/chapter/show?id=1)
+
+### Admin pages :
+* Get the list of the chapters at [localhost:8000/chapters](http://localhost:8000/chapters)
+* Add a new chapter at [localhost:8000/chapters/admin_add](http://localhost:8000/chapters/admin_add)
+* Add new actions at [localhost:8000/actions/admin_add_action](http://localhost:8000/actions/admin_add_action)
+
+## Connect to Æterna Fabula
+
+### Player user :
+
+As a player, you can play new games and get the historics related to each games.
+
+Mail : `phpuser@af.fr`
+Password : `AF-mdp-123`
+
+### Admin user :
+
+As an admin, you can add new chapters and new actions to the story.
+
+Mail : `admin@af.fr`
+Password : `AF-mdp-123`
+
+## Info about Æterna Fabula
+
+Æterna Fabula is a [school](https://www.wildcodeschool.com/) project created by :
+
+* [Benjamin Hamraoui](https://github.com/Jottundr)
+* [Jérôme Legrand](https://github.com/jlegrand-79)
+* [Estelle Maingue Lagrange](https://github.com/emainguelag)
+* [Fanny Sauvageot](https://github.com/79Inaf)
+* [Charlie Toussaint](https://github.com/charlietoussaint)
+
+All images are created with [Midjourney](https://www.midjourney.com/)

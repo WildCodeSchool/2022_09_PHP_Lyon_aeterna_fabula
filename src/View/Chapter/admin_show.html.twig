@@ -1,0 +1,110 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/admin_index.css">
+{% endblock %}
+
+{% block content %}
+	<a class="logo" href="/"><img src="/assets/images/logo.svg"></a>
+	<main class="adminMain">
+		<h1 class="adminTitle">Chapitre ID:
+			{{ chapters.0.id }}</h1>
+		<div class="blockButton">
+			<img class="adminDecoration" src="/assets/images/noun-frame-346217.svg">
+		</div>
+		<div class="adminChapter container">
+			<div class="adminChapter row justify-content-center">
+				<div class="blockText col-6">
+					<p>Nom :
+						{{ chapters.0.name }}</p>
+					<p>Numéro :
+						{{ chapters.0.number }}</p>
+					<h1 class="chapterTitle">Titre :
+						{{ chapters.0.title }}</h1>
+					<p class="chapterText">Description :
+						{{ chapters.0.description }}</p>
+
+					<a class="buttonAction raise buttonAdmin" href="/chapters/admin_edit?id={{ chapters.0.id }}">Modifier le chapitre</a><br>
+				</div>
+				<div class="blockImage col-6">
+					<img class="adminImage" src="/assets/images/{{ chapters.0.background_image }}">
+					<p>Balise alt de l'image :
+						{{ chapters.0.background_image_alt }}
+					</p>
+				</div>
+				<div class="blockText col-6">
+					<h1 class="chapterTitle">Actions qui mènent à ce chapitre</h1>
+					{% if fromActions.0.label == null %}
+						<p class="chapterText">Ce chapitre n'a pas encore d'action</p>
+					{% else %}
+						<table class="table tablechapterAdmin">
+							<tr>
+								<th scope="col">Libellé</th>
+								<th scope="col">ID Chapter from</th>
+								<th scope="col">lien</th>
+							</tr>
+							{% for fromAction in fromActions %}
+								<tr>
+									<td scope="col">{{ fromAction.label }}</td>
+									<td scope="col">{{ fromAction.owner_id }}</td>
+									<td scope="col">
+										<a class="sign-links" href="/actions/admin_edit_action?id={{ fromAction.a_id }}">Modifier</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</table>
+					{% endif %}
+				</div>
+				<div class="blockText col-6">
+					<h1 class="chapterTitle">Actions possibles de ce chapitre</h1>
+					{% if chapters.0.label == null %}
+						<p class="chapterText">Ce chapitre n'a pas encore d'action</p>
+					{% else %}
+						<table class="table tablechapterAdmin">
+							<tr>
+								<th scope="col">Libellé</th>
+								<th scope="col">ID Chapter to</th>
+								<th scope="col">lien</th>
+							</tr>
+							{% for chapter in chapters %}
+								<tr>
+									<td scope="col">{{ chapter.label }}</td>
+									<td scope="col">{{ chapter.target_id }}</td>
+									<td scope="col">
+										<a class="sign-links" href="/actions/admin_edit_action?id={{ chapter.a_id }}">Modifier</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</table>
+					{% endif %}
+				</div>
+				<div class="blockText col-12 text-center">
+					<a class="buttonAction raise buttonAdmin" href="/actions/admin_add_action">Ajouter une action</a>
+				</div>
+			</div>
+		</div>
+		<div class="blockButton">
+			{% if haspreviouschapter == 0 %}
+				{% if hasnextchapter == 0 %}
+					<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
+				{% else %}
+					<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
+					<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id +1 }} ">Chapitre suivant →
+					</a>
+				{% endif %}
+			{% else %}
+				{% if hasnextchapter == 0 %}
+					<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id -1 }} ">
+						← Chapitre précédent</a>
+					<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
+				{% else %}
+					<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id -1 }} ">
+						← Chapitre précédent</a>
+					<a class="buttonAction raise" href="/chapters">Retour aux chapitres</a>
+					<a class="buttonAction raise" href="/chapters/admin_show?id={{ chapters.0.id +1 }} ">Chapitre suivant →
+					</a>
+				{% endif %}
+			{% endif %}
+		</div>
+	</main>
+{% endblock %}
